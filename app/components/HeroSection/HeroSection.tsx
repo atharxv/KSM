@@ -170,7 +170,6 @@ export default function HeroSection() {
               >
                 <video
                   src="/videos/Man_in_polo_on_boat_2.mp4"
-                  poster="/images/hero-portrait.jpg"
                   autoPlay
                   muted
                   loop
