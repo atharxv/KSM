@@ -1,0 +1,211 @@
+.section {
+  background-color: var(--color-black);
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) blur(1px);
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--content-padding);
+}
+
+.bannerText {
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 1.5vw, 1.0625rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* Photo Strip */
+.strip {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.strip::-webkit-scrollbar {
+  display: none;
+}
+
+.stripInner {
+  display: flex;
+  gap: 4px;
+  min-width: max-content;
+}
+
+.photoItem {
+  position: relative;
+  width: 300px;
+  height: 420px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.photoItem:hover .photoImage {
+  transform: scale(1.05);
+}
+
+/* Photo with Product Card */
+.photoItemWithCard {
+  cursor: pointer;
+}
+
+.popoverCard {
+  position: absolute;
+  bottom: var(--space-lg);
+  right: var(--space-md);
+  background: var(--color-white);
+  border-radius: 4px;
+  padding: var(--space-sm);
+  min-width: 200px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
+  z-index: 2;
+}
+
+.photoItemWithCard:hover .popoverCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Popover Card Inner (global) */
+:global(.popover-card__inner) {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+}
+
+:global(.popover-card__image) {
+  width: 60px;
+  height: 75px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: var(--color-cream);
+}
+
+:global(.popover-card__image) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:global(.popover-card__info) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+:global(.popover-card__name) {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-black);
+  line-height: 1.3;
+  margin: 0;
+}
+
+:global(.popover-card__price) {
+  display: flex;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-black);
+}
+
+:global(.popover-card__compare) {
+  text-decoration: line-through;
+  color: var(--color-gray-300);
+}
+
+:global(.popover-card__actions) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+:global(.popover-card__view) {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  cursor: pointer;
+}
+
+:global(.popover-card__view:hover) {
+  color: var(--color-black);
+}
+
+:global(.popover-card__add) {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) ease;
+}
+
+:global(.popover-card__add:hover) {
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner {
+    height: 240px;
+  }
+
+  .photoItem {
+    width: 240px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 180px;
+  }
+
+  .photoItem {
+    width: 200px;
+    height: 280px;
+  }
+}
