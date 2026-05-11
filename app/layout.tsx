@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ShopifyProvider from "./components/ShopifyProvider/ShopifyProvider";
 import ProductModal from "./components/ProductModal/ProductModal";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 
 export const metadata: Metadata = {
   title: "KSM — Where Timeless Elegance Meets Artistic Expression",
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <LoadingScreen />
         <ShopifyProvider />
         <Header />
         <main id="main-content">{children}</main>

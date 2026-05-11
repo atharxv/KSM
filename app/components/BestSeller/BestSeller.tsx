@@ -20,9 +20,11 @@ export default function BestSeller() {
       {/* Right: Product Cards via Shopify Web Components */}
       <div className={styles.productGrid}>
         <div
+          className="shopify-container hidden-for-now"
+          style={{ display: 'none' }}
           dangerouslySetInnerHTML={{
             __html: `
-              <shopify-context type="collection" handle="summer-collection">
+              <shopify-context type="collection" handle="best-sellers">
                 <template>
                   <shopify-list-context type="product" query="collection.products" first="3">
                     <template>
@@ -49,9 +51,21 @@ export default function BestSeller() {
                       </div>
                     </template>
                     <div shopify-loading-placeholder class="best-seller-loading">
-                      <div class="skeleton best-seller-skeleton"></div>
-                      <div class="skeleton best-seller-skeleton"></div>
-                      <div class="skeleton best-seller-skeleton"></div>
+                        <div class="product-skeleton">
+                          <div class="product-skeleton__image"></div>
+                          <div class="product-skeleton__text"></div>
+                          <div class="product-skeleton__price"></div>
+                        </div>
+                        <div class="product-skeleton">
+                          <div class="product-skeleton__image"></div>
+                          <div class="product-skeleton__text"></div>
+                          <div class="product-skeleton__price"></div>
+                        </div>
+                        <div class="product-skeleton">
+                          <div class="product-skeleton__image"></div>
+                          <div class="product-skeleton__text"></div>
+                          <div class="product-skeleton__price"></div>
+                        </div>
                     </div>
                   </shopify-list-context>
                 </template>
@@ -59,6 +73,7 @@ export default function BestSeller() {
             `,
           }}
         />
+        <div className="coming-soon-message" style={{ display: 'flex' }}>Coming Soon</div>
       </div>
     </section>
   );

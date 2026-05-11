@@ -47,6 +47,15 @@ export default function HeroSection() {
 
   useEffect(() => {
     const handleWheel = (e: globalThis.WheelEvent) => {
+      // Skip if a panel/overlay is open (body scroll locked) or if event originated from a panel
+      const target = e.target as HTMLElement;
+      if (
+        document.body.style.overflow === 'hidden' || 
+        (target.closest && (target.closest('[class*="slidePanel"]') || target.closest('[class*="floatingMobileNav"]')))
+      ) {
+        return;
+      }
+
       // If expanded and scrolling up at top of page, un-expand
       if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
         setMediaFullyExpanded(false);
@@ -76,6 +85,15 @@ export default function HeroSection() {
 
     const handleTouchMove = (e: globalThis.TouchEvent) => {
       if (!touchStartY) return;
+
+      // Skip if a panel/overlay is open (body scroll locked) or if event originated from a panel
+      const target = e.target as HTMLElement;
+      if (
+        document.body.style.overflow === 'hidden' || 
+        (target.closest && (target.closest('[class*="slidePanel"]') || target.closest('[class*="floatingMobileNav"]')))
+      ) {
+        return;
+      }
 
       const touchY = e.touches[0].clientY;
       const deltaY = touchStartY - touchY;

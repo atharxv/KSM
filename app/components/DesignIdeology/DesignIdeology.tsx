@@ -6,8 +6,8 @@ export default function DesignIdeology() {
       {/* Left: Runway Photo */}
       <div className={styles.imageBlock}>
         <img
-          src="/images/full knit.jpeg"
-          alt="Runway models in elegant black ensembles"
+          src="/images/Boatpolo.jpeg"
+          alt="Man in polo shirt"
           className={styles.image}
           loading="lazy"
         />

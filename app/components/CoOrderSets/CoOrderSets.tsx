@@ -28,9 +28,11 @@ export default function CoOrderSets() {
         <div className={styles.carouselWrapper}>
           <div className={styles.carousel} ref={scrollRef}>
             <div
+              className="shopify-container hidden-for-now"
+              style={{ display: 'none' }}
               dangerouslySetInnerHTML={{
                 __html: `
-                  <shopify-context type="collection" handle="summer-collection">
+                  <shopify-context type="collection" handle="co-order-sets">
                     <template>
                       <shopify-list-context type="product" query="collection.products" first="4">
                         <template>
@@ -55,6 +57,7 @@ export default function CoOrderSets() {
                 `,
               }}
             />
+            <div className="coming-soon-message" style={{ display: 'flex' }}>Coming Soon</div>
           </div>
 
           <div className={styles.carouselControls}>
@@ -85,8 +88,8 @@ export default function CoOrderSets() {
       {/* Right: Lookbook Image with Hotspots */}
       <div className={styles.lookbook}>
         <img
-          src="/images/lookbook-vest.jpg"
-          alt="Navy vest and skirt co-order set — editorial lookbook"
+          src="/images/Beachfrontpolo.jpeg"
+          alt="Man in polo shirt"
           className={styles.lookbookImage}
           loading="lazy"
         />

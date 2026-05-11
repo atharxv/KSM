@@ -62,44 +62,78 @@ export default function FeaturedCollection() {
         </div>
 
         <div className={styles.productGrid} ref={scrollRef}>
-          {/* Product cards rendered via Shopify Web Components */}
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `
-                <shopify-context type="collection" handle="summer-collection">
-                  <template>
-                    <shopify-list-context type="product" query="collection.products" first="6">
-                      <template>
-                        <div class="featured-card">
-                          <div class="featured-card__image-wrap">
-                            <span class="featured-card__badge">Sale</span>
-                            <shopify-media
-                              width="280"
-                              height="380"
-                              query="product.selectedOrFirstAvailableVariant.image"
-                            ></shopify-media>
-                          </div>
-                          <div class="featured-card__info">
-                            <h3 class="featured-card__name">
-                              <shopify-data query="product.title"></shopify-data>
-                            </h3>
-                            <div class="featured-card__price">
-                              <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+          {false && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <shopify-context type="collection" handle="summer-collection">
+                    <template>
+                      <shopify-list-context type="product" query="collection.products" first="1">
+                        <template>
+                          <div class="featured-card">
+                            <div class="featured-card__image-wrap">
+                              <span class="featured-card__badge">Sale</span>
+                              <shopify-media
+                                width="280"
+                                height="380"
+                                query="product.selectedOrFirstAvailableVariant.image"
+                              ></shopify-media>
+                            </div>
+                            <div class="featured-card__info">
+                              <h3 class="featured-card__name">
+                                <shopify-data query="product.title"></shopify-data>
+                              </h3>
+                              <div class="featured-card__price">
+                                <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </template>
-                      <div shopify-loading-placeholder class="featured-loading">
-                        <div class="skeleton featured-skeleton"></div>
-                        <div class="skeleton featured-skeleton"></div>
-                        <div class="skeleton featured-skeleton"></div>
-                      </div>
-                    </shopify-list-context>
-                  </template>
-                </shopify-context>
-              `,
-            }}
-          />
+                        </template>
+                        <div shopify-loading-placeholder class="featured-loading">
+                          <div class="product-skeleton">
+                            <div class="product-skeleton__image"></div>
+                            <div class="product-skeleton__text"></div>
+                            <div class="product-skeleton__price"></div>
+                          </div>
+                          <div class="product-skeleton">
+                            <div class="product-skeleton__image"></div>
+                            <div class="product-skeleton__text"></div>
+                            <div class="product-skeleton__price"></div>
+                          </div>
+                          <div class="product-skeleton">
+                            <div class="product-skeleton__image"></div>
+                            <div class="product-skeleton__text"></div>
+                            <div class="product-skeleton__price"></div>
+                          </div>
+                      </shopify-list-context>
+                    </template>
+                  </shopify-context>
+                `,
+              }}
+            />
+          )}
+          
+          {/* Wrapper to match Shopify's structure and satisfy .productGrid > div CSS */}
+          <div className="product-wrapper">
+            {/* Hardcoded Product Card for Now */}
+            <div className="featured-card">
+              <div className="featured-card__image-wrap">
+                <span className="featured-card__badge">Sale</span>
+                <img 
+                  src="/images/Boatpolo.jpeg" 
+                  alt="Classic Polo Shirt" 
+                />
+              </div>
+              <div className="featured-card__info">
+                <h3 className="featured-card__name">
+                  Classic Polo Shirt
+                </h3>
+                <div className="featured-card__price">
+                  $125.00
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

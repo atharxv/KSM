@@ -311,6 +311,185 @@ shopify-variant-selector::part(color-swatch-selected) {
   border-radius: 2px;
 }
 
+/* Product Card Skeleton */
+.product-skeleton {
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+.product-skeleton__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(90deg,
+    var(--color-gray-100) 25%,
+    var(--color-cream) 50%,
+    var(--color-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.product-skeleton__text {
+  height: 14px;
+  width: 70%;
+  margin-top: 12px;
+  background: linear-gradient(90deg,
+    var(--color-gray-100) 25%,
+    var(--color-cream) 50%,
+    var(--color-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+.product-skeleton__price {
+  height: 12px;
+  width: 40%;
+  margin-top: 8px;
+  background: linear-gradient(90deg,
+    var(--color-gray-100) 25%,
+    var(--color-cream) 50%,
+    var(--color-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+/* Push effect for menu on desktop */
+#main-content,
+#site-header {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 769px) {
+  body.menu-open #main-content,
+  body.menu-open #site-header {
+    transform: translateX(-520px); /* Width of the slidePanel */
+  }
+}
+
+/* ==========================================================================
+   PRODUCT CARDS (Global for Shopify Templates)
+   ========================================================================== */
+.featured-card,
+.best-seller-card,
+.co-order-card {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  group: product-card; /* Conceptual grouping */
+  cursor: pointer;
+}
+
+/* Specific widths for different contexts if needed */
+.best-seller-card { width: 360px; min-width: 360px; max-width: 360px; }
+.co-order-card { width: 320px; min-width: 320px; max-width: 320px; }
+
+.featured-card__image-wrap,
+.best-seller-card__image-wrap,
+.co-order-card__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+}
+
+.featured-card__image-wrap img,
+.best-seller-card__image-wrap img,
+.co-order-card__image-wrap img,
+shopify-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.featured-card:hover .featured-card__image-wrap img,
+.best-seller-card:hover .best-seller-card__image-wrap img,
+.co-order-card:hover .co-order-card__image-wrap img,
+.featured-card:hover shopify-media,
+.best-seller-card:hover shopify-media,
+.co-order-card:hover shopify-media {
+  transform: scale(1.05);
+}
+
+.featured-card__badge,
+.best-seller-card__badge,
+.co-order-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 2;
+}
+
+.featured-card__info,
+.best-seller-card__info {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.featured-card__name,
+.best-seller-card__name {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.featured-card__price,
+.best-seller-card__price {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.best-seller-card__compare-price {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* Coming Soon Fallback Message */
+.coming-soon-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 380px;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.05em;
+  grid-column: 1 / -1; /* Spans full grid width if in grid */
+}
+
+/* Hide coming soon message if a product card is rendered by Shopify */
+div:has(.featured-card) .coming-soon-message,
+div:has(.best-seller-card) .coming-soon-message,
+div:has(.co-order-card) .coming-soon-message {
+  display: none;
+}
+
 /* ---- Responsive Breakpoints ---- */
 /* Mobile: < 640px */
 /* Tablet: 640px – 1024px */
