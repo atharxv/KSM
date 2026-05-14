@@ -45,7 +45,7 @@ export default function LoadingScreen() {
   return (
     <div className={`${styles.overlay} ${hidden ? styles.hidden : ''}`}>
       <h1 className={styles.logoText}>KSM</h1>
-      <p className={styles.tagline}>Crafted Elegance</p>
+      <p className={styles.tagline}>The Zenith of Status</p>
       <div className={styles.progressContainer}>
         <div
           className={styles.progressBar}

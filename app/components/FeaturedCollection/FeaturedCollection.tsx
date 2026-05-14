@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import styles from './FeaturedCollection.module.css';
 
 export default function FeaturedCollection() {
@@ -20,13 +21,13 @@ export default function FeaturedCollection() {
       {/* Left: Editorial Image */}
       <div className={styles.editorial}>
         <img
-          src="/images/Brownknitwear.jpeg"
-          alt="Canvas of Souls in Motion Collection — editorial fashion photography"
+          src="/images/Outfit Playa Hombre.jpeg"
+          alt="Legacy Collection — editorial fashion photography"
           className={styles.editorialImage}
           loading="lazy"
         />
         <div className={styles.editorialOverlay}>
-          <p className={styles.editorialCaption}>Canvas of Souls in Motion Collection</p>
+          <p className={styles.editorialCaption}>The Legacy Collection</p>
         </div>
       </div>
 
@@ -70,13 +71,20 @@ export default function FeaturedCollection() {
                     <template>
                       <shopify-list-context type="product" query="collection.products" first="1">
                         <template>
-                          <div class="featured-card">
+                          <a href="/products/{{product.handle}}" class="featured-card">
                             <div class="featured-card__image-wrap">
                               <span class="featured-card__badge">Sale</span>
                               <shopify-media
                                 width="280"
                                 height="380"
                                 query="product.selectedOrFirstAvailableVariant.image"
+                                class="primary-image"
+                              ></shopify-media>
+                              <shopify-media
+                                width="280"
+                                height="380"
+                                query="product.images[1]"
+                                class="hover-image"
                               ></shopify-media>
                             </div>
                             <div class="featured-card__info">
@@ -87,7 +95,7 @@ export default function FeaturedCollection() {
                                 <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
                               </div>
                             </div>
-                          </div>
+                          </a>
                         </template>
                         <div shopify-loading-placeholder class="featured-loading">
                           <div class="product-skeleton">
@@ -116,23 +124,29 @@ export default function FeaturedCollection() {
           {/* Wrapper to match Shopify's structure and satisfy .productGrid > div CSS */}
           <div className="product-wrapper">
             {/* Hardcoded Product Card for Now */}
-            <div className="featured-card">
+            <Link href="/products/vertical-textured-polo" className="featured-card">
               <div className="featured-card__image-wrap">
                 <span className="featured-card__badge">Sale</span>
                 <img 
-                  src="/images/Boatpolo.jpeg" 
-                  alt="Classic Polo Shirt" 
+                  src="/images/whitepolo.jpeg" 
+                  alt="Classic Piece" 
+                  className="primary-image"
+                />
+                <img 
+                  src="/images/VERTICAL TEXTURED POLO.jpeg" 
+                  alt="Classic Piece Detail" 
+                  className="hover-image"
                 />
               </div>
               <div className="featured-card__info">
                 <h3 className="featured-card__name">
-                  Classic Polo Shirt
+                  Vertical Textured Polo
                 </h3>
                 <div className="featured-card__price">
-                  $125.00
+                  $145.00
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

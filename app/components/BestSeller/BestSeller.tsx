@@ -7,12 +7,12 @@ export default function BestSeller() {
       <div className={styles.textBlock}>
         <h2 className={styles.title}>Best seller</h2>
         <p className={styles.description}>
-          A curated selection of pieces that quietly stand out
-          where modern tailoring meets soft structure, and
-          everyday essentials are elevated with a sense of
-          artful restraint.
+          An exclusive selection of pieces that command attention,
+          where masterful tailoring meets undeniable presence, and
+          everyday essentials are elevated with an aura of
+          unrivaled prestige.
         </p>
-        <a href="#" className={styles.discoverLink} id="btn-discover-more">
+        <a href="/products" className={styles.discoverLink} id="btn-discover-more">
           Discover more
         </a>
       </div>
@@ -28,13 +28,20 @@ export default function BestSeller() {
                 <template>
                   <shopify-list-context type="product" query="collection.products" first="3">
                     <template>
-                      <div class="best-seller-card">
+                      <a href="/products/{{product.handle}}" class="best-seller-card">
                         <div class="best-seller-card__image-wrap">
                           <span class="best-seller-card__badge">Sale</span>
                           <shopify-media
                             width="360"
                             height="480"
                             query="product.selectedOrFirstAvailableVariant.image"
+                            class="primary-image"
+                          ></shopify-media>
+                          <shopify-media
+                            width="360"
+                            height="480"
+                            query="product.images[1]"
+                            class="hover-image"
                           ></shopify-media>
                         </div>
                         <div class="best-seller-card__info">
@@ -48,7 +55,7 @@ export default function BestSeller() {
                             </span>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     </template>
                     <div shopify-loading-placeholder class="best-seller-loading">
                         <div class="product-skeleton">

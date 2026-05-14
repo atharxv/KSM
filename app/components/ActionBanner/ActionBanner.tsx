@@ -6,7 +6,7 @@ export default function ActionBanner() {
       {/* Continuation of the dark monochrome background */}
       <div className={styles.background}>
         <img
-          src="/images/Beachfrontpolo.jpeg"
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80"
           alt=""
           role="presentation"
           className={styles.backgroundImage}
@@ -17,10 +17,10 @@ export default function ActionBanner() {
 
       <div className={styles.content}>
         <h2 className={styles.headline}>
-          Where Timeless Elegance Meets<br />
-          Artistic Expression
+          The Signature of Status<br />
+          and Unrivaled Prestige
         </h2>
-        <a href="#featured-collection" className={styles.shopButton} id="btn-shop-now">
+        <a href="/products" className={styles.shopButton} id="btn-shop-now">
           SHOP NOW
         </a>
       </div>

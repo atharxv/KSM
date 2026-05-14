@@ -27,11 +27,11 @@ export default function HeroSection() {
   const overlayOpacity = useTransform(springProgress, [0, 1], [0.3, 0]);
   
   // Dimensions (Use consistent units for proper framer-motion interpolation)
-  const mediaWidthMobile = useTransform(springProgress, [0, 1], ['75vw', '100vw']);
-  const mediaHeightMobile = useTransform(springProgress, [0, 1], ['50vh', '100vh']);
+  const mediaWidthMobile = useTransform(springProgress, [0, 1], ['80vw', '100vw']);
+  const mediaHeightMobile = useTransform(springProgress, [0, 1], ['60vw', '100vh']); // 4:3 ratio (80 * 3/4 = 60)
   
-  const mediaWidthDesktop = useTransform(springProgress, [0, 1], ['25vw', '100vw']);
-  const mediaHeightDesktop = useTransform(springProgress, [0, 1], ['65vh', '100vh']);
+  const mediaWidthDesktop = useTransform(springProgress, [0, 1], ['32vw', '100vw']);
+  const mediaHeightDesktop = useTransform(springProgress, [0, 1], ['24vw', '100vh']); // 4:3 ratio (32 * 3/4 = 24)
   
   // Border radius: starts round, goes sharp at full screen
   const borderRadius = useTransform(springProgress, [0, 0.8, 1], ['12px', '12px', '0px']);
@@ -166,7 +166,7 @@ export default function HeroSection() {
             style={{ opacity: bgOpacity }}
           >
             <img
-              src="/images/hero-bg.jpg"
+              src="/images/Midderianwater.jpg"
               alt=""
               role="presentation"
               className={styles.backgroundImage}
@@ -187,16 +187,12 @@ export default function HeroSection() {
                 }}
               >
                 <video
-                  src="/videos/Man_in_polo_on_boat_2.mp4"
+                  src="/videos/HeroBG.webm"
+                  className={styles.videoElement}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="auto"
-                  className={styles.videoElement}
-                  controls={false}
-                  disablePictureInPicture
-                  disableRemotePlayback
                 />
                 
                 <motion.div

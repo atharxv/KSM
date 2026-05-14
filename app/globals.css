@@ -10,10 +10,10 @@
   /* Colors */
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-off-white: #f8f7f5;
-  --color-cream: #f2f0ec;
-  --color-gray-100: #e8e6e3;
-  --color-gray-200: #d4d1cc;
+  --color-off-white: #efebe4; /* Denser off-white */
+  --color-cream: #e6e0d4; /* Denser cream */
+  --color-gray-100: #dcd7ce;
+  --color-gray-200: #ccc7bd;
   --color-gray-300: #a8a5a0;
   --color-gray-400: #717171;
   --color-gray-500: #4a4a4a;
@@ -88,7 +88,7 @@ body {
   font-size: var(--text-base);
   line-height: 1.6;
   color: var(--color-black);
-  background-color: var(--color-white);
+  background-color: var(--color-off-white);
   overflow-x: hidden;
 }
 

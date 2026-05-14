@@ -8,7 +8,7 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <a href="/" className={styles.logo} aria-label="KSM Home">KSM</a>
-            <p className={styles.tagline}>Where Timeless Elegance Meets Artistic Expression</p>
+            <p className={styles.tagline}>The Signature of Status and Unrivaled Prestige</p>
           </div>
 
           <div className={styles.linksGrid}>

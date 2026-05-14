@@ -74,7 +74,7 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background-color: var(--color-cream);
+  background-color: transparent;
   margin-bottom: var(--space-md);
 }
 
@@ -82,10 +82,24 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease-out);
+  mix-blend-mode: multiply;
+  transition: transform var(--duration-slow) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
 }
 
-:global(.best-seller-card__image-wrap:hover) img {
+:global(.best-seller-card__image-wrap) :global(.hover-image) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+:global(.best-seller-card:hover) :global(.primary-image) {
+  opacity: 0;
+}
+
+:global(.best-seller-card:hover) :global(.hover-image) {
+  opacity: 1;
   transform: scale(1.04);
 }
 

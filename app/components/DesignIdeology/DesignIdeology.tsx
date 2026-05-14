@@ -6,8 +6,8 @@ export default function DesignIdeology() {
       {/* Left: Runway Photo */}
       <div className={styles.imageBlock}>
         <img
-          src="/images/Boatpolo.jpeg"
-          alt="Man in polo shirt"
+          src="/images/paul anthony kelly.jpeg"
+          alt="Fashion editorial"
           className={styles.image}
           loading="lazy"
         />
@@ -17,9 +17,9 @@ export default function DesignIdeology() {
       <div className={styles.quoteBlock}>
         <blockquote className={styles.quote}>
           <p>
-            &ldquo;This collection is designed to evoke the sense of having the
-            holiday of a lifetime.&rdquo; An exercise in luxurious simplicity, each
-            design is cut to maximise the relaxed drape of silks and satins
+            &ldquo;This collection is designed to evoke the unmistakable presence
+            of legacy and heritage.&rdquo; An exercise in unrivaled distinction, each
+            piece is masterfully tailored from the world&apos;s most exclusive materials.
           </p>
         </blockquote>
       </div>

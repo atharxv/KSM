@@ -36,16 +36,23 @@ export default function CoOrderSets() {
                     <template>
                       <shopify-list-context type="product" query="collection.products" first="4">
                         <template>
-                          <div class="co-order-card">
+                          <a href="/products/{{product.handle}}" class="co-order-card">
                             <div class="co-order-card__image-wrap">
                               <span class="co-order-card__badge">Sale</span>
                               <shopify-media
                                 width="320"
                                 height="450"
                                 query="product.selectedOrFirstAvailableVariant.image"
+                                class="primary-image"
+                              ></shopify-media>
+                              <shopify-media
+                                width="320"
+                                height="450"
+                                query="product.images[1]"
+                                class="hover-image"
                               ></shopify-media>
                             </div>
-                          </div>
+                          </a>
                         </template>
                         <div shopify-loading-placeholder class="co-order-loading">
                           <div class="skeleton co-order-skeleton"></div>
@@ -88,18 +95,18 @@ export default function CoOrderSets() {
       {/* Right: Lookbook Image with Hotspots */}
       <div className={styles.lookbook}>
         <img
-          src="/images/Beachfrontpolo.jpeg"
+          src="/images/Old money.jpeg"
           alt="Man in polo shirt"
           className={styles.lookbookImage}
           loading="lazy"
         />
         {/* Hotspot dots */}
-        <button className={styles.hotspot} style={{ top: '35%', left: '65%' }} aria-label="View product detail">
+        <a href="/products/vertical-textured-polo" className={styles.hotspot} style={{ top: '35%', left: '65%' }} aria-label="View product detail">
           <span className={styles.hotspotDot} />
-        </button>
-        <button className={styles.hotspot} style={{ top: '72%', left: '40%' }} aria-label="View product detail">
+        </a>
+        <a href="/products/vertical-textured-polo" className={styles.hotspot} style={{ top: '72%', left: '40%' }} aria-label="View product detail">
           <span className={styles.hotspotDot} />
-        </button>
+        </a>
       </div>
     </section>
   );

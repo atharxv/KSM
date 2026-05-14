@@ -71,12 +71,8 @@ export default function Header() {
   };
 
   const navItems = [
-    { label: 'Shops', href: '#shops', description: 'Explore our curated retail locations and pop-up experiences across the globe.' },
-    { label: 'New Arrivals', href: '#new-arrivals', description: 'The latest pieces from our seasonal collections, freshly curated.' },
-    { label: 'Ready To Wear', href: '#ready-to-wear', description: 'Elevated everyday essentials designed for modern living.' },
-    { label: 'Knitwear', href: '#knitwear', description: 'Luxurious knits crafted with artisanal precision and premium fibres.' },
-    { label: 'Atelier', href: '#atelier', description: 'A glimpse into our creative process — where design meets craft.' },
-    { label: 'Blog', href: '#blog', description: 'Stories, inspirations, and behind-the-scenes from the KSM world.' },
+    { label: 'Shops', href: '/products', description: 'Explore our curated collection of pieces across the globe.' },
+    { label: 'Atelier', href: '/atelier', description: 'A glimpse into our creative process — where design meets craft.' },
   ];
 
   return (

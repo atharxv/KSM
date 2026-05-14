@@ -3,37 +3,22 @@ import styles from './PhotoGallery.module.css';
 export default function PhotoGallery() {
   return (
     <section className={styles.section} id="photo-gallery" aria-label="Lookbook Gallery">
-      {/* Top: Dark overlay with text */}
-      <div className={styles.banner}>
-        <img
-          src="/images/Boatpolo.jpeg"
-          alt=""
-          role="presentation"
-          className={styles.bannerImage}
-          loading="lazy"
-        />
-        <div className={styles.bannerOverlay}>
-          <p className={styles.bannerText}>
-            A quiet harmony of form and texture — KSM&apos;s latest<br />
-            pieces in leather, gold, and silk are now in store
-          </p>
-        </div>
-      </div>
+
 
       {/* Photo Strip */}
       <div className={styles.strip}>
         <div className={styles.stripInner}>
           <div className={styles.photoItem}>
             <img
-              src="/images/Bluepolo.jpeg"
-              alt="Fashion editorial — woman in black dress by the sea"
+              src="/images/yachtplaya.jpeg"
+              alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
             />
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/gallery-2.jpg"
+              src="/images/TMG.jpeg"
               alt="Fashion editorial — close-up with earring detail"
               className={styles.photoImage}
               loading="lazy"
@@ -41,7 +26,7 @@ export default function PhotoGallery() {
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/gallery-3.jpg"
+              src="/images/Old money.jpeg"
               alt="Fashion editorial — woman with canvas tote bag"
               className={styles.photoImage}
               loading="lazy"
@@ -49,7 +34,7 @@ export default function PhotoGallery() {
           </div>
           <div className={`${styles.photoItem} ${styles.photoItemWithCard}`}>
             <img
-              src="/images/gallery-4.jpg"
+              src="/images/cafeoldmoney.jpeg"
               alt="Fashion editorial — model in black coat"
               className={styles.photoImage}
               loading="lazy"
@@ -98,8 +83,8 @@ export default function PhotoGallery() {
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/sweatshit.jpeg"
-              alt="Fashion editorial — woman relaxing on beach"
+              src="/images/Outfit Playa Hombre.jpeg"
+              alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
             />
