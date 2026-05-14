@@ -48,13 +48,13 @@
   font-size: var(--text-lg);
   line-height: 1.8;
   color: var(--color-gray-600);
-  font-style: italic;
+  font-style: normal;
   position: relative;
 }
 
 .handwritten {
   font-family: 'Playfair Display', serif; /* We'll use italic Playfair for a sophisticated "pen" look */
-  font-style: italic;
+  font-style: normal;
   display: inline-block;
 }
 
@@ -62,7 +62,7 @@
   margin-top: var(--space-3xl);
   font-family: var(--font-serif);
   font-size: var(--text-md);
-  font-style: italic;
+  font-style: normal;
   color: var(--color-black);
   opacity: 0.8;
 }

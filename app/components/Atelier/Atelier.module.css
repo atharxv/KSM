@@ -66,7 +66,7 @@
   font-family: var(--font-serif);
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: var(--color-white);
   line-height: 1;
   margin-bottom: var(--space-xl);
@@ -109,7 +109,7 @@
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: var(--color-black);
   line-height: 1.15;
   margin-bottom: var(--space-2xl);
@@ -166,7 +166,7 @@
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: var(--color-black);
 }
 
@@ -205,7 +205,7 @@
   justify-content: center;
   font-family: var(--font-serif);
   font-size: var(--text-xl);
-  font-style: italic;
+  font-style: normal;
   color: var(--color-black);
   margin-bottom: var(--space-2xl);
   background-color: var(--color-off-white);
@@ -272,7 +272,7 @@
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.1;
 }
 
@@ -330,7 +330,7 @@
 .materialName {
   font-family: var(--font-serif);
   font-size: var(--text-xl);
-  font-style: italic;
+  font-style: normal;
   margin-bottom: 4px;
 }
 
@@ -368,7 +368,7 @@
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: var(--color-black);
 }
 
@@ -451,7 +451,7 @@
   font-family: var(--font-serif);
   font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: var(--color-black);
   line-height: 1.4;
   margin-bottom: var(--space-2xl);
