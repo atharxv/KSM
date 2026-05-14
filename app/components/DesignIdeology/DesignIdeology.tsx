@@ -15,7 +15,7 @@ export default function DesignIdeology() {
         delayChildren: 0.3,
       },
     },
-  };
+  } as const;
 
   const childVariants = {
     hidden: { opacity: 0, y: 5 },
@@ -27,7 +27,7 @@ export default function DesignIdeology() {
         ease: "easeOut",
       },
     },
-  };
+  } as const;
 
   return (
     <section className={styles.section}>
