@@ -1,7 +1,7 @@
 .section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 520px;
+  min-height: 600px;
   background-color: var(--color-off-white);
 }
 
@@ -23,24 +23,48 @@
   transform: scale(1.02);
 }
 
-/* Quote Block */
+/* Quote Block / Letter Block */
 .quoteBlock {
   display: flex;
-  align-items: flex-end;
-  padding: var(--space-3xl) var(--space-3xl);
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-5xl) var(--space-4xl);
+  background: radial-gradient(circle at center, rgba(230, 224, 212, 0.3) 0%, transparent 70%);
 }
 
-.quote {
-  max-width: 440px;
-}
-
-.quote p {
+.eyebrow {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
-  font-weight: 400;
-  color: var(--color-gray-400);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-2xl);
+}
+
+.letter {
+  max-width: 480px;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
   line-height: 1.8;
-  letter-spacing: 0.01em;
+  color: var(--color-gray-600);
+  font-style: italic;
+  position: relative;
+}
+
+.handwritten {
+  font-family: 'Playfair Display', serif; /* We'll use italic Playfair for a sophisticated "pen" look */
+  font-style: italic;
+  display: inline-block;
+}
+
+.signature {
+  margin-top: var(--space-3xl);
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-style: italic;
+  color: var(--color-black);
+  opacity: 0.8;
 }
 
 /* Responsive */
@@ -55,11 +79,11 @@
   }
 
   .quoteBlock {
-    padding: var(--space-2xl) var(--content-padding);
+    padding: var(--space-3xl) var(--content-padding);
     align-items: flex-start;
   }
 
-  .quote {
+  .letter {
     max-width: 100%;
   }
 }
@@ -70,6 +94,10 @@
   }
 
   .quoteBlock {
-    padding: var(--space-xl) var(--content-padding);
+    padding: var(--space-2xl) var(--content-padding);
+  }
+
+  .letter {
+    font-size: var(--text-md);
   }
 }
