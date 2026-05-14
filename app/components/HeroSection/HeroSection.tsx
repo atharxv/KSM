@@ -27,8 +27,9 @@ export default function HeroSection() {
   const overlayOpacity = useTransform(springProgress, [0, 1], [0.3, 0]);
   
   // Dimensions (Use consistent units for proper framer-motion interpolation)
-  const mediaWidthMobile = useTransform(springProgress, [0, 1], ['80vw', '100vw']);
-  const mediaHeightMobile = useTransform(springProgress, [0, 1], ['60vw', '100vh']); // 4:3 ratio (80 * 3/4 = 60)
+  // MOBILE: Keep static to prevent jarring expansion on phones
+  const mediaWidthMobile = useTransform(springProgress, [0, 1], ['80vw', '80vw']); 
+  const mediaHeightMobile = useTransform(springProgress, [0, 1], ['60vw', '60vw']); 
   
   const mediaWidthDesktop = useTransform(springProgress, [0, 1], ['32vw', '100vw']);
   const mediaHeightDesktop = useTransform(springProgress, [0, 1], ['24vw', '100vh']); // 4:3 ratio (32 * 3/4 = 24)
