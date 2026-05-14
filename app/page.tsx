@@ -3,7 +3,6 @@ import ActionBanner from "./components/ActionBanner/ActionBanner";
 import FeaturedCollection from "./components/FeaturedCollection/FeaturedCollection";
 import BestSeller from "./components/BestSeller/BestSeller";
 import DesignIdeology from "./components/DesignIdeology/DesignIdeology";
-import CoOrderSets from "./components/CoOrderSets/CoOrderSets";
 import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <FeaturedCollection />
       <BestSeller />
       <DesignIdeology />
-      <CoOrderSets />
       <PhotoGallery />
     </>
   );
