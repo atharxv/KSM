@@ -3,26 +3,34 @@
    Premium Fashion E-commerce
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap'); */
+/* Fonts: Neue Haas Grotesk Display for Headings, Helvetica World for Body */
 
 /* ---- Design Tokens ---- */
 :root {
   /* Colors */
-  --color-black: #000000;
-  --color-white: #ffffff;
-  --color-off-white: #efebe4; /* Denser off-white */
-  --color-cream: #e6e0d4; /* Denser cream */
-  --color-gray-100: #dcd7ce;
-  --color-gray-200: #ccc7bd;
-  --color-gray-300: #a8a5a0;
-  --color-gray-400: #717171;
-  --color-gray-500: #4a4a4a;
-  --color-gray-600: #2a2a2a;
-  --color-gray-700: #1a1a1a;
+  --color-black: #222222;
+  --color-black-rgb: 34, 34, 34;
+  --color-white: #F3F1ED;
+  --color-white-rgb: 243, 241, 237;
+  --color-off-white: #F3F1ED;
+  --color-cream: #E8E5DF;
+  --color-gray-100: #E0DDD6;
+  --color-gray-200: #D0CCC2;
+  --color-gray-300: #B0ACA2;
+  --color-gray-400: #8A8A8A; /* Specified grey */
+  --color-gray-400-rgb: 138, 138, 138;
+  --color-gray-500: #666666;
+  --color-gray-600: #444444;
+  --color-gray-700: #333333;
 
   /* Typography */
-  --font-serif: 'Playfair Display', 'Georgia', serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Neue Haas Grotesk Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica World', 'Helvetica', Arial, sans-serif;
+
+  /* Legacy aliases for component compatibility */
+  --font-serif: var(--font-heading);
+  --font-sans: var(--font-body);
 
   /* Font Sizes */
   --text-xs: 0.6875rem;     /* 11px */
@@ -115,7 +123,8 @@ ul, ol {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-weight: 500;
 }
 
 /* ---- Utility Classes ---- */

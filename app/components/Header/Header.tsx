@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -10,6 +11,9 @@ export default function Header() {
   const [searchExpanded, setSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const lastScrollY = useRef(0);
+  const pathname = usePathname();
+
+  const isLightTheme = pathname?.startsWith('/products') ?? false;
 
   const [language, setLanguage] = useState('English');
   const [currency, setCurrency] = useState('USD');
@@ -78,7 +82,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''}`}
+        className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''} ${isLightTheme ? styles.lightTheme : ''}`}
         id="site-header"
       >
         {/* Left: Logo */}

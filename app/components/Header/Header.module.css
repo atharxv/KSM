@@ -19,6 +19,20 @@
               box-shadow var(--duration-normal) var(--ease-out),
               transform var(--duration-normal) var(--ease-out);
   color: var(--color-white);
+  transition: background-color var(--duration-normal) var(--ease-out),
+              backdrop-filter var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out),
+              color var(--duration-normal) var(--ease-out);
+}
+
+.header.lightTheme:not(.scrolled) {
+  color: var(--color-black);
+}
+
+.header.lightTheme:not(.scrolled) .cartBadge {
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .header.hidden {
@@ -26,10 +40,10 @@
 }
 
 .header.scrolled {
-  background-color: rgba(0, 0, 0, 0.92);
+  background-color: rgba(var(--color-black-rgb), 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1px 0 rgba(var(--color-white-rgb), 0.06);
 }
 
 /* ---- Logo (Left) ---- */
@@ -43,7 +57,7 @@
   font-size: 1.75rem;
   font-weight: 500;
   letter-spacing: 0.12em;
-  color: var(--color-white);
+  color: inherit;
   text-decoration: none;
   transition: opacity var(--duration-fast) ease;
 }
@@ -66,7 +80,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: var(--color-white);
+  color: inherit;
   background: none;
   border: none;
   cursor: pointer;
@@ -76,7 +90,7 @@
 }
 
 .iconBtn:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(var(--color-white-rgb), 0.08);
 }
 
 .cartBadge {
@@ -105,7 +119,7 @@
   width: 44px;
   height: 44px;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(var(--color-white-rgb), 0.2);
   border-radius: 50%;
   cursor: pointer;
   margin-left: var(--space-sm);
@@ -113,9 +127,18 @@
               background-color var(--duration-normal) var(--ease-out);
 }
 
+.header.lightTheme:not(.scrolled) .menuBtn {
+  border-color: rgba(var(--color-black-rgb), 0.2);
+}
+
+.header.lightTheme:not(.scrolled) .menuBtn:hover {
+  border-color: rgba(var(--color-black-rgb), 0.5);
+  background-color: rgba(var(--color-black-rgb), 0.06);
+}
+
 .menuBtn:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(var(--color-white-rgb), 0.5);
+  background-color: rgba(var(--color-white-rgb), 0.06);
 }
 
 .menuIcon {
@@ -136,7 +159,12 @@
   border-radius: 1px;
   transition: transform var(--duration-normal) var(--ease-out),
               opacity var(--duration-normal) var(--ease-out),
-              width var(--duration-normal) var(--ease-out);
+              width var(--duration-normal) var(--ease-out),
+              background-color var(--duration-normal) var(--ease-out);
+}
+
+.header.lightTheme:not(.scrolled) .menuIcon span {
+  background-color: var(--color-black);
 }
 
 /* Stagger line widths for visual interest */
@@ -250,7 +278,7 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-lg) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(var(--color-white-rgb), 0.06);
   text-decoration: none;
   color: var(--color-white);
   opacity: 0;
@@ -280,7 +308,7 @@
 .panelLinkDesc {
   font-family: var(--font-sans);
   font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(var(--color-white-rgb), 0.35);
   margin-top: 6px;
   line-height: 1.5;
   max-width: 380px;
@@ -288,7 +316,7 @@
 }
 
 .panelLink:hover .panelLinkDesc {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(var(--color-white-rgb), 0.55);
 }
 
 @keyframes slideInLink {
@@ -306,7 +334,7 @@
 .panelFooter {
   margin-top: auto;
   padding-top: var(--space-2xl);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(var(--color-white-rgb), 0.08);
 }
 
 /* Search */
@@ -315,8 +343,8 @@
   align-items: center;
   gap: var(--space-md);
   padding-bottom: var(--space-lg);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(var(--color-white-rgb), 0.08);
+  color: rgba(var(--color-white-rgb), 0.4);
 }
 
 .panelSearchInput {
@@ -330,7 +358,7 @@
 }
 
 .panelSearchInput::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(var(--color-white-rgb), 0.3);
 }
 
 .panelSearchResults {
@@ -338,7 +366,7 @@
 }
 
 .panelSearchItem {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(var(--color-white-rgb), 0.05);
 }
 
 .panelSearchItem:last-child {
@@ -348,7 +376,7 @@
 .panelSearchEmpty {
   font-family: var(--font-sans);
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(var(--color-white-rgb), 0.3);
   padding: var(--space-md) 0;
 }
 
@@ -371,7 +399,7 @@
   width: 50px;
   height: 65px;
   flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(var(--color-white-rgb), 0.05);
   overflow: hidden;
 }
 
@@ -380,7 +408,7 @@
 }
 
 .slidePanel :global(.search-result-price) {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--color-white-rgb), 0.5);
 }
 
 /* Locale Controls */
@@ -401,7 +429,7 @@
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(var(--color-white-rgb), 0.3);
 }
 
 .panelLocaleBtns {
@@ -413,16 +441,16 @@
 .panelLocaleBtn {
   font-family: var(--font-sans);
   font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--color-white-rgb), 0.5);
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--color-white-rgb), 0.1);
   padding: 6px 12px;
   cursor: pointer;
   transition: all var(--duration-fast) ease;
 }
 
 .panelLocaleBtn:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(var(--color-white-rgb), 0.3);
   color: var(--color-white);
 }
 
@@ -447,7 +475,7 @@
 }
 
 .backdropVisible {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(var(--color-black-rgb), 0.5);
   pointer-events: auto;
 }
 

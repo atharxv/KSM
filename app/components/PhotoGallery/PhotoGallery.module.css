@@ -31,7 +31,7 @@
   font-family: var(--font-sans);
   font-size: clamp(0.875rem, 1.5vw, 1.0625rem);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(var(--color-white-rgb), 0.85);
   line-height: 1.7;
   letter-spacing: 0.02em;
 }
@@ -86,7 +86,7 @@
   border-radius: 4px;
   padding: var(--space-sm);
   min-width: 200px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(var(--color-black-rgb), 0.15);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity var(--duration-normal) var(--ease-out),

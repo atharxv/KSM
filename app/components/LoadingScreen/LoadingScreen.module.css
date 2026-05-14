@@ -39,7 +39,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.25),
+    rgba(var(--color-white-rgb), 0.25),
     transparent
   );
   animation: shine 2s 0.6s ease-in-out infinite;
@@ -52,7 +52,7 @@
   font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(var(--color-white-rgb), 0.4);
   margin-top: var(--space-lg);
   animation: fadeInUp 1s 0.4s var(--ease-out) both;
 }
@@ -65,7 +65,7 @@
   transform: translateX(-50%);
   width: 120px;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(var(--color-white-rgb), 0.1);
   overflow: hidden;
   border-radius: 1px;
 }
