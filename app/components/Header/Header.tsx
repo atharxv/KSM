@@ -142,21 +142,6 @@ export default function Header() {
             </svg>
             <span className={styles.cartBadge}>0</span>
           </button>
-
-          {/* Desktop Menu Toggle */}
-          <button
-            className={`${styles.menuBtn} ${styles.desktopOnly}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={menuOpen}
-            id="btn-menu-desktop"
-          >
-            <div className={`${styles.menuIcon} ${menuOpen ? styles.menuIconActive : ''}`}>
-              <span />
-              <span />
-              <span />
-            </div>
-          </button>
         </div>
       </header>
 

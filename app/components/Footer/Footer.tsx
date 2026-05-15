@@ -43,6 +43,14 @@ export default function Footer() {
           <p className={styles.copyrightText}>&copy; KSM 2026</p>
         </div>
         <div className={styles.logoCell}>
+          <div className={styles.cellBackground}>
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80"
+              alt=""
+              className={styles.cellImage}
+            />
+            <div className={styles.cellOverlay} />
+          </div>
           <h2 className={styles.massiveLogo}>KSM</h2>
         </div>
       </div>

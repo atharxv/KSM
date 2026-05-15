@@ -12,7 +12,6 @@ export default function Home() {
     <>
       <HeroSection />
       <MobileStackWrapper>
-        <ActionBanner />
         <FeaturedCollection />
         <AtelierBanner />
         <DesignIdeology />

@@ -16,94 +16,90 @@
   pointer-events: none;
 }
 
-/* Logo text */
+/* Logo Container */
+.logoContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+.revealLine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 1px;
+  background-color: var(--color-white);
+  transition: width 0.4s var(--ease-out);
+  z-index: 1;
+  opacity: 0.8;
+  box-shadow: 0 0 15px rgba(var(--color-white-rgb), 0.3);
+}
+
 .logoText {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-size: clamp(3rem, 10vw, 5.5rem);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.4em;
   color: var(--color-white);
   position: relative;
-  overflow: hidden;
-  animation: logoReveal 1.2s var(--ease-out) forwards;
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1.1);
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Shine sweep across the logo */
-.logoText::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(var(--color-white-rgb), 0.25),
-    transparent
-  );
-  animation: shine 2s 0.6s ease-in-out infinite;
+.logoTextRevealed {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+  letter-spacing: 0.25em;
 }
 
-/* Subtle tagline */
+/* Status Info & Counter */
+.statusInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
 .tagline {
   font-family: var(--font-sans);
   font-size: var(--text-xs);
   font-weight: 400;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.5em;
   text-transform: uppercase;
-  color: rgba(var(--color-white-rgb), 0.4);
-  margin-top: var(--space-lg);
-  animation: fadeInUp 1s 0.4s var(--ease-out) both;
+  color: rgba(var(--color-white-rgb), 0.3);
+  animation: fadeIn 2s ease-out both;
 }
 
-/* Minimal progress bar */
-.progressContainer {
-  position: absolute;
-  bottom: 10vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 1px;
-  background-color: rgba(var(--color-white-rgb), 0.1);
-  overflow: hidden;
-  border-radius: 1px;
+.counter {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  opacity: 0.6;
 }
 
-.progressBar {
-  height: 100%;
-  background-color: var(--color-white);
-  border-radius: 1px;
-  transition: width 0.3s var(--ease-out);
+.digit {
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Keyframes */
-@keyframes logoReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-    letter-spacing: 0.35em;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    letter-spacing: 0.18em;
-  }
+.unit {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-@keyframes shine {
-  0% { left: -100%; }
-  50% { left: 150%; }
-  100% { left: 150%; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

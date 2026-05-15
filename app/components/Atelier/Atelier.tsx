@@ -1,8 +1,54 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import styles from './Atelier.module.css';
 
 export default function Atelier() {
+  const [activatedSteps, setActivatedSteps] = useState<Set<number>>(new Set());
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const handleStepActivation = (index: number) => {
+    setActivatedSteps(prev => {
+      if (prev.has(index)) return prev;
+      // Sequential: can only activate if previous step is already active (or it's the first)
+      if (index > 0 && !prev.has(index - 1)) return prev;
+      const newSet = new Set(prev);
+      newSet.add(index);
+      return newSet;
+    });
+  };
+
+  const steps = [
+    {
+      number: '01',
+      title: 'Conception',
+      desc: 'Every silhouette begins as a study in architecture — sketched with the discipline of a blueprint, not a doodle.'
+    },
+    {
+      number: '02',
+      title: 'Sourcing',
+      desc: 'We travel to the mills of Como, the ateliers of Portugal, and the linen fields of Normandy to select only what meets our standard.'
+    },
+    {
+      number: '03',
+      title: 'Construction',
+      desc: 'Cut by hand, assembled with precision. Every seam is reinforced, every button anchored — built to outlast the season.'
+    },
+    {
+      number: '04',
+      title: 'Refinement',
+      desc: 'The final garment is pressed, inspected, and approved only when it carries the unmistakable weight of distinction.'
+    }
+  ];
+
   return (
     <div>
       {/* ============================
@@ -68,41 +114,21 @@ export default function Atelier() {
         </div>
 
         <div className={styles.timeline}>
-          <div className={styles.timelineStep}>
-            <div className={styles.stepNumber}>01</div>
-            <h3 className={styles.stepTitle}>Conception</h3>
-            <p className={styles.stepDesc}>
-              Every silhouette begins as a study in architecture — sketched 
-              with the discipline of a blueprint, not a doodle.
-            </p>
-          </div>
-
-          <div className={styles.timelineStep}>
-            <div className={styles.stepNumber}>02</div>
-            <h3 className={styles.stepTitle}>Sourcing</h3>
-            <p className={styles.stepDesc}>
-              We travel to the mills of Como, the ateliers of Portugal, and the 
-              linen fields of Normandy to select only what meets our standard.
-            </p>
-          </div>
-
-          <div className={styles.timelineStep}>
-            <div className={styles.stepNumber}>03</div>
-            <h3 className={styles.stepTitle}>Construction</h3>
-            <p className={styles.stepDesc}>
-              Cut by hand, assembled with precision. Every seam is reinforced, 
-              every button anchored — built to outlast the season.
-            </p>
-          </div>
-
-          <div className={styles.timelineStep}>
-            <div className={styles.stepNumber}>04</div>
-            <h3 className={styles.stepTitle}>Refinement</h3>
-            <p className={styles.stepDesc}>
-              The final garment is pressed, inspected, and approved only when it 
-              carries the unmistakable weight of distinction.
-            </p>
-          </div>
+          {steps.map((step, index) => (
+            <motion.div 
+              key={index} 
+              className={styles.timelineStep}
+              onMouseEnter={() => handleStepActivation(index)}
+              onViewportEnter={isMobile ? () => handleStepActivation(index) : undefined}
+              viewport={isMobile ? { once: true, amount: 0.8 } : undefined}
+            >
+              <div className={`${styles.stepNumber} ${activatedSteps.has(index) ? styles.stepNumberActive : ''}`}>
+                {step.number}
+              </div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <p className={styles.stepDesc}>{step.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 

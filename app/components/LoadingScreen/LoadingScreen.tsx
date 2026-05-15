@@ -44,13 +44,19 @@ export default function LoadingScreen() {
 
   return (
     <div className={`${styles.overlay} ${hidden ? styles.hidden : ''}`}>
-      <h1 className={styles.logoText}>KSM</h1>
-      <p className={styles.tagline}>The Zenith of Status</p>
-      <div className={styles.progressContainer}>
-        <div
-          className={styles.progressBar}
-          style={{ width: `${progress}%` }}
-        />
+      <div className={styles.logoContainer}>
+        <div className={styles.revealLine} style={{ width: `${progress}%` }} />
+        <h1 className={`${styles.logoText} ${progress === 100 ? styles.logoTextRevealed : ''}`}>
+          KSM
+        </h1>
+      </div>
+      
+      <div className={styles.statusInfo}>
+        <p className={styles.tagline}>The Zenith of Status</p>
+        <div className={styles.counter}>
+          <span className={styles.digit}>{progress.toString().padStart(3, '0')}</span>
+          <span className={styles.unit}>%</span>
+        </div>
       </div>
     </div>
   );
