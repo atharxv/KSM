@@ -12,28 +12,49 @@ interface StackCardProps {
 
 function StackCard({ children, index, total, isMobile }: StackCardProps) {
   const container = useRef<HTMLDivElement>(null);
+  const [sectionHeight, setSectionHeight] = useState(0);
   
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end start']
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.6]);
+  // Only scale/fade at the very end (last 15%) of the section's visibility
+  // to ensure content remains readable while it's in focus.
+  const scale = useTransform(scrollYProgress, [0.85, 1], [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0.85, 1], [1, 0.7]);
+
+  useEffect(() => {
+    if (!container.current) return;
+    
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setSectionHeight(entry.contentRect.height);
+      }
+    });
+
+    observer.observe(container.current);
+    return () => observer.disconnect();
+  }, []);
 
   if (!isMobile) {
-    return <div ref={container}>{children}</div>;
+    return <div ref={container} style={{ position: 'relative' }}>{children}</div>;
   }
+
+  // Calculate top: if section is taller than viewport, it needs to be 
+  // negative so we scroll to the bottom of it before it "sticks" 
+  // for the next card to cover it.
+  const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+  const stickyTop = Math.min(0, viewportHeight - sectionHeight);
 
   return (
     <div 
       ref={container} 
       style={{ 
         position: 'sticky', 
-        top: 0, 
+        top: stickyTop, 
         zIndex: index,
-        // Ensure each card has its own "space" to scroll through
-        // but it will be covered by the next one.
+        backgroundColor: 'var(--color-off-white)', // Ensure solid background to prevent bleed
       }}
     >
       <motion.div
@@ -41,6 +62,7 @@ function StackCard({ children, index, total, isMobile }: StackCardProps) {
           scale: index === total - 1 ? 1 : scale,
           opacity: index === total - 1 ? 1 : opacity,
           transformOrigin: 'top center',
+          backgroundColor: 'inherit',
         }}
       >
         {children}
