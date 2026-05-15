@@ -41,8 +41,8 @@ export default function HeroSection() {
   const titleLeftMobile = useTransform(springProgress, [0, 1], ['0vw', '-100vw']);
   const titleRightMobile = useTransform(springProgress, [0, 1], ['0vw', '100vw']);
   
-  const titleLeftDesktop = useTransform(springProgress, [0, 1], ['0vw', '-34vw']);
-  const titleRightDesktop = useTransform(springProgress, [0, 1], ['0vw', '34vw']);
+  const titleLeftDesktop = useTransform(springProgress, [0, 1], ['0vw', '-18vw']);
+  const titleRightDesktop = useTransform(springProgress, [0, 1], ['0vw', '18vw']);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
