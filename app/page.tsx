@@ -5,15 +5,19 @@ import AtelierBanner from "./components/AtelierBanner/AtelierBanner";
 import DesignIdeology from "./components/DesignIdeology/DesignIdeology";
 import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
 
+import MobileStackWrapper from "./components/MobileStackWrapper/MobileStackWrapper";
+
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <ActionBanner />
-      <FeaturedCollection />
-      <AtelierBanner />
-      <DesignIdeology />
-      <PhotoGallery />
+      <MobileStackWrapper>
+        <ActionBanner />
+        <FeaturedCollection />
+        <AtelierBanner />
+        <DesignIdeology />
+        <PhotoGallery />
+      </MobileStackWrapper>
     </>
   );
 }

@@ -31,18 +31,18 @@ export default function HeroSection() {
   const mediaWidthMobile = useTransform(springProgress, [0, 1], ['80vw', '80vw']); 
   const mediaHeightMobile = useTransform(springProgress, [0, 1], ['60vw', '60vw']); 
   
-  const mediaWidthDesktop = useTransform(springProgress, [0, 1], ['32vw', '100vw']);
-  const mediaHeightDesktop = useTransform(springProgress, [0, 1], ['24vw', '100vh']); // 4:3 ratio (32 * 3/4 = 24)
+  const mediaWidthDesktop = useTransform(springProgress, [0, 1], ['32vw', '58vw']);
+  const mediaHeightDesktop = useTransform(springProgress, [0, 1], ['24vw', '33vw']); // Subtler expansion as requested
   
-  // Border radius: starts round, goes sharp at full screen
-  const borderRadius = useTransform(springProgress, [0, 0.8, 1], ['12px', '12px', '0px']);
+  // Border radius: stays round for a more premium feel
+  const borderRadius = useTransform(springProgress, [0, 1], ['12px', '12px']);
 
   // Title splits
   const titleLeftMobile = useTransform(springProgress, [0, 1], ['0vw', '-100vw']);
   const titleRightMobile = useTransform(springProgress, [0, 1], ['0vw', '100vw']);
   
-  const titleLeftDesktop = useTransform(springProgress, [0, 1], ['0vw', '-40vw']);
-  const titleRightDesktop = useTransform(springProgress, [0, 1], ['0vw', '40vw']);
+  const titleLeftDesktop = useTransform(springProgress, [0, 1], ['0vw', '-34vw']);
+  const titleRightDesktop = useTransform(springProgress, [0, 1], ['0vw', '34vw']);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
