@@ -85,14 +85,42 @@ export default function Header() {
         className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''} ${isLightTheme ? styles.lightTheme : ''}`}
         id="site-header"
       >
-        {/* Left: Logo */}
+        {/* Left: Mobile Menu & Search */}
+        <div className={styles.leftActions}>
+          <button
+            className={styles.menuBtn}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            id="btn-menu-mobile"
+          >
+            <div className={`${styles.menuIcon} ${menuOpen ? styles.menuIconActive : ''}`}>
+              <span />
+              <span />
+              <span />
+            </div>
+          </button>
+          
+          <button 
+            className={styles.iconBtn} 
+            aria-label="Search" 
+            onClick={() => setMenuOpen(true)}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Center: Logo */}
         <div className={styles.logoArea}>
           <a href="/" className={styles.logo} id="site-logo" aria-label="KSM Home">
             KSM
           </a>
         </div>
 
-        {/* Right: Icon group + Menu */}
+        {/* Right: Icon group + Desktop Menu */}
         <div className={styles.actions}>
           <button className={styles.iconBtn} aria-label="Account" id="btn-account">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -110,13 +138,13 @@ export default function Header() {
             <span className={styles.cartBadge}>0</span>
           </button>
 
-          {/* Menu Toggle */}
+          {/* Desktop Menu Toggle */}
           <button
-            className={styles.menuBtn}
+            className={`${styles.menuBtn} ${styles.desktopOnly}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
-            id="btn-menu"
+            id="btn-menu-desktop"
           >
             <div className={`${styles.menuIcon} ${menuOpen ? styles.menuIconActive : ''}`}>
               <span />

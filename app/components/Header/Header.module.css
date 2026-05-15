@@ -50,6 +50,14 @@
 .logoArea {
   display: flex;
   align-items: center;
+  flex: 1;
+}
+
+.leftActions {
+  display: none; /* Hidden on desktop */
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
 }
 
 .logo {
@@ -71,6 +79,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .iconBtn {
@@ -139,6 +149,10 @@
 .menuBtn:hover {
   border-color: rgba(var(--color-white-rgb), 0.5);
   background-color: rgba(var(--color-white-rgb), 0.06);
+}
+
+.desktopOnly {
+  display: flex;
 }
 
 .menuIcon {
@@ -532,6 +546,22 @@
    RESPONSIVE
    ============================================= */
 @media (max-width: 768px) {
+  .leftActions {
+    display: flex;
+  }
+
+  .logoArea {
+    justify-content: center;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .menuBtn {
+    margin-left: 0;
+  }
+
   .floatingMobileNav {
     display: flex;
   }

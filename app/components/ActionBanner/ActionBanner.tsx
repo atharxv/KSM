@@ -17,8 +17,7 @@ export default function ActionBanner() {
 
       <div className={styles.content}>
         <h2 className={styles.headline}>
-          The Signature of Status<br />
-          and Unrivaled Prestige
+          KSM 2026
         </h2>
         <a href="/products" className={styles.shopButton} id="btn-shop-now">
           SHOP NOW
