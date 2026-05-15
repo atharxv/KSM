@@ -8,6 +8,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [atBottom, setAtBottom] = useState(false);
   const [searchExpanded, setSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const lastScrollY = useRef(0);
@@ -46,6 +47,10 @@ export default function Header() {
       } else if (currentScrollY < lastScrollY.current) {
         setHidden(false);
       }
+
+      // Detect if user is at the very bottom
+      const isBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+      setAtBottom(isBottom);
 
       lastScrollY.current = currentScrollY;
     };
@@ -281,7 +286,7 @@ export default function Header() {
       />
 
       {/* Floating Mobile Nav Bar */}
-      <div className={`${styles.floatingMobileNav} ${scrolled ? styles.floatingVisible : ''}`}>
+      <div className={`${styles.floatingMobileNav} ${scrolled && !atBottom ? styles.floatingVisible : ''}`}>
         <a href="/" className={styles.floatingIconBtn} aria-label="Home">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
