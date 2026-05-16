@@ -77,13 +77,42 @@ function StackCard({ children, index, total }: StackCardProps) {
 }
 
 export default function MobileStackWrapper({ children }: { children: React.ReactNode[] }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lastScrollTime = useRef(0);
+  const isLocked = useRef(false);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      // Allow small scrolls for natural feel, but trap strong "flicks"
+      if (Math.abs(e.deltaY) < 20) return;
+
+      const now = Date.now();
+      // If we scrolled less than 1.2s ago, ignore further strong scrolls
+      // to prevent "skipping" sections.
+      if (now - lastScrollTime.current < 1200) {
+        e.preventDefault();
+        return;
+      }
+
+      lastScrollTime.current = now;
+      // The browser's native snapping will now handle the "one page" move 
+      // without being overwhelmed by subsequent wheel events.
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
+
   return (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column',
-      backgroundColor: 'var(--color-black)',
-      position: 'relative'
-    }}>
+    <div 
+      ref={containerRef}
+      style={{ 
+        display: 'flex', 
+        flexDirection: 'column',
+        backgroundColor: 'var(--color-black)',
+        position: 'relative'
+      }}
+    >
       {children.map((child, index) => (
         <StackCard 
           key={index} 

@@ -175,7 +175,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div ref={sectionRef} className={styles.container} style={{ scrollSnapAlign: 'start' }}>
+    <div ref={sectionRef} className={styles.container} style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
       <section className={styles.heroSection}>
         <div className={styles.heroWrapper}>
           

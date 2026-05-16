@@ -3,6 +3,8 @@
   background-color: var(--color-black);
   color: var(--color-white);
   border-top: 1px solid rgba(var(--color-white-rgb), 0.15);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .gridContainer {
