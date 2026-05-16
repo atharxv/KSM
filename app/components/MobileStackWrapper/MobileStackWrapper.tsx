@@ -82,25 +82,49 @@ export default function MobileStackWrapper({ children }: { children: React.React
   const isLocked = useRef(false);
 
   useEffect(() => {
+    let touchStartY = 0;
+
     const handleWheel = (e: WheelEvent) => {
-      // Allow small scrolls for natural feel, but trap strong "flicks"
-      if (Math.abs(e.deltaY) < 20) return;
+      if (Math.abs(e.deltaY) < 15) return;
 
       const now = Date.now();
-      // If we scrolled less than 1.2s ago, ignore further strong scrolls
-      // to prevent "skipping" sections.
-      if (now - lastScrollTime.current < 1200) {
+      if (now - lastScrollTime.current < 1100) {
         e.preventDefault();
         return;
       }
-
       lastScrollTime.current = now;
-      // The browser's native snapping will now handle the "one page" move 
-      // without being overwhelmed by subsequent wheel events.
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchY;
+
+      if (Math.abs(deltaY) < 10) return;
+
+      const now = Date.now();
+      if (now - lastScrollTime.current < 1100) {
+        e.preventDefault();
+        return;
+      }
+      
+      // If we allowed the swipe, start a new cooldown
+      lastScrollTime.current = now;
+      touchStartY = touchY; // Reset to prevent multiple triggers in one long swipe
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
   }, []);
 
   return (
