@@ -80,7 +80,7 @@ export default function Header() {
   };
 
   const navItems = [
-    { label: 'Shops', href: '/products', description: 'Explore our curated collection of pieces across the globe.' },
+    { label: 'Shop', href: '/products', description: 'Explore our curated collection of pieces across the globe.' },
     { label: 'Atelier', href: '/atelier', description: 'A glimpse into our creative process — where design meets craft.' },
   ];
 

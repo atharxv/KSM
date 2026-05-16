@@ -255,8 +255,9 @@
 
 .materialsHeader {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xl);
   margin-bottom: var(--space-4xl);
 }
 
@@ -282,8 +283,8 @@
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   color: rgba(var(--color-white-rgb), 0.5);
-  max-width: 320px;
-  text-align: right;
+  max-width: 600px;
+  text-align: left;
   line-height: 1.6;
 }
 
@@ -516,16 +517,6 @@
 
   .materialsGrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .materialsHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-lg);
-  }
-
-  .materialsSubtitle {
-    text-align: left;
   }
 }
 

@@ -168,16 +168,15 @@
 
 @media (max-width: 480px) {
   .gridContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .linkColumn {
-    border-right: none;
-    border-bottom: 1px solid rgba(var(--color-white-rgb), 0.15);
+    padding: var(--space-xl) var(--space-md);
   }
-  
-  .linkColumn:last-child {
-    border-bottom: none;
+
+  .linkColumn:nth-child(even) {
+    border-right: none;
   }
 }
 
