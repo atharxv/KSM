@@ -11,9 +11,14 @@ export default function Footer() {
         </div>
 
         <div className={styles.linkColumn}>
-          <a href="#" className={styles.link}>Instagram</a>
-          <a href="#" className={styles.link}>Pinterest</a>
-          <a href="#" className={styles.link}>Twitter</a>
+          <a 
+            href="https://www.instagram.com/ksm.atelier?igsh=YXE3Z3hiYWlja3Ns" 
+            className={styles.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
         </div>
 
         <div className={styles.linkColumn}>
