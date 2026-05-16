@@ -21,8 +21,9 @@ function StackCard({ children, index, total }: StackCardProps) {
 
   // Only scale/fade at the very end (last 15%) of the section's visibility
   // to ensure content remains readable while it's in focus.
-  const scale = useTransform(scrollYProgress, [0.85, 1], [1, 0.95]);
-  const opacity = useTransform(scrollYProgress, [0.85, 1], [1, 0.7]);
+  // A more gradual transition creates a smoother "stacking" feel.
+  const scale = useTransform(scrollYProgress, [0.6, 1], [1, 0.94]);
+  const opacity = useTransform(scrollYProgress, [0.6, 1], [1, 0.6]);
 
   useEffect(() => {
     setViewportHeight(window.innerHeight);
