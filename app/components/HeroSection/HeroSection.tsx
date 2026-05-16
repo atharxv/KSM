@@ -234,7 +234,7 @@ export default function HeroSection() {
                   className={styles.titleText}
                   style={{ x: isMobileState ? titleRightMobile : titleRightDesktop }}
                 >
-                  STUDIO
+                  ATELIER
                 </motion.h2>
               </div>
 
