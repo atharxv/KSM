@@ -41,31 +41,31 @@ export default function FeaturedCollection() {
         </div>
 
         <div className={styles.singleProductContainer}>
-          <Link href="/products/vertical-textured-polo" className={styles.featuredCardLarge}>
+          <Link href="/products/crown-monogram-tee" className={styles.featuredCardLarge}>
             <div className={styles.imageWrapLarge}>
-              <span className={styles.badgeLarge}>Featured</span>
+              <span className={styles.badgeLarge}>New Arrival</span>
               <img 
-                src="/images/whitepolo.jpeg" 
-                alt="Classic Piece" 
+                src="/images/image00070.png" 
+                alt="The Crown Monogram Tee" 
                 className={styles.primaryImage}
               />
               <img 
-                src="/images/VERTICAL TEXTURED POLO.jpeg" 
-                alt="Classic Piece Detail" 
+                src="/images/image00072.png" 
+                alt="The Crown Monogram Tee - Lifestyle" 
                 className={styles.hoverImage}
               />
             </div>
             <div className={styles.infoLarge}>
               <h3 className={styles.nameLarge}>
-                Vertical Textured Polo
+                The Crown Monogram Tee
               </h3>
               <div className={styles.priceLarge}>
-                $145.00
+                $120.00
               </div>
             </div>
           </Link>
           
-          <Link href="/products/vertical-textured-polo" className={styles.statusButton}>
+          <Link href="/products/crown-monogram-tee" className={styles.statusButton}>
             <span>SHOP PIECE</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />

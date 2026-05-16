@@ -9,21 +9,21 @@ interface ProductDetailProps {
 }
 
 const PRODUCT_DATA: Record<string, any> = {
-  'vertical-textured-polo': {
-    name: 'Vertical Textured Polo',
-    price: '$145.00',
-    description: 'An exercise in unrivaled distinction, the Vertical Textured Polo is masterfully tailored from a premium knit cotton. Designed to evoke the unmistakable presence of legacy and heritage, this piece features a subtle vertical ribbing that adds depth and character to its minimalist silhouette.',
+  'crown-monogram-tee': {
+    name: 'The Crown Monogram Tee',
+    price: '$120.00',
+    description: 'A definitive essential for the modern wardrobe. Crafted from premium heavy-weight cotton, this tee features our signature KSM script logo and the hallmark crown emblem — a quiet declaration of status and taste. The relaxed yet structured fit makes it a versatile piece for high-end lounging or refined daily wear.',
     images: [
-      '/images/whitepolo.jpeg',
-      '/images/VERTICAL TEXTURED POLO.jpeg',
-      '/images/yachtplaya.jpeg',
+      '/images/image00070.png',
+      '/images/image00071.png',
+      '/images/image00072.png',
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
   },
 };
 
 export default function ProductDetail({ handle }: ProductDetailProps) {
-  const product = PRODUCT_DATA[handle] || PRODUCT_DATA['vertical-textured-polo'];
+  const product = PRODUCT_DATA[handle] || PRODUCT_DATA['crown-monogram-tee'];
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState('M');
 

@@ -7,11 +7,11 @@ import styles from './ProductGallery.module.css';
 const MOCK_PRODUCTS = [
   {
     id: 1,
-    handle: 'vertical-textured-polo',
-    name: 'Vertical Textured Polo',
-    price: '$145.00',
-    primaryImage: '/images/whitepolo.jpeg',
-    hoverImage: '/images/VERTICAL TEXTURED POLO.jpeg',
+    handle: 'crown-monogram-tee',
+    name: 'The Crown Monogram Tee',
+    price: '$120.00',
+    primaryImage: '/images/image00070.png',
+    hoverImage: '/images/image00072.png',
   },
 ];
 
