@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 
 interface StackCardProps {
@@ -19,10 +19,17 @@ function StackCard({ children, index, total }: StackCardProps) {
     offset: ['start start', 'end start']
   });
 
-  // Only scale/fade at the very end (last 15%) of the section's visibility
-  // to ensure content remains readable while it's in focus.
-  // A more gradual transition creates a smoother "stacking" feel.
-  const scale = useTransform(scrollYProgress, [0.6, 1], [1, 0.94]);
+  // Smooth interpolation using a spring for that "silky" feel
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Calculate transformations based on the smoothed scroll progress
+  // We start the transition earlier (0.1 instead of 0.6) for a more gradual feel
+  const scale = useTransform(smoothProgress, [0.1, 1], [1, 0.9]);
+  const opacity = useTransform(smoothProgress, [0.1, 1], [1, 0.6]);
 
   useEffect(() => {
     setViewportHeight(window.innerHeight);
@@ -72,8 +79,9 @@ function StackCard({ children, index, total }: StackCardProps) {
         <motion.div
           style={{
             scale: index === total - 1 ? 1 : scale,
+            opacity: index === total - 1 ? 1 : opacity,
             transformOrigin: 'top center',
-            willChange: 'transform',
+            willChange: 'transform, opacity',
           }}
         >
           {children}
