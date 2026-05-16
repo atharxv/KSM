@@ -59,6 +59,8 @@ function StackCard({ children, index, total }: StackCardProps) {
         top: stickyTop, 
         zIndex: index,
         isolation: 'isolate',
+        scrollSnapAlign: 'start',
+        scrollSnapStop: 'always',
       }}
     >
       <motion.div
