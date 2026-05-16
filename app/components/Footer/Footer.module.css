@@ -3,6 +3,10 @@
   background-color: var(--color-black);
   color: var(--color-white);
   border-top: 1px solid rgba(var(--color-white-rgb), 0.15);
+}
+
+/* Only enable snapping for the footer when on the homepage (snap-active) */
+:global(.snap-active) .footer {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
