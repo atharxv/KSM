@@ -2,8 +2,10 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 600px;
+  height: 100vh;
+  min-height: 700px;
   background-color: var(--color-off-white);
+  overflow: hidden;
 }
 
 /* Image Block */
