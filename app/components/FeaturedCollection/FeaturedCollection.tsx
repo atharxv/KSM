@@ -7,15 +7,6 @@ import styles from './FeaturedCollection.module.css';
 export default function FeaturedCollection() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    const scrollAmount = 320;
-    scrollRef.current.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <section className={styles.section} id="featured-collection" aria-label="Featured Collection 2026">
       {/* Left: Editorial Image */}
@@ -31,47 +22,41 @@ export default function FeaturedCollection() {
         </div>
       </div>
 
-      {/* Right: Product Grid */}
+      {/* Right: Editorial Product Showcase */}
       <div className={styles.productSide}>
-        <div className={styles.productHeader}>
-          <h2 className={styles.productTitle}>
-            The Featured<br />
-            Collection 2026
-          </h2>
+        <div className={styles.eyebrowRow}>
+          <span className={styles.eyebrow}>Featured Collection 2026</span>
+          <span className={styles.eyebrowLine}></span>
         </div>
 
-        <div className={styles.singleProductContainer}>
-          <Link href="/products/crown-monogram-tee" className={styles.featuredCardLarge}>
-            <div className={styles.imageWrapLarge}>
-              <span className={styles.badgeLarge}>New Arrival</span>
+        <div className={styles.productShowcase}>
+          <Link href="/products/crown-monogram-tee" className={styles.showcaseLink}>
+            <div className={styles.showcaseImageWrap}>
               <img 
                 src="/images/image00070.png" 
                 alt="The Crown Monogram Tee" 
-                className={styles.primaryImage}
+                className={styles.showcaseImage}
               />
               <img 
                 src="/images/image00072.png" 
                 alt="The Crown Monogram Tee - Lifestyle" 
-                className={styles.hoverImage}
+                className={styles.showcaseImageHover}
               />
             </div>
-            <div className={styles.infoLarge}>
-              <h3 className={styles.nameLarge}>
-                The Crown Monogram Tee
-              </h3>
-              <div className={styles.priceLarge}>
-                $120.00
-              </div>
-            </div>
           </Link>
-          
-          <Link href="/products/crown-monogram-tee" className={styles.statusButton}>
-            <span>SHOP PIECE</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+
+          <div className={styles.productMeta}>
+            <h2 className={styles.productName}>The Crown<br />Monogram Tee</h2>
+            <span className={styles.productPrice}>$120.00</span>
+            <span className={styles.metaDivider}></span>
+            <Link href="/products/crown-monogram-tee" className={styles.shopPieceBtn}>
+              <span>Shop Piece</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
