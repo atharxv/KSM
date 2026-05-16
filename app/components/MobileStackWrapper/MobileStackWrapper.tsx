@@ -23,7 +23,6 @@ function StackCard({ children, index, total }: StackCardProps) {
   // to ensure content remains readable while it's in focus.
   // A more gradual transition creates a smoother "stacking" feel.
   const scale = useTransform(scrollYProgress, [0.6, 1], [1, 0.94]);
-  const opacity = useTransform(scrollYProgress, [0.6, 1], [1, 0.6]);
 
   useEffect(() => {
     setViewportHeight(window.innerHeight);
@@ -67,9 +66,8 @@ function StackCard({ children, index, total }: StackCardProps) {
       <motion.div
         style={{
           scale: index === total - 1 ? 1 : scale,
-          opacity: index === total - 1 ? 1 : opacity,
           transformOrigin: 'top center',
-          willChange: 'transform, opacity',
+          willChange: 'transform',
         }}
       >
         {children}

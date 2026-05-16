@@ -3,7 +3,6 @@
   background-color: var(--color-black);
   color: var(--color-white);
   border-top: 1px solid rgba(var(--color-white-rgb), 0.15);
-  scroll-snap-align: start;
 }
 
 .gridContainer {
@@ -125,7 +124,7 @@
   position: relative;
   z-index: 1;
   font-family: var(--font-heading);
-  font-size: clamp(8rem, 25vw, 40rem);
+  font-size: clamp(6rem, 18vw, 24rem);
   font-weight: 600;
   line-height: 0.72;
   letter-spacing: -0.04em;
@@ -162,7 +161,7 @@
   }
 
   .massiveLogo {
-    font-size: 30vw;
+    font-size: 24vw;
     line-height: 0.8;
   }
 }
