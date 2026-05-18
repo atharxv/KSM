@@ -9,9 +9,9 @@ const MOCK_PRODUCTS = [
     id: 1,
     handle: 'crown-monogram-tee',
     name: 'The Crown Monogram Tee',
-    price: '$120.00',
+    price: '€100.00',
     primaryImage: '/images/image00070.png',
-    hoverImage: '/images/image00072.png',
+    hoverImage: '/images/KSMshirt4.JPG',
   },
 ];
 
@@ -30,10 +30,10 @@ export default function ProductGallery() {
     })
     .sort((a, b) => {
       if (sortOption === 'Price: Low to High') {
-        return parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', ''));
+        return parseFloat(a.price.replace(/[€$]/g, '')) - parseFloat(b.price.replace(/[€$]/g, ''));
       }
       if (sortOption === 'Price: High to Low') {
-        return parseFloat(b.price.replace('$', '')) - parseFloat(a.price.replace('$', ''));
+        return parseFloat(b.price.replace(/[€$]/g, '')) - parseFloat(a.price.replace(/[€$]/g, ''));
       }
       return 0; // Featured/Default
     });

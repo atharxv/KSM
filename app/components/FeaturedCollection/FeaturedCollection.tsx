@@ -38,7 +38,7 @@ export default function FeaturedCollection() {
                 className={styles.showcaseImage}
               />
               <img 
-                src="/images/image00072.png" 
+                src="/images/KSMshirt4.JPG" 
                 alt="The Crown Monogram Tee - Lifestyle" 
                 className={styles.showcaseImageHover}
               />
@@ -47,7 +47,7 @@ export default function FeaturedCollection() {
 
           <div className={styles.productMeta}>
             <h2 className={styles.productName}>The Crown<br />Monogram Tee</h2>
-            <span className={styles.productPrice}>$120.00</span>
+            <span className={styles.productPrice}>€100.00</span>
             <span className={styles.metaDivider}></span>
             <Link href="/products/crown-monogram-tee" className={styles.shopPieceBtn}>
               <span>Shop Piece</span>

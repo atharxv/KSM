@@ -69,10 +69,37 @@
   color: inherit;
   text-decoration: none;
   transition: opacity var(--duration-fast) ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo:hover {
   opacity: 0.85;
+}
+
+.logoImg {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: invert(1);
+  transition: filter var(--duration-normal) var(--ease-out);
+}
+
+@media (max-width: 768px) {
+  .logoImg {
+    height: 44px;
+  }
+}
+
+.header.lightTheme:not(.scrolled) .logoImg {
+  filter: invert(0);
 }
 
 /* ---- Right Actions ---- */

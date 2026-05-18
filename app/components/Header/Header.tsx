@@ -18,14 +18,7 @@ export default function Header() {
   const isLightTheme = pathname?.startsWith('/products') ?? false;
 
   const [language, setLanguage] = useState<'en' | 'it'>('en');
-  const [currency, setCurrency] = useState<'usd' | 'gbp' | 'eur'>('usd');
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('ksm-currency');
-      if (saved) setCurrency(saved as 'usd' | 'gbp' | 'eur');
-    }
-  }, []);
+  const [currency, setCurrency] = useState<'eur'>('eur');
 
   const handleSearchKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && searchQuery.trim()) {
@@ -35,7 +28,7 @@ export default function Header() {
   };
 
   const changeCurrency = (code: string, country: string) => {
-    setCurrency(code as 'usd' | 'gbp' | 'eur');
+    setCurrency('eur');
     const store = document.querySelector('shopify-store');
     if (store) {
       store.setAttribute('country', country);
@@ -126,7 +119,11 @@ export default function Header() {
         {/* Center: Logo */}
         <div className={styles.logoArea}>
           <a href="/" className={styles.logo} id="site-logo" aria-label="KSM Home">
-            KSM
+            <img
+              src="/images/logo-ksm-nero.png"
+              alt="KSM Atelier"
+              className={styles.logoImg}
+            />
           </a>
         </div>
 
@@ -230,36 +227,6 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Currency switcher */}
-            <div className={styles.switcherGroup}>
-              <span className={styles.switcherLabel}>Currency</span>
-              <div className={styles.switcherRow}>
-                {[
-                  { code: 'usd', flag: '🇺🇸', label: '$ USD' },
-                  { code: 'gbp', flag: '🇬🇧', label: '£ GBP' },
-                  { code: 'eur', flag: '🇪🇺', label: '€ EUR' },
-                ].map(({ code, flag, label }) => (
-                  <button
-                    key={code}
-                    onClick={() => {
-                      setCurrency(code as 'usd' | 'gbp' | 'eur');
-                      if (typeof window !== 'undefined') {
-                        localStorage.setItem('ksm-currency', code);
-                      }
-                      changeCurrency(code, code === 'usd' ? 'US' : code === 'gbp' ? 'GB' : 'FR');
-                    }}
-                    className={`${styles.switchBtn} ${
-                      currency === code ? styles.switchBtnActive : ''
-                    }`}
-                    aria-pressed={currency === code}
-                    aria-label={`Switch currency to ${label}`}
-                  >
-                    <span aria-hidden="true">{flag}</span>
-                    <span className={styles.switchText}>{label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>

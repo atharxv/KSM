@@ -12,12 +12,13 @@ interface ProductDetailProps {
 const PRODUCT_DATA: Record<string, any> = {
   'crown-monogram-tee': {
     name: 'The Crown Monogram Tee',
-    price: '$120.00',
+    price: '€100.00',
     description: 'A definitive essential for the modern wardrobe. Crafted from premium heavy-weight cotton, this tee features our signature KSM script logo and the hallmark crown emblem — a quiet declaration of status and taste. The relaxed yet structured fit makes it a versatile piece for high-end lounging or refined daily wear.',
     images: [
       '/images/image00070.png',
-      '/images/image00071.png',
-      '/images/image00072.png',
+      '/images/KSMshirt4.JPG',
+      '/images/KSMshirt2.JPG',
+      '/images/KSMshirt3.JPG',
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
   },

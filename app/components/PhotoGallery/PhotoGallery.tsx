@@ -10,7 +10,7 @@ export default function PhotoGallery() {
         <div className={styles.stripInner}>
           <div className={styles.photoItem}>
             <img
-              src="/images/yachtplaya.jpeg"
+              src="/images/Bottomline1.JPG"
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
@@ -18,24 +18,24 @@ export default function PhotoGallery() {
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/TMG.jpeg"
-              alt="Fashion editorial — close-up with earring detail"
+              src="/images/Bottomline2.JPG"
+              alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
             />
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/Old money.jpeg"
-              alt="Fashion editorial — woman with canvas tote bag"
+              src="/images/Bottomline3.JPG"
+              alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
             />
           </div>
           <div className={`${styles.photoItem} ${styles.photoItemWithCard}`}>
             <img
-              src="/images/cafeoldmoney.jpeg"
-              alt="Fashion editorial — model in black coat"
+              src="/images/Bottomline4.JPG"
+              alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
             />
@@ -83,7 +83,7 @@ export default function PhotoGallery() {
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/Outfit Playa Hombre.jpeg"
+              src="/images/Bottomline5.JPG"
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
