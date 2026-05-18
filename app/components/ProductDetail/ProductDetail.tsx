@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ProductDetail.module.css';
 
 interface ProductDetailProps {
@@ -66,7 +67,20 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
         {/* Left: Gallery */}
         <div className={styles.gallery}>
           <div className={styles.mainImage}>
-            <img src={product.images[selectedImage]} alt={product.name} />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={selectedImage}
+                src={product.images[selectedImage]}
+                alt={product.name}
+                initial={{ opacity: 0, scale: 1.03 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1, transition: { duration: 0.25, ease: [0.65, 0, 0.35, 1] } }}
+                transition={{
+                  opacity: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+                  scale: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+                }}
+              />
+            </AnimatePresence>
           </div>
           <div className={styles.thumbnails}>
             {product.images.map((img: string, idx: number) => (

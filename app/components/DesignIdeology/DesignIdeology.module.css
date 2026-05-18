@@ -56,7 +56,7 @@
 }
 
 .handwritten {
-  font-family: 'Playfair Display', serif; /* We'll use italic Playfair for a sophisticated "pen" look */
+  font-family: var(--font-heading); /* We'll use KSM's heading font for consistency */
   font-style: normal;
   display: inline-block;
 }

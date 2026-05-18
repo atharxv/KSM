@@ -9,8 +9,16 @@ import { motion, useSpring, useTransform } from 'framer-motion';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
-  const [mediaFullyExpanded, setMediaFullyExpanded] = useState<boolean>(false);
+  const mediaFullyExpanded = useRef(false);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
+  const [scrollTrapEnabled, setScrollTrapEnabled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScrollTrapEnabled(true);
+    }, 10 * 40 + 600); // 1000ms (10 chars * 40ms stagger + 600ms transition duration)
+    return () => clearTimeout(timer);
+  }, []);
   
   // Track raw progress
   const scrollProgressRef = useRef(0);
@@ -48,6 +56,8 @@ export default function HeroSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (!scrollTrapEnabled) return;
+
     const handleWheel = (e: globalThis.WheelEvent) => {
       // Skip if a panel/overlay is open (body scroll locked) or if event originated from a panel
       const target = e.target as HTMLElement;
@@ -59,10 +69,10 @@ export default function HeroSection() {
       }
 
       // If expanded and scrolling up at top of page, un-expand
-      if (mediaFullyExpanded && e.deltaY < 0 && window.scrollY <= 5) {
-        setMediaFullyExpanded(false);
+      if (mediaFullyExpanded.current && e.deltaY < 0 && window.scrollY <= 5) {
+        mediaFullyExpanded.current = false;
         e.preventDefault();
-      } else if (!mediaFullyExpanded) {
+      } else if (!mediaFullyExpanded.current) {
         // If not expanded, trap scroll and animate expansion
         e.preventDefault();
         const scrollDelta = e.deltaY * 0.0015; // Increased sensitivity for better feel
@@ -74,7 +84,7 @@ export default function HeroSection() {
         springProgress.set(newProgress);
 
         if (newProgress >= 1) {
-          setMediaFullyExpanded(true);
+          mediaFullyExpanded.current = true;
         }
       }
     };
@@ -100,10 +110,10 @@ export default function HeroSection() {
       const touchY = e.touches[0].clientY;
       const deltaY = touchStartY - touchY;
 
-      if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
-        setMediaFullyExpanded(false);
+      if (mediaFullyExpanded.current && deltaY < -20 && window.scrollY <= 5) {
+        mediaFullyExpanded.current = false;
         e.preventDefault();
-      } else if (!mediaFullyExpanded) {
+      } else if (!mediaFullyExpanded.current) {
         e.preventDefault();
         const scrollFactor = deltaY < 0 ? 0.012 : 0.008; 
         const scrollDelta = deltaY * scrollFactor;
@@ -115,7 +125,7 @@ export default function HeroSection() {
         springProgress.set(newProgress);
 
         if (newProgress >= 1) {
-          setMediaFullyExpanded(true);
+          mediaFullyExpanded.current = true;
         }
         touchStartY = touchY;
       }
@@ -126,7 +136,7 @@ export default function HeroSection() {
     };
 
     const handleScroll = (): void => {
-      if (!mediaFullyExpanded) {
+      if (!mediaFullyExpanded.current) {
         window.scrollTo(0, 0);
       }
     };
@@ -144,7 +154,7 @@ export default function HeroSection() {
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [mediaFullyExpanded, springProgress]);
+  }, [scrollTrapEnabled, springProgress]);
 
   useEffect(() => {
     const checkIfMobile = (): void => {
@@ -207,14 +217,17 @@ export default function HeroSection() {
               >
                 <video
                   ref={videoRef}
-                  src="/videos/HeroBG.webm"
                   className={styles.videoElement}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="auto"
-                />
+                  preload="none"
+                  poster="/images/hero-poster.jpg"
+                >
+                  <source src="/videos/HeroBG.webm" type="video/webm" />
+                  <source src="/videos/HeroBG.mp4" type="video/mp4" />
+                </video>
                 
                 <motion.div
                   className={styles.videoOverlay}
@@ -228,13 +241,45 @@ export default function HeroSection() {
                   className={styles.titleText}
                   style={{ x: isMobileState ? titleLeftMobile : titleLeftDesktop }}
                 >
-                  KSM
+                  <span className={styles.srOnly}>KSM</span>
+                  {"KSM".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      style={{ display: "inline-block" }}
+                      aria-hidden="true"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: index * 0.04
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
                 </motion.h2>
                 <motion.h2
                   className={styles.titleText}
                   style={{ x: isMobileState ? titleRightMobile : titleRightDesktop }}
                 >
-                  ATELIER
+                  <span className={styles.srOnly}>ATELIER</span>
+                  {"ATELIER".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      style={{ display: "inline-block" }}
+                      aria-hidden="true"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: (3 * 0.04) + (index * 0.04) + 0.1
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
                 </motion.h2>
               </div>
 

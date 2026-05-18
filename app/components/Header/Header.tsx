@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -13,24 +13,29 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const lastScrollY = useRef(0);
   const pathname = usePathname();
+  const router = useRouter();
 
   const isLightTheme = pathname?.startsWith('/products') ?? false;
 
-  const [language, setLanguage] = useState('English');
-  const [currency, setCurrency] = useState('USD');
+  const [language, setLanguage] = useState<'en' | 'it'>('en');
+  const [currency, setCurrency] = useState<'usd' | 'gbp' | 'eur'>('usd');
 
-  const searchProducts = [
-    { handle: 'silk-peplum-blouse', title: 'Silk Peplum Blouse' },
-    { handle: 'slanted-pocket-trousers', title: 'Slanted Pocket Trousers' },
-    { handle: 'beige-wide-leg-trousers', title: 'Beige Wide-Leg Trousers' }
-  ];
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('ksm-currency');
+      if (saved) setCurrency(saved as 'usd' | 'gbp' | 'eur');
+    }
+  }, []);
 
-  const searchResults = searchProducts.filter(p =>
-    p.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const handleSearchKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery('');
+    }
+  };
 
   const changeCurrency = (code: string, country: string) => {
-    setCurrency(code);
+    setCurrency(code as 'usd' | 'gbp' | 'eur');
     const store = document.querySelector('shopify-store');
     if (store) {
       store.setAttribute('country', country);
@@ -147,120 +152,115 @@ export default function Header() {
 
       {/* Full-screen slide-out navigation panel */}
       <div className={`${styles.slidePanel} ${menuOpen ? styles.slidePanelOpen : ''}`}>
-        {/* Close button inside panel */}
-        <button
-          className={styles.panelClose}
-          onClick={() => setMenuOpen(false)}
-          aria-label="Close menu"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
+        <div className={styles.panelInner}>
+          {/* Close button inside panel */}
+          <button
+            className={styles.closeBtn}
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
 
-        <div className={styles.slidePanelInner}>
-          {/* Search Bar at Top */}
-        <div className={styles.panelSearch}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            className={styles.panelSearchInput}
-            placeholder="Search products..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+          {/* Search Bar */}
+          <div className={styles.searchWrap}>
+            <span className={styles.searchIcon} aria-hidden="true">
+              ⌕
+            </span>
+            <input
+              type="search"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearchKeyDown}
+              className={styles.searchInput}
+              aria-label="Search products"
+            />
+          </div>
 
-        {/* Search Results (absolute positioned to overlap nav if needed, or inline) */}
-        {searchQuery.length >= 2 && (
-          <div className={styles.panelSearchResults}>
-            {searchProducts.map(p => {
-              const isMatch = p.title.toLowerCase().includes(searchQuery.toLowerCase());
-              if (!isMatch) return null;
+          {/* Navigation Links */}
+          <nav className={styles.panelNav} aria-label="Main navigation">
+            {navItems.map((item, i) => {
+              const isMatch = !searchQuery || item.label.toLowerCase().includes(searchQuery.toLowerCase());
               return (
-                <div key={p.handle} className={styles.panelSearchItem}>
-                  <div dangerouslySetInnerHTML={{ __html: `
-                    <shopify-context type="product" handle="${p.handle}">
-                      <template>
-                        <a href="/products/${p.handle}" class="search-result-link">
-                          <div class="search-result-image">
-                            <shopify-media query="product.selectedOrFirstAvailableVariant.image" width="50" height="65"></shopify-media>
-                          </div>
-                          <div class="search-result-info">
-                            <h4 class="search-result-title"><shopify-data query="product.title"></shopify-data></h4>
-                            <p class="search-result-price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
-                          </div>
-                        </a>
-                      </template>
-                    </shopify-context>
-                  ` }} />
+                <div 
+                  key={item.label} 
+                  className={styles.navItem}
+                  style={{ opacity: isMatch ? 1 : 0.2 }}
+                >
+                  <span className={styles.navIndex}>0{i + 1}</span>
+                  <a
+                    href={item.href}
+                    className={styles.navLink}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
                 </div>
               );
             })}
-            {searchResults.length === 0 && (
-              <p className={styles.panelSearchEmpty}>No results found</p>
-            )}
-          </div>
-        )}
+          </nav>
 
-        {/* Navigation Links */}
-        <nav className={styles.panelNav} aria-label="Main navigation">
-          {navItems.map((item, i) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className={styles.panelLink}
-              style={{ animationDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
-              onClick={() => setMenuOpen(false)}
-            >
-              <span className={styles.panelLinkLabel}>{item.label}</span>
-              <span className={styles.panelLinkDesc}>{item.description}</span>
-            </a>
-          ))}
-        </nav>
-
-        {/* Bottom Section: Locale Controls only now */}
-        <div className={styles.panelFooter}>
-          {/* Locale Controls */}
-          <div className={styles.panelLocale}>
-            <div className={styles.panelLocaleGroup}>
-              <span className={styles.panelLocaleLabel}>Language</span>
-              <div className={styles.panelLocaleBtns}>
-                {['English', 'French', 'Italian', 'Spanish'].map(lang => (
-                  <button
-                    key={lang}
-                    className={`${styles.panelLocaleBtn} ${language === lang ? styles.panelLocaleBtnActive : ''}`}
-                    onClick={() => setLanguage(lang)}
-                  >
-                    {lang}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className={styles.panelLocaleGroup}>
-              <span className={styles.panelLocaleLabel}>Currency</span>
-              <div className={styles.panelLocaleBtns}>
+          {/* Bottom Switchers */}
+          <div className={styles.bottomSwitchers}>
+            {/* Language switcher */}
+            <div className={styles.switcherGroup}>
+              <span className={styles.switcherLabel}>Language</span>
+              <div className={styles.switcherRow}>
                 {[
-                  { code: 'USD', country: 'US' },
-                  { code: 'EUR', country: 'FR' },
-                  { code: 'GBP', country: 'GB' },
-                ].map(c => (
+                  { code: 'en', flag: '🇬🇧', label: 'EN' },
+                  { code: 'it', flag: '🇮🇹', label: 'IT' },
+                ].map(({ code, flag, label }) => (
                   <button
-                    key={c.code}
-                    className={`${styles.panelLocaleBtn} ${currency === c.code ? styles.panelLocaleBtnActive : ''}`}
-                    onClick={() => changeCurrency(c.code, c.country)}
+                    key={code}
+                    onClick={() => {
+                      setLanguage(code as 'en' | 'it');
+                      document.documentElement.lang = code;
+                    }}
+                    className={`${styles.switchBtn} ${
+                      language === code ? styles.switchBtnActive : ''
+                    }`}
+                    aria-pressed={language === code}
+                    aria-label={`Switch language to ${label}`}
                   >
-                    {c.code}
+                    <span aria-hidden="true">{flag}</span>
+                    <span className={styles.switchText}>{label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Currency switcher */}
+            <div className={styles.switcherGroup}>
+              <span className={styles.switcherLabel}>Currency</span>
+              <div className={styles.switcherRow}>
+                {[
+                  { code: 'usd', flag: '🇺🇸', label: '$ USD' },
+                  { code: 'gbp', flag: '🇬🇧', label: '£ GBP' },
+                  { code: 'eur', flag: '🇪🇺', label: '€ EUR' },
+                ].map(({ code, flag, label }) => (
+                  <button
+                    key={code}
+                    onClick={() => {
+                      setCurrency(code as 'usd' | 'gbp' | 'eur');
+                      if (typeof window !== 'undefined') {
+                        localStorage.setItem('ksm-currency', code);
+                      }
+                      changeCurrency(code, code === 'usd' ? 'US' : code === 'gbp' ? 'GB' : 'FR');
+                    }}
+                    className={`${styles.switchBtn} ${
+                      currency === code ? styles.switchBtnActive : ''
+                    }`}
+                    aria-pressed={currency === code}
+                    aria-label={`Switch currency to ${label}`}
+                  >
+                    <span aria-hidden="true">{flag}</span>
+                    <span className={styles.switchText}>{label}</span>
                   </button>
                 ))}
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
 

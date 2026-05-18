@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import styles from './MobileStackWrapper.module.css';
 
 interface StackCardProps {
   children: React.ReactNode;
@@ -21,15 +22,16 @@ function StackCard({ children, index, total }: StackCardProps) {
 
   // Smooth interpolation using a spring for that "silky" feel
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
+    stiffness: 90,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.005
   });
 
   // Calculate transformations based on the smoothed scroll progress
   // We start the transition earlier (0.1 instead of 0.6) for a more gradual feel
-  const scale = useTransform(smoothProgress, [0.1, 1], [1, 0.9]);
-  const opacity = useTransform(smoothProgress, [0.1, 1], [1, 0.6]);
+  const scale = useTransform(smoothProgress, [0.1, 1], [1, 0.85]);
+  const opacity = useTransform(smoothProgress, [0.1, 1], [1, 0.5]);
+  const vignetteOpacity = useTransform(smoothProgress, [0.1, 1], [0, 0.35]);
 
   useEffect(() => {
     setViewportHeight(window.innerHeight);
@@ -86,6 +88,10 @@ function StackCard({ children, index, total }: StackCardProps) {
         >
           {children}
         </motion.div>
+        <motion.div
+          className={styles.cardVignette}
+          style={{ opacity: vignetteOpacity }}
+        />
       </div>
     </div>
   );

@@ -515,3 +515,16 @@ div:has(.co-order-card) .coming-soon-message {
     --header-height: 48px;
   }
 }
+
+/* Silent Authority — Crosshair cursor on CTAs */
+button,
+[role="button"],
+a[href] {
+  cursor: crosshair;
+}
+
+input,
+textarea,
+select {
+  cursor: auto;
+}

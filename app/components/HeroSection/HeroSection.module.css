@@ -118,10 +118,18 @@
   white-space: nowrap;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .titleContainer {
     flex-direction: column;
     gap: var(--space-sm);
   }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
