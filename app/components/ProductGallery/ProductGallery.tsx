@@ -10,8 +10,8 @@ const MOCK_PRODUCTS = [
     handle: 'crown-monogram-tee',
     name: 'The Crown Monogram Tee',
     price: '€100.00',
-    primaryImage: '/images/image00070.png',
-    hoverImage: '/images/KSMshirt4.JPG',
+    primaryImage: '/images/KSMshirt4.JPG',
+    hoverImage: '/images/Product two.png',
   },
 ];
 
