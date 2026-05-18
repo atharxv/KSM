@@ -6,6 +6,7 @@ import ShopifyProvider from "./components/ShopifyProvider/ShopifyProvider";
 import ProductModal from "./components/ProductModal/ProductModal";
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
 import ScrollRestorationManager from "./components/ScrollRestorationManager/ScrollRestorationManager";
+import CookieConsent from "./components/CookieConsent/CookieConsent";
 
 export const metadata: Metadata = {
   title: "KSM — Where Timeless Elegance Meets Artistic Expression",
@@ -42,6 +43,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <ProductModal />
+        <CookieConsent />
       </body>
     </html>
   );

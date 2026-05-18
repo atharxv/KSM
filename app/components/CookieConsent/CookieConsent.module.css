@@ -1,0 +1,202 @@
+.banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  max-width: 560px;
+  background: #111110;
+  border: 0.5px solid rgba(255, 248, 235, 0.1);
+  z-index: 9999;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+@media (min-width: 768px) {
+  .banner {
+    left: auto;
+    right: 32px;
+    bottom: 32px;
+    width: 420px;
+  }
+}
+
+.linen {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(255,248,235,0.6) 2px, rgba(255,248,235,0.6) 3px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 2px,
+      rgba(255,248,235,0.4) 2px, rgba(255,248,235,0.4) 3px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bannerInner {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bannerTitle {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.85);
+  font-family: var(--font-body);
+  margin-bottom: 8px;
+}
+
+.bannerBody {
+  font-size: 11px;
+  color: rgba(255, 248, 235, 0.35);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+.bannerLink {
+  color: rgba(255, 248, 235, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bannerActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btnGhost {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.4);
+  background: transparent;
+  border: 0.5px solid rgba(255, 248, 235, 0.15);
+  padding: 8px 14px;
+  cursor: crosshair;
+  font-family: var(--font-body);
+  border-radius: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btnGhost:hover {
+  border-color: rgba(255, 248, 235, 0.35);
+  color: rgba(255, 248, 235, 0.7);
+}
+
+.btnPrimary {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111110;
+  background: rgba(255, 248, 235, 0.88);
+  border: none;
+  padding: 8px 14px;
+  cursor: crosshair;
+  font-family: var(--font-body);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.btnPrimary:hover {
+  background: rgba(255, 248, 235, 1);
+}
+
+.btnGhost:focus-visible,
+.btnPrimary:focus-visible {
+  outline: 2px solid rgba(255, 248, 235, 0.4);
+  outline-offset: 3px;
+}
+
+/* CUSTOMISE VIEW */
+.customiseWrap {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prefRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 0.5px solid rgba(255, 248, 235, 0.06);
+}
+
+.prefRow:last-of-type { border-bottom: none; }
+
+.prefText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.prefLabel {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.75);
+  font-family: var(--font-body);
+}
+
+.prefDesc {
+  font-size: 10px;
+  color: rgba(255, 248, 235, 0.25);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  max-width: 260px;
+}
+
+/* TOGGLE SWITCH */
+.toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  border: 0.5px solid rgba(255, 248, 235, 0.15);
+  background: rgba(255, 248, 235, 0.05);
+  position: relative;
+  cursor: crosshair;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.toggleOn {
+  background: rgba(255, 248, 235, 0.2);
+  border-color: rgba(255, 248, 235, 0.4);
+}
+
+.toggleLocked {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 248, 235, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.toggleOn .toggleThumb {
+  transform: translateX(16px);
+  background: rgba(255, 248, 235, 0.9);
+}

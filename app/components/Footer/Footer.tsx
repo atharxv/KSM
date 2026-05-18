@@ -64,6 +64,8 @@ export default function Footer() {
           <a href="#" className={styles.link}>Shipping</a>
           <a href="#" className={styles.link}>Returns</a>
           <a href="#" className={styles.link}>FAQ</a>
+          <a href="/privacy" className={styles.link}>Privacy Policy</a>
+          <a href="/cookies" className={styles.link}>Cookie Policy</a>
         </motion.div>
       </div>
 
