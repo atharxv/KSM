@@ -225,8 +225,8 @@ export default function HeroSection() {
                   preload="none"
                   poster="/images/hero-poster.jpg"
                 >
-                  <source src="/videos/HeroBG.webm" type="video/webm" />
-                  <source src="/videos/HeroBG.mp4" type="video/mp4" />
+                  <source src="/videos/HeroBG1.webm" type="video/webm" />
+                  <source src="/videos/HeroBG1.mp4" type="video/mp4" />
                 </video>
                 
                 <motion.div
