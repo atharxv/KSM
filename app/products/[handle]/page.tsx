@@ -1,7 +1,8 @@
 import ProductDetail from '@/app/components/ProductDetail/ProductDetail';
 
-export default function ProductPage({ params }: { params: { handle: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ handle: string }> }) {
+  const { handle } = await params;
   return (
-    <ProductDetail handle={params.handle} />
+    <ProductDetail handle={handle} />
   );
 }

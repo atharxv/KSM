@@ -22,7 +22,6 @@ export default function HeroSection() {
   
   // Track raw progress
   const scrollProgressRef = useRef(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
   
   // Create a spring for perfectly smooth interpolation without React state lag
   const springProgress = useSpring(0, {
@@ -34,17 +33,6 @@ export default function HeroSection() {
   // Transforms mapping spring value [0, 1] to CSS values
   const bgOpacity = useTransform(springProgress, [0, 1], [1, 1]);
   const overlayOpacity = useTransform(springProgress, [0, 1], [0.3, 0.3]);
-  
-  // Dimensions (Use consistent units for proper framer-motion interpolation)
-  // MOBILE: Keep static to prevent jarring expansion on phones
-  const mediaWidthMobile = useTransform(springProgress, [0, 1], ['80vw', '80vw']); 
-  const mediaHeightMobile = useTransform(springProgress, [0, 1], ['60vw', '60vw']); 
-  
-  const mediaWidthDesktop = useTransform(springProgress, [0, 1], ['32vw', '58vw']);
-  const mediaHeightDesktop = useTransform(springProgress, [0, 1], ['24vw', '33vw']); // Subtler expansion as requested
-  
-  // Border radius: stays round for a more premium feel
-  const borderRadius = useTransform(springProgress, [0, 1], ['12px', '12px']);
 
   // Title splits
   const titleLeftMobile = useTransform(springProgress, [0, 1], ['0vw', '-100vw']);
@@ -167,23 +155,6 @@ export default function HeroSection() {
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  // Explicitly trigger video playback for iOS Safari compatibility
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const handlePlay = async () => {
-        try {
-          await video.play();
-        } catch (err) {
-          console.warn("Autoplay failed, retrying on interaction:", err);
-          // Some browsers require a user interaction to play, but muted/playsinline usually bypasses this.
-        }
-      };
-      
-      handlePlay();
-    }
-  }, []);
-
   return (
     <div ref={sectionRef} className={styles.container} style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
       <section className={styles.heroSection}>
@@ -207,33 +178,15 @@ export default function HeroSection() {
           <div className={styles.contentLayer}>
             <div className={styles.centerStage}>
               
-              <motion.div
-                className={styles.videoBox}
-                style={{
-                  width: isMobileState ? mediaWidthMobile : mediaWidthDesktop,
-                  height: isMobileState ? mediaHeightMobile : mediaHeightDesktop,
-                  borderRadius: borderRadius,
-                }}
-              >
-                <video
-                  ref={videoRef}
-                  className={styles.videoElement}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="none"
-                  poster="/images/hero-poster.jpg"
-                >
-                  <source src="/videos/HeroBG1.webm" type="video/webm" />
-                  <source src="/videos/HeroBG1.mp4" type="video/mp4" />
-                </video>
-                
-                <motion.div
-                  className={styles.videoOverlay}
-                  style={{ opacity: overlayOpacity }}
+              <div className={styles.videoBox}>
+                <img
+                  src="/images/ksm%203.png"
+                  alt=""
+                  role="presentation"
+                  className={styles.heroImage}
                 />
-              </motion.div>
+                <div className={styles.videoOverlay} />
+              </div>
 
               {/* Title Split Effect */}
               <div className={styles.titleContainer}>

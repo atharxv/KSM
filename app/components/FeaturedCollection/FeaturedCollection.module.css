@@ -55,15 +55,16 @@
   display: flex;
   align-items: center;
   gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
 }
 
 .eyebrow {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: normal;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-gray-500);
+  color: var(--color-black);
   white-space: nowrap;
 }
 
@@ -162,45 +163,33 @@
 .shopPieceBtn {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  text-decoration: none;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  justify-content: center;
+  height: 52px;
+  padding: 0 2rem;
+  background-color: var(--color-white);
   color: var(--color-black);
-  position: relative;
-  padding: 0.4rem 0;
-  transition: gap var(--duration-normal) var(--ease-out);
-}
-
-.shopPieceBtn::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-black);
-  transition: width var(--duration-normal) var(--ease-out);
-}
-
-.shopPieceBtn:hover::after {
-  width: 100%;
+  border: 1px solid var(--color-black);
+  border-radius: 26px;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: normal;
+  transition: all var(--duration-fast) ease;
+  gap: 8px;
 }
 
 .shopPieceBtn:hover {
-  gap: var(--space-md);
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .shopPieceBtn svg {
   transition: transform var(--duration-normal) var(--ease-out);
-  opacity: 0.7;
 }
 
 .shopPieceBtn:hover svg {
   transform: translateX(4px);
-  opacity: 1;
 }
 
 /* ===== Responsive ===== */

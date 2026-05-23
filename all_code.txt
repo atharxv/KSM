@@ -1,0 +1,7057 @@
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\atelier\page.tsx =====
+import Atelier from '@/app/components/Atelier/Atelier';
+
+export const metadata = {
+  title: 'The Atelier — KSM',
+  description: 'Step behind the curtain. Discover the philosophy, craftsmanship, and materials that define the House of KSM.',
+};
+
+export default function AtelierPage() {
+  return (
+    <Atelier />
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ActionBanner\ActionBanner.module.css =====
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: grayscale(100%) contrast(1.1) brightness(0.7);
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--space-4xl) var(--content-padding);
+  animation: fadeInUp 0.8s var(--ease-out) 0.2s both;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-white);
+  line-height: 1.35;
+  margin-bottom: var(--space-2xl);
+  letter-spacing: 0.01em;
+}
+
+.shopButton {
+  display: inline-block;
+  background-color: var(--color-off-white);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 1rem 3rem;
+  text-decoration: none;
+  transition: background-color var(--duration-normal) var(--ease-out),
+              color var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
+}
+
+.shopButton:hover {
+  background-color: var(--color-black);
+  color: var(--color-off-white);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner {
+    min-height: 40vh;
+  }
+
+  .content {
+    padding: var(--space-3xl) var(--content-padding);
+  }
+
+  .shopButton {
+    padding: 0.875rem 2.5rem;
+    font-size: var(--text-xs);
+  }
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ActionBanner\ActionBanner.tsx =====
+import styles from './ActionBanner.module.css';
+
+export default function ActionBanner() {
+  return (
+    <section className={styles.banner} id="action-banner" aria-label="Shop call to action">
+      {/* Continuation of the dark monochrome background */}
+      <div className={styles.background}>
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80"
+          alt=""
+          role="presentation"
+          className={styles.backgroundImage}
+          loading="lazy"
+        />
+        <div className={styles.backgroundOverlay} />
+      </div>
+
+      <div className={styles.content}>
+        <h2 className={styles.headline}>
+          KSM 2026
+        </h2>
+        <a href="/products" className={styles.shopButton} id="btn-shop-now">
+          SHOP NOW
+        </a>
+      </div>
+    </section>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\Atelier\Atelier.module.css =====
+/* =============================================
+   ATELIER — The Creative Heart of KSM
+   ============================================= */
+
+/* ---- Section 1: Immersive Hero ---- */
+.heroSection {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: grayscale(30%) brightness(0.85);
+  transition: transform 12s var(--ease-out);
+}
+
+.heroSection:hover .heroBg img {
+  transform: scale(1.03);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(var(--color-black-rgb), 0.7) 0%,
+    rgba(var(--color-black-rgb), 0.2) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-4xl) var(--content-padding);
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.heroEyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(var(--color-white-rgb), 0.6);
+  margin-bottom: var(--space-lg);
+}
+
+.heroTitle {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-white);
+  line-height: 1;
+  margin-bottom: var(--space-xl);
+}
+
+.heroSubtitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: rgba(var(--color-white-rgb), 0.7);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ---- Section 2: Philosophy Split ---- */
+.philosophySection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+  background-color: var(--color-off-white);
+}
+
+.philosophyText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-5xl) var(--space-4xl);
+}
+
+.philosophyEyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-2xl);
+}
+
+.philosophyHeadline {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-black);
+  line-height: 1.15;
+  margin-bottom: var(--space-2xl);
+}
+
+.philosophyBody {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-gray-400);
+  line-height: 1.8;
+  max-width: 440px;
+}
+
+.philosophyImage {
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 10s var(--ease-out);
+}
+
+.philosophySection:hover .philosophyImage img {
+  transform: scale(1.03);
+}
+
+/* ---- Section 3: Process Timeline ---- */
+.processSection {
+  position: relative;
+  padding: var(--space-5xl) var(--content-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.processHeader {
+  text-align: center;
+  margin-bottom: var(--space-5xl);
+}
+
+.processEyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-lg);
+}
+
+.processTitle {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-black);
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: var(--color-gray-100);
+}
+
+.timelineStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.stepNumber {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-style: normal;
+  color: var(--color-black);
+  margin-bottom: var(--space-2xl);
+  background-color: var(--color-off-white);
+  position: relative;
+  z-index: 1;
+  transition: all 0.6s var(--ease-out);
+}
+
+.stepNumberActive {
+  background-color: var(--color-black) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-black) !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.stepTitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+  margin-bottom: var(--space-md);
+}
+
+.stepDesc {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  line-height: 1.6;
+  max-width: 220px;
+}
+
+/* ---- Section 4: Materials Showcase ---- */
+.materialsSection {
+  background-color: var(--color-gray-700);
+  color: var(--color-white);
+  padding: var(--space-5xl) var(--content-padding);
+  overflow: hidden;
+}
+
+.materialsInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.materialsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-4xl);
+}
+
+.materialsEyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(var(--color-white-rgb), 0.4);
+  margin-bottom: var(--space-lg);
+}
+
+.materialsTitle {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.1;
+}
+
+.materialsSubtitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: rgba(var(--color-white-rgb), 0.5);
+  max-width: 600px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.materialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.materialCard {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.materialCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(60%);
+  transition: all var(--duration-slow) var(--ease-out);
+}
+
+.materialCard:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.materialOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(var(--color-black-rgb), 0.7) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-xl);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.materialCard:hover .materialOverlay {
+  opacity: 1;
+}
+
+.materialName {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-style: normal;
+  margin-bottom: 4px;
+}
+
+.materialOrigin {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(var(--color-white-rgb), 0.6);
+}
+
+/* ---- Section 5: Mood Board ---- */
+.moodSection {
+  padding: var(--space-5xl) var(--content-padding);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.moodHeader {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.moodEyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-lg);
+}
+
+.moodTitle {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-black);
+}
+
+.moodGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: var(--space-md);
+}
+
+.moodItem {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.moodItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.moodItem:hover img {
+  transform: scale(1.06);
+}
+
+.moodItem:nth-child(1) {
+  grid-column: 1 / 8;
+  grid-row: 1 / 2;
+  aspect-ratio: 16 / 9;
+}
+
+.moodItem:nth-child(2) {
+  grid-column: 8 / 13;
+  grid-row: 1 / 2;
+  aspect-ratio: 4 / 3;
+}
+
+.moodItem:nth-child(3) {
+  grid-column: 1 / 5;
+  grid-row: 2 / 3;
+  aspect-ratio: 3 / 4;
+}
+
+.moodItem:nth-child(4) {
+  grid-column: 5 / 13;
+  grid-row: 2 / 3;
+  aspect-ratio: 16 / 9;
+}
+
+.moodCaption {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-white);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.moodItem:hover .moodCaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Section 6: Closing Statement ---- */
+.closingSection {
+  padding: var(--space-5xl) var(--content-padding);
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.closingQuote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-black);
+  line-height: 1.4;
+  margin-bottom: var(--space-2xl);
+}
+
+.closingAttribution {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-3xl);
+}
+
+.closingCta {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-black);
+  text-decoration: none;
+  padding: var(--space-lg) var(--space-3xl);
+  border: 1px solid var(--color-black);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.closingCta:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .philosophySection {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophyText {
+    padding: var(--space-3xl) var(--content-padding);
+    order: 2;
+  }
+
+  .philosophyImage {
+    height: 450px;
+    order: 1;
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3xl) var(--space-xl);
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .materialsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .heroContent {
+    padding: var(--space-3xl) var(--content-padding);
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .materialsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .materialCard {
+    aspect-ratio: 16 / 9;
+  }
+
+  .moodGrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .moodItem:nth-child(1),
+  .moodItem:nth-child(2),
+  .moodItem:nth-child(3),
+  .moodItem:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .closingQuote {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .processSection,
+  .moodSection {
+    padding: var(--space-4xl) var(--content-padding);
+  }
+
+  .materialsSection {
+    padding: var(--space-4xl) var(--content-padding);
+  }
+}
+
+@media (max-width: 480px) {
+  .moodGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .moodItem:nth-child(1),
+  .moodItem:nth-child(2),
+  .moodItem:nth-child(3),
+  .moodItem:nth-child(4) {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\Atelier\Atelier.tsx =====
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import styles from './Atelier.module.css';
+
+export default function Atelier() {
+  const [activatedSteps, setActivatedSteps] = useState<Set<number>>(new Set());
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const handleStepActivation = (index: number) => {
+    setActivatedSteps(prev => {
+      if (prev.has(index)) return prev;
+      // Sequential: can only activate if previous step is already active (or it's the first)
+      if (index > 0 && !prev.has(index - 1)) return prev;
+      const newSet = new Set(prev);
+      newSet.add(index);
+      return newSet;
+    });
+  };
+
+  const steps = [
+    {
+      number: '01',
+      title: 'Conception',
+      desc: 'Every silhouette begins as a study in architecture — sketched with the discipline of a blueprint, not a doodle.'
+    },
+    {
+      number: '02',
+      title: 'Sourcing',
+      desc: 'We travel to the mills of Como, the ateliers of Portugal, and the linen fields of Normandy to select only what meets our standard.'
+    },
+    {
+      number: '03',
+      title: 'Construction',
+      desc: 'Cut by hand, assembled with precision. Every seam is reinforced, every button anchored — built to outlast the season.'
+    },
+    {
+      number: '04',
+      title: 'Refinement',
+      desc: 'The final garment is pressed, inspected, and approved only when it carries the unmistakable weight of distinction.'
+    }
+  ];
+
+  return (
+    <div>
+      {/* ============================
+          SECTION 1: IMMERSIVE HERO
+          ============================ */}
+      <section className={styles.heroSection}>
+        <div className={styles.heroBg}>
+          <img
+            src="/images/atelier.jpeg"
+            alt="KSM Atelier — Behind the craft"
+            loading="eager"
+          />
+        </div>
+        <div className={styles.heroOverlay} />
+        <div className={styles.heroContent}>
+          <p className={styles.heroEyebrow}>The KSM Atelier</p>
+          <h1 className={styles.heroTitle}>
+            Where Legacy<br />
+            Is Forged
+          </h1>
+          <p className={styles.heroSubtitle}>
+            Step behind the curtain. Every stitch, every fold, every fibre — 
+            an act of deliberate distinction. This is where status is crafted, 
+            not inherited.
+          </p>
+        </div>
+      </section>
+
+      {/* ============================
+          SECTION 2: PHILOSOPHY SPLIT
+          ============================ */}
+      <section className={styles.philosophySection}>
+        <div className={styles.philosophyText}>
+          <p className={styles.philosophyEyebrow}>Our Philosophy</p>
+          <h2 className={styles.philosophyHeadline}>
+            Crafted for those<br />
+            who refuse to blend in
+          </h2>
+          <p className={styles.philosophyBody}>
+            KSM was born from a singular conviction: that clothing should 
+            announce your presence before you speak a word. We don&apos;t follow 
+            trends — we architect a signature. Each piece is conceived as a 
+            declaration, meticulously constructed to project the quiet authority 
+            of those who shape the world around them.
+          </p>
+        </div>
+        <div className={styles.philosophyImage}>
+          <img
+            src="/images/paul anthony kelly.jpeg"
+            alt="KSM creative process"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      {/* ============================
+          SECTION 3: PROCESS TIMELINE
+          ============================ */}
+      <section className={styles.processSection}>
+        <div className={styles.processHeader}>
+          <p className={styles.processEyebrow}>The Making</p>
+          <h2 className={styles.processTitle}>From Vision to Vessel</h2>
+        </div>
+
+        <div className={styles.timeline}>
+          {steps.map((step, index) => (
+            <motion.div 
+              key={index} 
+              className={styles.timelineStep}
+              onMouseEnter={() => handleStepActivation(index)}
+              onViewportEnter={isMobile ? () => handleStepActivation(index) : undefined}
+              viewport={isMobile ? { once: true, amount: 0.8 } : undefined}
+            >
+              <div className={`${styles.stepNumber} ${activatedSteps.has(index) ? styles.stepNumberActive : ''}`}>
+                {step.number}
+              </div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <p className={styles.stepDesc}>{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============================
+          SECTION 4: MATERIALS SHOWCASE
+          ============================ */}
+      <section className={styles.materialsSection}>
+        <div className={styles.materialsInner}>
+          <div className={styles.materialsHeader}>
+            <div>
+              <p className={styles.materialsEyebrow}>Materiality</p>
+              <h2 className={styles.materialsTitle}>
+                The Fabric of<br />
+                Distinction
+              </h2>
+            </div>
+            <p className={styles.materialsSubtitle}>
+              We source only what speaks to our standard — textiles that carry 
+              history, texture, and unmistakable presence.
+            </p>
+          </div>
+
+          <div className={styles.materialsGrid}>
+            <div className={styles.materialCard}>
+              <img
+                src="/images/cafeoldmoney.jpeg"
+                alt="Italian Linen"
+                loading="lazy"
+              />
+              <div className={styles.materialOverlay}>
+                <span className={styles.materialName}>Italian Linen</span>
+                <span className={styles.materialOrigin}>Como, Italy</span>
+              </div>
+            </div>
+
+            <div className={styles.materialCard}>
+              <img
+                src="/images/Old money.jpeg"
+                alt="Portuguese Cotton"
+                loading="lazy"
+              />
+              <div className={styles.materialOverlay}>
+                <span className={styles.materialName}>Portuguese Cotton</span>
+                <span className={styles.materialOrigin}>Porto, Portugal</span>
+              </div>
+            </div>
+
+            <div className={styles.materialCard}>
+              <img
+                src="/images/Outfit Playa Hombre.jpeg"
+                alt="Normandy Linen"
+                loading="lazy"
+              />
+              <div className={styles.materialOverlay}>
+                <span className={styles.materialName}>French Cashmere</span>
+                <span className={styles.materialOrigin}>Normandy, France</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================
+          SECTION 5: MOOD BOARD
+          ============================ */}
+      <section className={styles.moodSection}>
+        <div className={styles.moodHeader}>
+          <p className={styles.moodEyebrow}>Inspirations</p>
+          <h2 className={styles.moodTitle}>The World of KSM</h2>
+        </div>
+
+        <div className={styles.moodGrid}>
+          <div className={styles.moodItem}>
+            <img
+              src="/images/yachtplaya.jpeg"
+              alt="Mediterranean yachting"
+              loading="lazy"
+            />
+            <span className={styles.moodCaption}>Mediterranean Coast</span>
+          </div>
+
+          <div className={styles.moodItem}>
+            <img
+              src="/images/Midderianwater.jpg"
+              alt="Coastal heritage"
+              loading="lazy"
+            />
+            <span className={styles.moodCaption}>Coastal Heritage</span>
+          </div>
+
+          <div className={styles.moodItem}>
+            <img
+              src="/images/Man-onpolo.jpg"
+              alt="Editorial fashion"
+              loading="lazy"
+            />
+            <span className={styles.moodCaption}>Editorial Presence</span>
+          </div>
+
+          <div className={styles.moodItem}>
+            <img
+              src="/images/bluehorn.jpeg"
+              alt="Architectural inspiration"
+              loading="lazy"
+            />
+            <span className={styles.moodCaption}>Architectural Precision</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================
+          SECTION 6: CLOSING STATEMENT
+          ============================ */}
+      <section className={styles.closingSection}>
+        <blockquote className={styles.closingQuote}>
+          &ldquo;We don&apos;t dress people. We arm them with the confidence 
+          that comes from knowing every detail was considered, every choice 
+          deliberate, every thread justified.&rdquo;
+        </blockquote>
+        <p className={styles.closingAttribution}>— The House of KSM</p>
+        <a href="/products" className={styles.closingCta}>
+          Explore the Collection
+        </a>
+      </section>
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\AtelierBanner\AtelierBanner.module.css =====
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  filter: grayscale(20%);
+  transition: transform 8s var(--ease-out);
+}
+
+.section:hover .background img {
+  transform: scale(1.05);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--color-white);
+  padding: 0 var(--content-padding);
+  max-width: 800px;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: var(--space-lg);
+  color: rgba(var(--color-white-rgb), 0.7);
+}
+
+.title {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: var(--space-xl);
+  line-height: 1.1;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-2xl);
+  color: rgba(var(--color-white-rgb), 0.8);
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta {
+  display: inline-block;
+  padding: var(--space-lg) var(--space-4xl);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.cta:hover {
+  background-color: transparent;
+  color: var(--color-white);
+  box-shadow: inset 0 0 0 1px var(--color-white);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section {
+    height: 100vh;
+  }
+  
+  .title {
+    font-size: clamp(2rem, 12vw, 4rem);
+  }
+  
+  .description {
+    font-size: var(--text-sm);
+    max-width: 90%;
+  }
+  
+  .cta {
+    padding: var(--space-md) var(--space-2xl);
+  }
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\AtelierBanner\AtelierBanner.tsx =====
+'use client';
+
+import Link from 'next/link';
+import styles from './AtelierBanner.module.css';
+
+export default function AtelierBanner() {
+  return (
+    <section className={styles.section} aria-label="Explore the Atelier">
+      <div className={styles.background}>
+        <img 
+          src="/images/Atelierhome.jpeg" 
+          alt="Inside the KSM Atelier" 
+          loading="lazy"
+        />
+      </div>
+      
+      <div className={styles.content}>
+        <p className={styles.eyebrow}>The Craftsmanship</p>
+        <h2 className={styles.title}>Step Into<br />The Atelier</h2>
+        <p className={styles.description}>
+          Discover the philosophy, the materials, and the meticulous 
+          craftsmanship behind every piece. A world where tradition 
+          meets the avant-garde.
+        </p>
+        <Link href="/atelier" className={styles.cta}>
+          Discover the process
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\CookieConsent\CookieConsent.module.css =====
+.banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  max-width: 560px;
+  background: #111110;
+  border: 0.5px solid rgba(255, 248, 235, 0.1);
+  z-index: 9999;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+@media (min-width: 768px) {
+  .banner {
+    left: auto;
+    right: 32px;
+    bottom: 32px;
+    width: 420px;
+  }
+}
+
+.linen {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(255,248,235,0.6) 2px, rgba(255,248,235,0.6) 3px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 2px,
+      rgba(255,248,235,0.4) 2px, rgba(255,248,235,0.4) 3px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bannerInner {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bannerTitle {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.85);
+  font-family: var(--font-body);
+  margin-bottom: 8px;
+}
+
+.bannerBody {
+  font-size: 11px;
+  color: rgba(255, 248, 235, 0.35);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+.bannerLink {
+  color: rgba(255, 248, 235, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bannerActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btnGhost {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.4);
+  background: transparent;
+  border: 0.5px solid rgba(255, 248, 235, 0.15);
+  padding: 8px 14px;
+  cursor: crosshair;
+  font-family: var(--font-body);
+  border-radius: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btnGhost:hover {
+  border-color: rgba(255, 248, 235, 0.35);
+  color: rgba(255, 248, 235, 0.7);
+}
+
+.btnPrimary {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111110;
+  background: rgba(255, 248, 235, 0.88);
+  border: none;
+  padding: 8px 14px;
+  cursor: crosshair;
+  font-family: var(--font-body);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.btnPrimary:hover {
+  background: rgba(255, 248, 235, 1);
+}
+
+.btnGhost:focus-visible,
+.btnPrimary:focus-visible {
+  outline: 2px solid rgba(255, 248, 235, 0.4);
+  outline-offset: 3px;
+}
+
+/* CUSTOMISE VIEW */
+.customiseWrap {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prefRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 0.5px solid rgba(255, 248, 235, 0.06);
+}
+
+.prefRow:last-of-type { border-bottom: none; }
+
+.prefText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.prefLabel {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.75);
+  font-family: var(--font-body);
+}
+
+.prefDesc {
+  font-size: 10px;
+  color: rgba(255, 248, 235, 0.25);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  max-width: 260px;
+}
+
+/* TOGGLE SWITCH */
+.toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  border: 0.5px solid rgba(255, 248, 235, 0.15);
+  background: rgba(255, 248, 235, 0.05);
+  position: relative;
+  cursor: crosshair;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.toggleOn {
+  background: rgba(255, 248, 235, 0.2);
+  border-color: rgba(255, 248, 235, 0.4);
+}
+
+.toggleLocked {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 248, 235, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.toggleOn .toggleThumb {
+  transform: translateX(16px);
+  background: rgba(255, 248, 235, 0.9);
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\CookieConsent\CookieConsent.tsx =====
+"use client";
+
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import styles from './CookieConsent.module.css';
+
+const CONSENT_KEY = 'ksm-cookie-consent';
+
+export default function CookieConsent() {
+  const [visible, setVisible] = useState(false);
+  const [showCustomise, setShowCustomise] = useState(false);
+  const [preferences, setPreferences] = useState({
+    essential: true,      // always true, cannot be toggled
+    analytics: false,
+    marketing: false,
+  });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(CONSENT_KEY);
+      if (!saved) {
+        setVisible(true);
+      }
+    }
+  }, []);
+
+  const acceptAll = () => {
+    if (typeof window !== 'undefined') {
+      const consent = {
+        essential: true,
+        analytics: true,
+        marketing: true,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+      setVisible(false);
+    }
+  };
+
+  const rejectAll = () => {
+    if (typeof window !== 'undefined') {
+      const consent = {
+        essential: true,
+        analytics: false,
+        marketing: false,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+      setVisible(false);
+    }
+  };
+
+  const savePreferences = () => {
+    if (typeof window !== 'undefined') {
+      const consent = {
+        ...preferences,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+      setVisible(false);
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          className={styles.banner}
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className={styles.linen} aria-hidden="true" />
+
+          {!showCustomise ? (
+            <div className={styles.bannerInner}>
+              <div className={styles.bannerText}>
+                <p className={styles.bannerTitle}>We value your privacy</p>
+                <p className={styles.bannerBody}>
+                  We use cookies to personalise your experience,
+                  analyse site traffic, and support our marketing.
+                  You can choose which cookies you allow.{' '}
+                  <a href="/cookies" className={styles.bannerLink}>
+                    Cookie Policy
+                  </a>
+                </p>
+              </div>
+
+              <div className={styles.bannerActions}>
+                <button
+                  onClick={() => setShowCustomise(true)}
+                  className={styles.btnGhost}
+                >
+                  Customise
+                </button>
+                <button
+                  onClick={rejectAll}
+                  className={styles.btnGhost}
+                >
+                  Reject All
+                </button>
+                <button
+                  onClick={acceptAll}
+                  className={styles.btnPrimary}
+                >
+                  Accept All
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.customiseWrap}>
+              <p className={styles.bannerTitle}>Cookie Preferences</p>
+
+              {[
+                {
+                  key: 'essential',
+                  label: 'Essential',
+                  description: 'Required for the site to function. Cannot be disabled.',
+                  locked: true,
+                },
+                {
+                  key: 'analytics',
+                  label: 'Analytics',
+                  description: 'Help us understand how visitors interact with the site.',
+                  locked: false,
+                },
+                {
+                  key: 'marketing',
+                  label: 'Marketing',
+                  description: 'Used to deliver relevant ads and track campaigns.',
+                  locked: false,
+                },
+              ].map(({ key, label, description, locked }) => (
+                <div key={key} className={styles.prefRow}>
+                  <div className={styles.prefText}>
+                    <span className={styles.prefLabel}>{label}</span>
+                    <span className={styles.prefDesc}>{description}</span>
+                  </div>
+                  <button
+                    role="switch"
+                    aria-checked={preferences[key as keyof typeof preferences]}
+                    aria-label={`Toggle ${label} cookies`}
+                    disabled={locked}
+                    onClick={() =>
+                      !locked &&
+                      setPreferences(p => ({ ...p, [key]: !p[key as keyof typeof preferences] }))
+                    }
+                    className={`${styles.toggle} ${
+                      preferences[key as keyof typeof preferences] ? styles.toggleOn : ''
+                    } ${locked ? styles.toggleLocked : ''}`}
+                  >
+                    <span className={styles.toggleThumb} />
+                  </button>
+                </div>
+              ))}
+
+              <div className={styles.bannerActions}>
+                <button
+                  onClick={() => setShowCustomise(false)}
+                  className={styles.btnGhost}
+                >
+                  Back
+                </button>
+                <button
+                  onClick={savePreferences}
+                  className={styles.btnPrimary}
+                >
+                  Save Preferences
+                </button>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\DesignIdeology\DesignIdeology.module.css =====
+.section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  min-height: 700px;
+  background-color: var(--color-off-white);
+  overflow: hidden;
+}
+
+/* Image Block */
+.imageBlock {
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%; /* Ensures face is visible */
+  transition: transform 8s var(--ease-out);
+}
+
+.section:hover .image {
+  transform: scale(1.02);
+}
+
+/* Quote Block / Letter Block */
+.quoteBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-5xl) var(--space-4xl);
+  background: radial-gradient(circle at center, rgba(230, 224, 212, 0.3) 0%, transparent 70%);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-gray-300);
+  margin-bottom: var(--space-2xl);
+}
+
+.letter {
+  max-width: 480px;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  color: var(--color-gray-600);
+  font-style: normal;
+  position: relative;
+}
+
+.handwritten {
+  font-family: var(--font-heading); /* We'll use KSM's heading font for consistency */
+  font-style: normal;
+  display: inline-block;
+}
+
+.signature {
+  margin-top: var(--space-3xl);
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-style: normal;
+  color: var(--color-black);
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .imageBlock {
+    height: 500px; /* Increased height for better framing */
+  }
+
+  .quoteBlock {
+    padding: var(--space-3xl) var(--content-padding);
+    align-items: flex-start;
+  }
+
+  .letter {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .imageBlock {
+    height: 420px; /* Increased height for better framing on mobile */
+  }
+
+  .quoteBlock {
+    padding: var(--space-2xl) var(--content-padding);
+  }
+
+  .letter {
+    font-size: var(--text-md);
+  }
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\DesignIdeology\DesignIdeology.tsx =====
+'use client';
+
+import { motion } from 'framer-motion';
+import styles from './DesignIdeology.module.css';
+
+export default function DesignIdeology() {
+  const letterText = "True distinction is never shouted; it is whispered in the weight of a linen fold and the precision of a hand-turned seam. This collection is not merely an assemblage of garments, but a parchment of legacy—a heritage woven for those who understand that status is an art form, not an acquisition. We invite you to carry this story forward.";
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03,
+        delayChildren: 0.1,
+      },
+    },
+  } as const;
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 5 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.08,
+        ease: "easeOut",
+      },
+    },
+  } as const;
+
+  return (
+    <section className={styles.section}>
+      <div className={styles.imageBlock}>
+        <img 
+          src="/images/paul anthony kelly.jpeg" 
+          alt="KSM Heritage" 
+          className={styles.image}
+        />
+      </div>
+      <div className={styles.quoteBlock}>
+        <span className={styles.eyebrow}>Parchment of Heritage</span>
+        <motion.div 
+          className={styles.letter}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {letterText.split(" ").map((word, index) => (
+            <motion.span 
+              key={index} 
+              variants={childVariants}
+              style={{ display: 'inline-block', marginRight: '0.25em' }}
+            >
+              {word}
+            </motion.span>
+          ))}
+          
+          <motion.div 
+            className={styles.signature}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 1 }}
+          >
+            <p>With unrivaled esteem,</p>
+            <p>The House of KSM</p>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\FeaturedCollection\FeaturedCollection.module.css =====
+.section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  background-color: var(--color-off-white);
+  overflow: hidden;
+}
+
+/* Editorial Left */
+.editorial {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.editorialImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s var(--ease-out);
+}
+
+.section:hover .editorialImage {
+  transform: scale(1.03);
+}
+
+.editorialOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-2xl) var(--space-xl);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+}
+
+.editorialCaption {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+/* ===== Product Side — Editorial Showcase ===== */
+.productSide {
+  padding: var(--space-3xl) var(--space-2xl) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Eyebrow Row */
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+}
+
+.eyebrowLine {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Product Showcase — the hero area */
+.productShowcase {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  flex: 1;
+  padding: var(--space-xl) 0;
+}
+
+.showcaseLink {
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.showcaseImageWrap {
+  position: relative;
+  width: clamp(220px, 18vw, 300px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.showcaseLink:hover .showcaseImageWrap {
+  transform: translateY(-6px);
+}
+
+.showcaseImage,
+.showcaseImageHover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out),
+              opacity var(--duration-normal) var(--ease-out);
+}
+
+.showcaseImageHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.showcaseLink:hover .showcaseImage {
+  opacity: 0;
+}
+
+.showcaseLink:hover .showcaseImageHover {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+/* Product Meta — typography as hero */
+.productMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.productName {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-black);
+  letter-spacing: -0.01em;
+}
+
+.productPrice {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-gray-500);
+  letter-spacing: 0.05em;
+}
+
+/* Subtle divider between price and CTA */
+.metaDivider {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.15);
+  margin: var(--space-sm) 0;
+}
+
+/* Shop Piece CTA — inline within meta */
+.shopPieceBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-black);
+  position: relative;
+  padding: 0.4rem 0;
+  transition: gap var(--duration-normal) var(--ease-out);
+}
+
+.shopPieceBtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-black);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.shopPieceBtn:hover::after {
+  width: 100%;
+}
+
+.shopPieceBtn:hover {
+  gap: var(--space-md);
+}
+
+.shopPieceBtn svg {
+  transition: transform var(--duration-normal) var(--ease-out);
+  opacity: 0.7;
+}
+
+.shopPieceBtn:hover svg {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .section {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    gap: var(--space-xl);
+    padding: var(--space-xl) var(--content-padding);
+    background-color: var(--color-off-white);
+  }
+
+  .editorial {
+    height: 55vh;
+    max-height: 420px;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .editorialImage {
+    border-radius: 8px;
+  }
+
+  .editorialOverlay {
+    border-radius: 0 0 8px 8px;
+  }
+
+  .productSide {
+    padding: var(--space-2xl) var(--space-xl) var(--space-3xl);
+    background-color: var(--color-off-white);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    gap: var(--space-xl);
+  }
+
+  .productShowcase {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .showcaseImageWrap {
+    width: clamp(200px, 50vw, 280px);
+  }
+
+  .productMeta {
+    align-items: center;
+  }
+
+  .metaDivider {
+    margin: var(--space-xs) auto;
+  }
+
+  .productName {
+    text-align: center;
+  }
+
+  .shopPieceBtn {
+    align-self: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--content-padding);
+  }
+
+  .editorial {
+    height: 45vh;
+    max-height: 360px;
+  }
+
+  .productShowcase {
+    gap: var(--space-lg);
+  }
+
+  .showcaseImageWrap {
+    width: clamp(180px, 55vw, 260px);
+  }
+
+  .shopPieceBtn {
+    justify-content: center;
+  }
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\FeaturedCollection\FeaturedCollection.tsx =====
+'use client';
+
+import { useRef } from 'react';
+import Link from 'next/link';
+import styles from './FeaturedCollection.module.css';
+
+export default function FeaturedCollection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <section className={styles.section} id="featured-collection" aria-label="Featured Collection 2026">
+      {/* Left: Editorial Image */}
+      <div className={styles.editorial}>
+        <img
+          src="/images/Outfit Playa Hombre.jpeg"
+          alt="Legacy Collection — editorial fashion photography"
+          className={styles.editorialImage}
+          loading="lazy"
+        />
+        <div className={styles.editorialOverlay}>
+          <p className={styles.editorialCaption}>The Legacy Collection</p>
+        </div>
+      </div>
+
+      {/* Right: Editorial Product Showcase */}
+      <div className={styles.productSide}>
+        <div className={styles.eyebrowRow}>
+          <span className={styles.eyebrow}>Featured Collection 2026</span>
+          <span className={styles.eyebrowLine}></span>
+        </div>
+
+        <div className={styles.productShowcase}>
+          <Link href="/products/crown-monogram-tee" className={styles.showcaseLink}>
+            <div className={styles.showcaseImageWrap}>
+              <img 
+                src="/images/Product/product%20image%201.png" 
+                alt="The Crown Monogram Tee" 
+                className={styles.showcaseImage}
+              />
+              <img 
+                src="/images/Product/KSMshirt4.JPG" 
+                alt="The Crown Monogram Tee - Detail" 
+                className={styles.showcaseImageHover}
+              />
+            </div>
+          </Link>
+
+          <div className={styles.productMeta}>
+            <h2 className={styles.productName}>The Crown<br />Monogram Tee</h2>
+            <span className={styles.productPrice}>€100.00</span>
+            <span className={styles.metaDivider}></span>
+            <Link href="/products/crown-monogram-tee" className={styles.shopPieceBtn}>
+              <span>Shop Piece</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\Footer\Footer.module.css =====
+.footer {
+  position: relative;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-top: 1px solid rgba(var(--color-white-rgb), 0.15);
+}
+
+/* Only enable snapping for the footer when on the homepage (snap-active) */
+:global(.snap-active) .footer {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid rgba(var(--color-white-rgb), 0.15);
+}
+
+.linkColumn {
+  padding: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  border-right: 1px solid rgba(var(--color-white-rgb), 0.15);
+}
+
+.linkColumn:last-child {
+  border-right: none;
+}
+
+.link {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 400;
+  color: var(--color-white);
+  text-decoration: none;
+  width: fit-content;
+  position: relative;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-white);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+
+.contactInfo {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+/* Bottom Grid */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  min-height: 200px;
+}
+
+.copyrightCell {
+  padding: var(--space-2xl);
+  border-right: 1px solid rgba(var(--color-white-rgb), 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.abstractIcon {
+  width: 60px;
+  height: 60px;
+  color: rgba(var(--color-white-rgb), 0.3);
+}
+
+.iconSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.copyrightText {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: rgba(var(--color-white-rgb), 0.4);
+}
+
+.logoCell {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.cellBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cellImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: grayscale(100%) contrast(1.1) brightness(0.6);
+}
+
+.cellOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.massiveLogo {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(6rem, 18vw, 24rem);
+  font-weight: 600;
+  line-height: 0.72;
+  letter-spacing: -0.04em;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--color-white);
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .linkColumn:nth-child(2) {
+    border-right: none;
+  }
+  
+  .linkColumn:nth-child(n+3) {
+    border-top: 1px solid rgba(var(--color-white-rgb), 0.15);
+  }
+}
+
+@media (max-width: 768px) {
+  .bottomGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .copyrightCell {
+    border-right: none;
+    border-bottom: 1px solid rgba(var(--color-white-rgb), 0.15);
+    height: 160px;
+  }
+
+  .massiveLogo {
+    font-size: 24vw;
+    line-height: 0.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .linkColumn {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .linkColumn:nth-child(even) {
+    border-right: none;
+  }
+}
+
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\Footer\Footer.tsx =====
+'use client';
+
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import styles from './Footer.module.css';
+
+export default function Footer() {
+  const footerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(footerRef, {
+    once: true,
+    margin: "0px 0px -80px 0px"
+  });
+
+  return (
+    <footer className={styles.footer} id="site-footer" ref={footerRef}>
+      <div className={styles.gridContainer}>
+        {/* Row 1: Columns */}
+        <motion.div 
+          className={styles.linkColumn}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0 * 0.08 }}
+        >
+          <a href="/products" className={styles.link}>Shop All</a>
+          <a href="/atelier" className={styles.link}>Atelier</a>
+        </motion.div>
+
+        <motion.div 
+          className={styles.linkColumn}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 1 * 0.08 }}
+        >
+          <a 
+            href="https://www.instagram.com/ksm.atelier?igsh=YXE3Z3hiYWlja3Ns" 
+            className={styles.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </motion.div>
+
+        <motion.div 
+          className={styles.linkColumn}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 2 * 0.08 }}
+        >
+          <p className={styles.contactInfo}>
+            Flagship Studio,<br />
+            Milan, Italy
+          </p>
+          <a href="mailto:hello@ksm.studio" className={styles.link}>hello@ksm.studio</a>
+        </motion.div>
+
+        <motion.div 
+          className={styles.linkColumn}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 3 * 0.08 }}
+        >
+          <a href="#" className={styles.link}>Contact Us</a>
+          <a href="#" className={styles.link}>Shipping</a>
+          <a href="#" className={styles.link}>Returns</a>
+          <a href="#" className={styles.link}>FAQ</a>
+          <a href="/privacy" className={styles.link}>Privacy Policy</a>
+          <a href="/cookies" className={styles.link}>Cookie Policy</a>
+        </motion.div>
+      </div>
+
+      <div className={styles.bottomGrid}>
+        <motion.div 
+          className={styles.copyrightCell}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 4 * 0.08 }}
+        >
+          <div className={styles.abstractIcon}>
+            <svg viewBox="0 0 100 100" className={styles.iconSvg}>
+              <path d="M0,100 L50,0 L100,100 Z" fill="none" stroke="currentColor" strokeWidth="1"/>
+              <line x1="0" y1="50" x2="100" y2="50" stroke="currentColor" strokeWidth="1"/>
+            </svg>
+          </div>
+          <p className={styles.copyrightText}>&copy; KSM 2026</p>
+        </motion.div>
+        <motion.div 
+          className={styles.logoCell}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 5 * 0.08 }}
+        >
+          <div className={styles.cellBackground}>
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80"
+              alt=""
+              className={styles.cellImage}
+            />
+            <div className={styles.cellOverlay} />
+          </div>
+          <h2 className={styles.massiveLogo}>KSM</h2>
+        </motion.div>
+      </div>
+    </footer>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\Header\Header.module.css =====
+/* =============================================
+   HEADER — LaFlor-Inspired Navigation
+   Logo left · Icons + Menu right · Slide-out panel
+   ============================================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--content-padding);
+  height: var(--header-height);
+  transition: background-color var(--duration-normal) var(--ease-out),
+              backdrop-filter var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
+  color: var(--color-white);
+  transition: background-color var(--duration-normal) var(--ease-out),
+              backdrop-filter var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out),
+              color var(--duration-normal) var(--ease-out);
+}
+
+.header.lightTheme:not(.scrolled) {
+  color: var(--color-black);
+}
+
+.header.lightTheme:not(.scrolled) .cartBadge {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+.header.scrolled {
+  background-color: rgba(var(--color-black-rgb), 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(var(--color-white-rgb), 0.06);
+}
+
+/* ---- Logo (Left) ---- */
+.logoArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.leftActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.logoImg {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: invert(1);
+  transition: filter var(--duration-normal) var(--ease-out);
+}
+
+@media (max-width: 768px) {
+  .logoImg {
+    height: 44px;
+  }
+}
+
+.header.lightTheme:not(.scrolled) .logoImg {
+  filter: invert(0);
+}
+
+/* ---- Right Actions ---- */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.iconBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color var(--duration-fast) ease,
+              opacity var(--duration-fast) ease;
+}
+
+.iconBtn:hover {
+  background-color: rgba(var(--color-white-rgb), 0.08);
+}
+
+.cartBadge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 15px;
+  height: 15px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 1;
+  padding: 0 3px;
+}
+
+/* ---- Menu Button (3 horizontal lines with hover effect) ---- */
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid rgba(var(--color-white-rgb), 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 0;
+  transition: border-color var(--duration-normal) var(--ease-out),
+              background-color var(--duration-normal) var(--ease-out);
+}
+
+.header.lightTheme:not(.scrolled) .menuBtn {
+  border-color: rgba(var(--color-black-rgb), 0.2);
+}
+
+.header.lightTheme:not(.scrolled) .menuBtn:hover {
+  border-color: rgba(var(--color-black-rgb), 0.5);
+  background-color: rgba(var(--color-black-rgb), 0.06);
+}
+
+.menuBtn:hover {
+  border-color: rgba(var(--color-white-rgb), 0.5);
+  background-color: rgba(var(--color-white-rgb), 0.06);
+}
+
+.desktopOnly {
+  display: flex;
+}
+
+.menuIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  gap: 4px;
+  transition: gap var(--duration-normal) var(--ease-out);
+}
+
+.menuIcon span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-white);
+  border-radius: 1px;
+  transition: transform var(--duration-normal) var(--ease-out),
+              opacity var(--duration-normal) var(--ease-out),
+              width var(--duration-normal) var(--ease-out),
+              background-color var(--duration-normal) var(--ease-out);
+}
+
+.header.lightTheme:not(.scrolled) .menuIcon span {
+  background-color: var(--color-black);
+}
+
+/* Stagger line widths for visual interest */
+.menuIcon span:nth-child(2) {
+  width: 75%;
+}
+
+.menuBtn:hover .menuIcon span:nth-child(2) {
+  width: 100%;
+}
+
+/* Active state: X morphing */
+.menuIconActive {
+  gap: 0;
+}
+
+.menuIconActive span:first-child {
+  transform: translateY(1.5px) rotate(45deg);
+}
+
+.menuIconActive span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.menuIconActive span:last-child {
+  transform: translateY(-1.5px) rotate(-45deg);
+}
+
+/* =============================================
+   SLIDE-OUT PANEL
+   ============================================= */
+.slidePanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 520px;
+  max-width: 100vw;
+  z-index: var(--z-overlay);
+  background-color: #111110;
+  color: var(--color-white);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.5s var(--ease-out), visibility 0s linear 0.5s;
+  overflow: hidden;
+}
+
+.slidePanel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 248, 235, 0.6) 2px,
+      rgba(255, 248, 235, 0.6) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 248, 235, 0.4) 2px,
+      rgba(255, 248, 235, 0.4) 3px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 248, 235, 0.08) 4px,
+      rgba(255, 248, 235, 0.08) 5px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 248, 235, 0.06) 4px,
+      rgba(255, 248, 235, 0.06) 5px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slidePanel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slidePanelOpen {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.5s var(--ease-out), visibility 0s linear 0s;
+}
+
+.panelInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 20px 20px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+}
+
+/* Close button */
+.closeBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(255, 248, 235, 0.18);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 248, 235, 0.35);
+  font-size: 10px;
+  margin-bottom: 36px;
+  cursor: crosshair;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  border-color: rgba(255, 248, 235, 0.4);
+  color: rgba(255, 248, 235, 0.7);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid rgba(255, 248, 235, 0.4);
+  outline-offset: 4px;
+}
+
+/* Search Bar */
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 0.5px solid rgba(255, 248, 235, 0.1);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.searchIcon {
+  font-size: 12px;
+  color: rgba(255, 248, 235, 0.25);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.7);
+  font-family: var(--font-body);
+  width: 100%;
+  caret-color: rgba(255, 248, 235, 0.5);
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 248, 235, 0.2);
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.searchInput::-webkit-search-cancel-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .searchInput {
+    font-size: 16px;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* ---- Navigation Links ---- */
+.panelNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: var(--space-xl);
+  flex: 1;
+}
+
+.navItem {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid rgba(255, 248, 235, 0.06);
+}
+
+.navItem:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.navIndex {
+  display: block;
+  font-size: 8px;
+  color: rgba(255, 248, 235, 0.2);
+  letter-spacing: 0.12em;
+  margin-bottom: 3px;
+  font-family: var(--font-body);
+}
+
+.navLink {
+  display: block;
+  font-size: 30px;
+  font-weight: 200;
+  color: rgba(255, 248, 235, 0.88);
+  letter-spacing: -0.03em;
+  font-family: var(--font-heading);
+  line-height: 1.05;
+  text-decoration: none;
+  position: relative;
+  width: max-content;
+}
+
+.navLink:hover {
+  color: rgba(255, 248, 235, 1);
+}
+
+/* Underline Hover Draw Effect */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+.navLink:not(:hover)::after {
+  transform-origin: right center;
+}
+
+/* Bottom Switchers */
+.bottomSwitchers {
+  flex-shrink: 0;
+  border-top: 0.5px solid rgba(255, 248, 235, 0.07);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.switcherGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.switcherLabel {
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.18);
+  font-family: var(--font-body);
+}
+
+.switcherRow {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.switchBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border: 0.5px solid rgba(255, 248, 235, 0.1);
+  background: transparent;
+  cursor: crosshair;
+  border-radius: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.switchBtn:hover {
+  border-color: rgba(255, 248, 235, 0.3);
+}
+
+.switchBtnActive {
+  border-color: rgba(255, 248, 235, 0.4);
+  background: rgba(255, 248, 235, 0.05);
+}
+
+.switchText {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 248, 235, 0.35);
+  font-family: var(--font-body);
+  text-transform: uppercase;
+}
+
+.switchBtnActive .switchText {
+  color: rgba(255, 248, 235, 0.85);
+}
+
+.switchBtn:focus-visible {
+  outline: 2px solid rgba(255, 248, 235, 0.4);
+  outline-offset: 3px;
+}
+
+/* ---- Backdrop Overlay ---- */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-overlay) - 1);
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background-color 0.5s var(--ease-out);
+}
+
+.backdropVisible {
+  background-color: rgba(var(--color-black-rgb), 0.5);
+  pointer-events: auto;
+}
+
+/* =============================================
+   FLOATING MOBILE NAV BAR
+   ============================================= */
+.floatingMobileNav {
+  display: none;
+  position: fixed;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translate(-50%, 150%);
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--color-off-white);
+  color: var(--color-black);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50px;
+  padding: 12px 32px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  z-index: 9999;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: transform var(--duration-normal) var(--ease-out),
+              opacity var(--duration-normal) var(--ease-out);
+}
+
+.floatingIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  color: var(--color-black);
+  cursor: pointer;
+  padding: 0;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.floatingIconBtn:hover {
+  opacity: 0.6;
+}
+
+.floatingVisible {
+  transform: translateX(-50%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .floatingMobileNav {
+    display: flex;
+  }
+
+  .slidePanel {
+    width: 100vw;
+    padding: var(--space-2xl) var(--content-padding);
+  }
+
+  .slidePanelOpen {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.35rem;
+  }
+
+  .menuBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .menuIcon {
+    width: 14px;
+    gap: 3px;
+  }
+}
+
+.navLink,
+.panelLinkLabel {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navLink::after,
+.panelLinkLabel::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navLink:hover::after,
+.panelLinkLabel:hover::after {
+  transform: scaleX(1);
+}
+
+.navLink:not(:hover)::after,
+.panelLinkLabel:not(:hover)::after {
+  transform-origin: right center;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\Header\Header.tsx =====
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import styles from './Header.module.css';
+
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [atBottom, setAtBottom] = useState(false);
+  const [searchExpanded, setSearchExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const lastScrollY = useRef(0);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const isProductPage = pathname?.startsWith('/products') ?? false;
+  const isLightTheme = false;
+
+  const [language, setLanguage] = useState<'en' | 'it'>('en');
+  const [currency, setCurrency] = useState<'eur'>('eur');
+
+  const handleSearchKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery('');
+    }
+  };
+
+  const changeCurrency = (code: string, country: string) => {
+    setCurrency('eur');
+    const store = document.querySelector('shopify-store');
+    if (store) {
+      store.setAttribute('country', country);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 60);
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setHidden(true);
+      } else if (currentScrollY < lastScrollY.current) {
+        setHidden(false);
+      }
+
+      // Detect if user is at the very bottom
+      const isBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+      setAtBottom(isBottom);
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.style.overflow = '';
+      document.body.classList.remove('menu-open');
+    }
+    return () => { 
+      document.body.style.overflow = ''; 
+      document.body.classList.remove('menu-open');
+    };
+  }, [menuOpen]);
+
+  const openCart = () => {
+    const cart = document.getElementById('main-cart') as HTMLElement & { showModal: () => void };
+    if (cart) cart.showModal();
+  };
+
+  const navItems = [
+    { label: 'Shop', href: '/products', description: 'Explore our curated collection of pieces across the globe.' },
+    { label: 'Atelier', href: '/atelier', description: 'A glimpse into our creative process — where design meets craft.' },
+  ];
+
+  return (
+    <>
+      <header
+        className={`${styles.header} ${(scrolled || isProductPage) ? styles.scrolled : ''} ${(hidden && !isProductPage) ? styles.hidden : ''} ${isLightTheme ? styles.lightTheme : ''}`}
+        id="site-header"
+      >
+        {/* Left: Mobile Menu & Search */}
+        <div className={styles.leftActions}>
+          <button
+            className={styles.menuBtn}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            id="btn-menu-mobile"
+          >
+            <div className={`${styles.menuIcon} ${menuOpen ? styles.menuIconActive : ''}`}>
+              <span />
+              <span />
+              <span />
+            </div>
+          </button>
+          
+          <button 
+            className={styles.iconBtn} 
+            aria-label="Search" 
+            onClick={() => setMenuOpen(true)}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Center: Logo */}
+        <div className={styles.logoArea}>
+          <a href="/" className={styles.logo} id="site-logo" aria-label="KSM Home">
+            <img
+              src="/images/logo-ksm-nero.png"
+              alt="KSM Atelier"
+              className={styles.logoImg}
+            />
+          </a>
+        </div>
+
+        {/* Right: Icon group + Desktop Menu */}
+        <div className={styles.actions}>
+          <button className={styles.iconBtn} aria-label="Account" id="btn-account">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </button>
+
+          <button className={styles.iconBtn} aria-label="Cart" id="btn-cart" onClick={openCart}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+            <span className={styles.cartBadge}>0</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Full-screen slide-out navigation panel */}
+      <div className={`${styles.slidePanel} ${menuOpen ? styles.slidePanelOpen : ''}`}>
+        <div className={styles.panelInner}>
+          {/* Close button inside panel */}
+          <button
+            className={styles.closeBtn}
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+
+          {/* Search Bar */}
+          <div className={styles.searchWrap}>
+            <span className={styles.searchIcon} aria-hidden="true">
+              ⌕
+            </span>
+            <input
+              type="search"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearchKeyDown}
+              className={styles.searchInput}
+              aria-label="Search products"
+            />
+          </div>
+
+          {/* Navigation Links */}
+          <nav className={styles.panelNav} aria-label="Main navigation">
+            {navItems.map((item, i) => {
+              const isMatch = !searchQuery || item.label.toLowerCase().includes(searchQuery.toLowerCase());
+              return (
+                <div 
+                  key={item.label} 
+                  className={styles.navItem}
+                  style={{ opacity: isMatch ? 1 : 0.2 }}
+                >
+                  <span className={styles.navIndex}>0{i + 1}</span>
+                  <a
+                    href={item.href}
+                    className={styles.navLink}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Bottom Switchers */}
+          <div className={styles.bottomSwitchers}>
+            {/* Language switcher */}
+            <div className={styles.switcherGroup}>
+              <span className={styles.switcherLabel}>Language</span>
+              <div className={styles.switcherRow}>
+                {[
+                  { code: 'en', flag: '🇬🇧', label: 'EN' },
+                  { code: 'it', flag: '🇮🇹', label: 'IT' },
+                ].map(({ code, flag, label }) => (
+                  <button
+                    key={code}
+                    onClick={() => {
+                      setLanguage(code as 'en' | 'it');
+                      document.documentElement.lang = code;
+                    }}
+                    className={`${styles.switchBtn} ${
+                      language === code ? styles.switchBtnActive : ''
+                    }`}
+                    aria-pressed={language === code}
+                    aria-label={`Switch language to ${label}`}
+                  >
+                    <span aria-hidden="true">{flag}</span>
+                    <span className={styles.switchText}>{label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay backdrop */}
+      <div
+        className={`${styles.backdrop} ${menuOpen ? styles.backdropVisible : ''}`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Floating Mobile Nav Bar */}
+      <div className={`${styles.floatingMobileNav} ${scrolled && !atBottom ? styles.floatingVisible : ''}`}>
+        <a href="/" className={styles.floatingIconBtn} aria-label="Home">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+        </a>
+        <button className={styles.floatingIconBtn} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <button
+          className={styles.floatingIconBtn}
+          aria-label="Search"
+          onClick={() => {
+            setMenuOpen(true);
+          }}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+        <button className={styles.floatingIconBtn} aria-label="Cart" onClick={openCart}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+        </button>
+        <button className={styles.floatingIconBtn} aria-label="Account">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </button>
+      </div>
+    </>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\HeroSection\HeroSection.module.css =====
+.container {
+  position: relative;
+  transition: background-color 0.7s ease-in-out;
+  overflow-x: hidden;
+}
+
+.heroSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100dvh;
+}
+
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+}
+
+/* Background */
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Content Layer */
+.contentLayer {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 10;
+}
+
+.centerStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+  position: relative;
+}
+
+/* Video Box */
+.videoBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100dvh;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Title Split Effect */
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-lg);
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  flex-direction: row;
+  pointer-events: none;
+}
+
+.titleText {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(1.8rem, 10vw, 6rem);
+  font-weight: 400;
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .titleContainer {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\HeroSection\HeroSection.tsx =====
+'use client';
+
+import {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { motion, useSpring, useTransform } from 'framer-motion';
+import styles from './HeroSection.module.css';
+
+export default function HeroSection() {
+  const mediaFullyExpanded = useRef(false);
+  const [isMobileState, setIsMobileState] = useState<boolean>(false);
+  const [scrollTrapEnabled, setScrollTrapEnabled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setScrollTrapEnabled(true);
+    }, 10 * 40 + 600); // 1000ms (10 chars * 40ms stagger + 600ms transition duration)
+    return () => clearTimeout(timer);
+  }, []);
+  
+  // Track raw progress
+  const scrollProgressRef = useRef(0);
+  
+  // Create a spring for perfectly smooth interpolation without React state lag
+  const springProgress = useSpring(0, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Transforms mapping spring value [0, 1] to CSS values
+  const bgOpacity = useTransform(springProgress, [0, 1], [1, 1]);
+  const overlayOpacity = useTransform(springProgress, [0, 1], [0.3, 0.3]);
+
+  // Title splits
+  const titleLeftMobile = useTransform(springProgress, [0, 1], ['0vw', '-100vw']);
+  const titleRightMobile = useTransform(springProgress, [0, 1], ['0vw', '100vw']);
+  
+  const titleLeftDesktop = useTransform(springProgress, [0, 1], ['0vw', '-18vw']);
+  const titleRightDesktop = useTransform(springProgress, [0, 1], ['0vw', '18vw']);
+
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!scrollTrapEnabled) return;
+
+    const handleWheel = (e: globalThis.WheelEvent) => {
+      // Skip if a panel/overlay is open (body scroll locked) or if event originated from a panel
+      const target = e.target as HTMLElement;
+      if (
+        document.body.style.overflow === 'hidden' || 
+        (target.closest && (target.closest('[class*="slidePanel"]') || target.closest('[class*="floatingMobileNav"]')))
+      ) {
+        return;
+      }
+
+      // If expanded and scrolling up at top of page, un-expand
+      if (mediaFullyExpanded.current && e.deltaY < 0 && window.scrollY <= 5) {
+        mediaFullyExpanded.current = false;
+        e.preventDefault();
+      } else if (!mediaFullyExpanded.current) {
+        // If not expanded, trap scroll and animate expansion
+        e.preventDefault();
+        const scrollDelta = e.deltaY * 0.0015; // Increased sensitivity for better feel
+        
+        let newProgress = scrollProgressRef.current + scrollDelta;
+        newProgress = Math.min(Math.max(newProgress, 0), 1);
+        
+        scrollProgressRef.current = newProgress;
+        springProgress.set(newProgress);
+
+        if (newProgress >= 1) {
+          mediaFullyExpanded.current = true;
+        }
+      }
+    };
+
+    let touchStartY = 0;
+
+    const handleTouchStart = (e: globalThis.TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: globalThis.TouchEvent) => {
+      if (!touchStartY) return;
+
+      // Skip if a panel/overlay is open (body scroll locked) or if event originated from a panel
+      const target = e.target as HTMLElement;
+      if (
+        document.body.style.overflow === 'hidden' || 
+        (target.closest && (target.closest('[class*="slidePanel"]') || target.closest('[class*="floatingMobileNav"]')))
+      ) {
+        return;
+      }
+
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchY;
+
+      if (mediaFullyExpanded.current && deltaY < -20 && window.scrollY <= 5) {
+        mediaFullyExpanded.current = false;
+        e.preventDefault();
+      } else if (!mediaFullyExpanded.current) {
+        e.preventDefault();
+        const scrollFactor = deltaY < 0 ? 0.012 : 0.008; 
+        const scrollDelta = deltaY * scrollFactor;
+        
+        let newProgress = scrollProgressRef.current + scrollDelta;
+        newProgress = Math.min(Math.max(newProgress, 0), 1);
+        
+        scrollProgressRef.current = newProgress;
+        springProgress.set(newProgress);
+
+        if (newProgress >= 1) {
+          mediaFullyExpanded.current = true;
+        }
+        touchStartY = touchY;
+      }
+    };
+
+    const handleTouchEnd = (): void => {
+      touchStartY = 0;
+    };
+
+    const handleScroll = (): void => {
+      if (!mediaFullyExpanded.current) {
+        window.scrollTo(0, 0);
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('touchstart', handleTouchStart, { passive: false });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [scrollTrapEnabled, springProgress]);
+
+  useEffect(() => {
+    const checkIfMobile = (): void => {
+      setIsMobileState(window.innerWidth < 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  return (
+    <div ref={sectionRef} className={styles.container} style={{ scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+      <section className={styles.heroSection}>
+        <div className={styles.heroWrapper}>
+          
+          {/* Background: Skyscraper */}
+          <motion.div
+            className={styles.background}
+            style={{ opacity: bgOpacity }}
+          >
+            <img
+              src="/images/Midderianwater.jpg"
+              alt=""
+              role="presentation"
+              className={styles.backgroundImage}
+              loading="eager"
+            />
+            <div className={styles.backgroundOverlay} />
+          </motion.div>
+
+          <div className={styles.contentLayer}>
+            <div className={styles.centerStage}>
+              
+              <div className={styles.videoBox}>
+                <img
+                  src="/images/ksm%203.png"
+                  alt=""
+                  role="presentation"
+                  className={styles.heroImage}
+                />
+                <div className={styles.videoOverlay} />
+              </div>
+
+              {/* Title Split Effect */}
+              <div className={styles.titleContainer}>
+                <motion.h2
+                  className={styles.titleText}
+                  style={{ x: isMobileState ? titleLeftMobile : titleLeftDesktop }}
+                >
+                  <span className={styles.srOnly}>KSM</span>
+                  {"KSM".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      style={{ display: "inline-block" }}
+                      aria-hidden="true"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: index * 0.04
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.h2>
+                <motion.h2
+                  className={styles.titleText}
+                  style={{ x: isMobileState ? titleRightMobile : titleRightDesktop }}
+                >
+                  <span className={styles.srOnly}>ATELIER</span>
+                  {"ATELIER".split("").map((char, index) => (
+                    <motion.span
+                      key={index}
+                      style={{ display: "inline-block" }}
+                      aria-hidden="true"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: (3 * 0.04) + (index * 0.04) + 0.1
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\LoadingScreen\LoadingScreen.module.css =====
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #0e0d0c;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  transition: opacity 0.8s var(--ease-out), visibility 0.8s;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Background Layers */
+.loaderBg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/loader-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.loaderLinen {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 248, 235, 0.6) 2px,
+      rgba(255, 248, 235, 0.6) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 248, 235, 0.4) 2px,
+      rgba(255, 248, 235, 0.4) 3px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 248, 235, 0.08) 4px,
+      rgba(255, 248, 235, 0.08) 5px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 4px,
+      rgba(255, 248, 235, 0.06) 4px,
+      rgba(255, 248, 235, 0.06) 5px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.loaderOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 9, 8, 0.62);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.loaderVignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 20%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.loaderBottomFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(8, 7, 6, 0.85) 100%
+  );
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Content */
+.loaderContent {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* Logo Image */
+.logoWrap {
+  margin-bottom: 32px;
+}
+
+.logoImg {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Centered Hairline Progress Bar */
+.progressTrack {
+  width: 140px;
+  height: 0.5px;
+  background: rgba(255, 248, 235, 0.08);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.progressFill {
+  height: 100%;
+  background: rgba(255, 248, 235, 0.5);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* Tagline Typography */
+.loaderTagline {
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 235, 0.25);
+  font-family: var(--font-body);
+  margin-bottom: 12px;
+}
+
+/* Counter Typography */
+.loaderCounter {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.loaderCounterNum {
+  font-size: 44px;
+  font-weight: 200;
+  color: rgba(255, 248, 235, 0.65);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  min-width: 66px;
+  text-align: right;
+}
+
+.loaderCounterPct {
+  font-size: 13px;
+  font-weight: 200;
+  color: rgba(255, 248, 235, 0.25);
+  font-family: var(--font-body);
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\LoadingScreen\LoadingScreen.tsx =====
+'use client';
+
+import { useState, useEffect } from 'react';
+import styles from './LoadingScreen.module.css';
+
+export default function LoadingScreen() {
+  const [progress, setProgress] = useState(0);
+  const [hidden, setHidden] = useState(false);
+  const [logoOpacity, setLogoOpacity] = useState(0.15);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      setLogoOpacity(1);
+    }
+  }, [progress]);
+
+  useEffect(() => {
+    // Simulate progressive loading tied to actual resource loading
+    let frame: number;
+    let start: number | null = null;
+    const duration = 2400; // minimum display time in ms
+
+    const animate = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const rawProgress = Math.min(elapsed / duration, 1);
+
+      // Ease-out curve for natural feeling
+      const eased = 1 - Math.pow(1 - rawProgress, 3);
+      setProgress(Math.round(eased * 100));
+
+      if (rawProgress < 1) {
+        frame = requestAnimationFrame(animate);
+      } else {
+        // Give a brief pause at 100% before fading
+        setTimeout(() => setHidden(true), 300);
+      }
+    };
+
+    // Wait for fonts and initial paint
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        frame = requestAnimationFrame(animate);
+      });
+    } else {
+      frame = requestAnimationFrame(animate);
+    }
+
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const displayNum = String(Math.floor(progress)).padStart(3, '0');
+
+  return (
+    <div className={`${styles.overlay} ${hidden ? styles.hidden : ''}`}>
+      {/* Background Layers */}
+      <div className={styles.loaderBg} />
+      <div className={styles.loaderLinen} />
+      <div className={styles.loaderOverlay} />
+      <div className={styles.loaderVignette} />
+      <div className={styles.loaderBottomFade} />
+
+      {/* Content Wrapper */}
+      <div className={styles.loaderContent}>
+        {/* 1. Logo image */}
+        <div className={styles.logoWrap}>
+          <img
+            src="/images/loader-logo.png"
+            alt="KSM Atelier"
+            className={styles.logoImg}
+            style={{ opacity: logoOpacity }}
+          />
+        </div>
+
+        {/* 2. Progress bar */}
+        <div className={styles.progressTrack}>
+          <div
+            className={styles.progressFill}
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        {/* 3. Tagline */}
+        <p className={styles.loaderTagline}>THE ZENITH OF STATUS</p>
+
+        {/* 4. Counter */}
+        <div className={styles.loaderCounter}>
+          <span className={styles.loaderCounterNum}>{displayNum}</span>
+          <span className={styles.loaderCounterPct}>%</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\MobileStackWrapper\MobileStackWrapper.module.css =====
+.cardVignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\MobileStackWrapper\MobileStackWrapper.tsx =====
+'use client';
+
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import styles from './MobileStackWrapper.module.css';
+
+interface StackCardProps {
+  children: React.ReactNode;
+  index: number;
+  total: number;
+}
+
+function StackCard({ children, index, total }: StackCardProps) {
+  const container = useRef<HTMLDivElement>(null);
+  const [sectionHeight, setSectionHeight] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(800);
+  
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end start']
+  });
+
+  // Smooth interpolation using a spring for that "silky" feel
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 30,
+    restDelta: 0.005
+  });
+
+  // Calculate transformations based on the smoothed scroll progress
+  // We start the transition earlier (0.1 instead of 0.6) for a more gradual feel
+  const scale = useTransform(smoothProgress, [0.1, 1], [1, 0.85]);
+  const opacity = useTransform(smoothProgress, [0.1, 1], [1, 0.5]);
+  const vignetteOpacity = useTransform(smoothProgress, [0.1, 1], [0, 0.35]);
+
+  useEffect(() => {
+    setViewportHeight(window.innerHeight);
+
+    const handleResize = () => setViewportHeight(window.innerHeight);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!container.current) return;
+    
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setSectionHeight(entry.contentRect.height);
+      }
+    });
+
+    observer.observe(container.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Calculate top: if section is taller than viewport, it needs to be 
+  // negative so we scroll to the bottom of it before it "sticks" 
+  // for the next card to cover it.
+  const stickyTop = Math.min(0, viewportHeight - sectionHeight);
+
+  return (
+    <div 
+      ref={container} 
+      style={{ 
+        position: 'relative', // Ensure container has non-static position for useScroll
+        zIndex: index,
+        scrollSnapAlign: 'start',
+        scrollSnapStop: 'always',
+        backgroundColor: 'var(--color-black)', // Moved from parent
+      }}
+    >
+      <div 
+        style={{ 
+          position: 'sticky', 
+          top: stickyTop, 
+          isolation: 'isolate',
+        }}
+      >
+        <motion.div
+          style={{
+            scale: index === total - 1 ? 1 : scale,
+            opacity: index === total - 1 ? 1 : opacity,
+            transformOrigin: 'top center',
+            willChange: 'transform, opacity',
+          }}
+        >
+          {children}
+        </motion.div>
+        <motion.div
+          className={styles.cardVignette}
+          style={{ opacity: vignetteOpacity }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default function MobileStackWrapper({ children }: { children: React.ReactNode[] }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lastScrollTime = useRef(0);
+  const isLocked = useRef(false);
+
+  // Removed manual wheel/touch handlers as they conflict with CSS Scroll Snap
+  // and the HeroSection's own scroll trapping logic.
+
+  return (
+    <div 
+      ref={containerRef}
+      style={{ 
+        display: 'contents', // Allow children to be direct snap points for the body/html container
+      }}
+    >
+      {children.map((child, index) => (
+        <StackCard 
+          key={index} 
+          index={index} 
+          total={children.length}
+        >
+          {child}
+        </StackCard>
+      ))}
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\PhotoGallery\PhotoGallery.module.css =====
+.section {
+  position: relative;
+  background-color: var(--color-black);
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) blur(1px);
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--content-padding);
+}
+
+.bannerText {
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 1.5vw, 1.0625rem);
+  font-weight: 300;
+  color: rgba(var(--color-white-rgb), 0.85);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* Photo Strip */
+.strip {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.strip::-webkit-scrollbar {
+  display: none;
+}
+
+.stripInner {
+  display: flex;
+  gap: 4px;
+  min-width: max-content;
+}
+
+.photoItem {
+  position: relative;
+  width: 300px;
+  height: 420px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.photoItem:hover .photoImage {
+  transform: scale(1.05);
+}
+
+/* Photo with Product Card */
+.photoItemWithCard {
+  cursor: pointer;
+}
+
+.popoverCard {
+  position: absolute;
+  bottom: var(--space-lg);
+  right: var(--space-md);
+  background: var(--color-off-white);
+  border-radius: 4px;
+  padding: var(--space-sm);
+  min-width: 200px;
+  box-shadow: 0 4px 20px rgba(var(--color-black-rgb), 0.15);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
+  z-index: 2;
+}
+
+.photoItemWithCard:hover .popoverCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Popover Card Inner (global) */
+:global(.popover-card__inner) {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+}
+
+:global(.popover-card__image) {
+  width: 60px;
+  height: 75px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: var(--color-cream);
+}
+
+:global(.popover-card__image) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:global(.popover-card__info) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+:global(.popover-card__name) {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-black);
+  line-height: 1.3;
+  margin: 0;
+}
+
+:global(.popover-card__price) {
+  display: flex;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-black);
+}
+
+:global(.popover-card__compare) {
+  text-decoration: line-through;
+  color: var(--color-gray-300);
+}
+
+:global(.popover-card__actions) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+:global(.popover-card__view) {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-gray-500);
+  cursor: pointer;
+}
+
+:global(.popover-card__view:hover) {
+  color: var(--color-black);
+}
+
+:global(.popover-card__add) {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) ease;
+}
+
+:global(.popover-card__add:hover) {
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner {
+    height: 240px;
+  }
+
+  .photoItem {
+    width: 240px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 180px;
+  }
+
+  .photoItem {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\PhotoGallery\PhotoGallery.tsx =====
+import styles from './PhotoGallery.module.css';
+
+export default function PhotoGallery() {
+  return (
+    <section className={styles.section} id="photo-gallery" aria-label="Lookbook Gallery">
+
+
+      {/* Photo Strip */}
+      <div className={styles.strip}>
+        <div className={styles.stripInner}>
+          <div className={styles.photoItem}>
+            <img
+              src="/images/Bottomline1.webp"
+              alt="Fashion editorial"
+              className={styles.photoImage}
+              loading="lazy"
+            />
+          </div>
+          <div className={styles.photoItem}>
+            <img
+              src="/images/Bottomline2.webp"
+              alt="Fashion editorial"
+              className={styles.photoImage}
+              loading="lazy"
+            />
+          </div>
+          <div className={styles.photoItem}>
+            <img
+              src="/images/Bottomline3.webp"
+              alt="Fashion editorial"
+              className={styles.photoImage}
+              loading="lazy"
+            />
+          </div>
+          <div className={`${styles.photoItem} ${styles.photoItemWithCard}`}>
+            <img
+              src="/images/Bottomline4.webp"
+              alt="Fashion editorial"
+              className={styles.photoImage}
+              loading="lazy"
+            />
+            {/* Product Popover Card */}
+            <div className={styles.popoverCard}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    <shopify-context type="product" handle="silk-peplum-blouse">
+                      <template>
+                        <div class="popover-card__inner">
+                          <div class="popover-card__image">
+                            <shopify-media
+                              width="80"
+                              height="100"
+                              query="product.selectedOrFirstAvailableVariant.image"
+                            ></shopify-media>
+                          </div>
+                          <div class="popover-card__info">
+                            <h4 class="popover-card__name">
+                              <shopify-data query="product.title"></shopify-data>
+                            </h4>
+                            <div class="popover-card__price">
+                              <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                              <span class="popover-card__compare">
+                              <shopify-money query="product.selectedOrFirstAvailableVariant.compareAtPrice"></shopify-money>
+                              </span>
+                            </div>
+                            <div class="popover-card__actions">
+                              <span class="popover-card__view">View detail</span>
+                              <button
+                                class="popover-card__add"
+                                onclick="getElementById('main-cart').addLine(event).showModal();"
+                                aria-label="Add to cart"
+                              >+</button>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                    </shopify-context>
+                  `,
+                }}
+              />
+            </div>
+          </div>
+          <div className={styles.photoItem}>
+            <img
+              src="/images/Bottomline5.webp"
+              alt="Fashion editorial"
+              className={styles.photoImage}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ProductDetail\ProductDetail.module.css =====
+.container {
+  padding: var(--header-height) var(--content-padding) var(--space-5xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.backNav {
+  margin-bottom: var(--space-2xl);
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray-400);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.backLink:hover {
+  color: var(--color-black);
+}
+
+.productMain {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Image Stack Layout */
+.imageStack {
+  width: 55%;
+  position: relative;
+}
+
+.imageBlock {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.imageBlock img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Product Info */
+.info {
+  width: 45%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: var(--space-3xl) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-2xl);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--color-black);
+  line-height: 1.1;
+}
+
+.price {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  color: var(--color-black);
+  font-weight: 400;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-gray-500);
+  line-height: 1.6;
+}
+
+/* Options */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.optionLabel {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-sm);
+}
+
+.sizeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.sizeBtn {
+  min-width: 60px;
+  height: 44px;
+  border: 1px solid var(--color-gray-200);
+  background: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sizeBtn:hover {
+  border-color: var(--color-black);
+}
+
+.sizeBtnActive {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.addToCart {
+  width: 100%;
+  height: 56px;
+  background-color: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.addToCart:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.buyNow {
+  width: 100%;
+  height: 56px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-black);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.buyNow:hover {
+  opacity: 0.8;
+}
+
+/* Features */
+.featuresRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.featureLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray-500);
+}
+
+/* Size Chart */
+.sizeChartSection {
+  margin-top: var(--space-5xl);
+  padding-top: var(--space-4xl);
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.sizeChartTitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2xl);
+  font-style: normal;
+}
+
+.tableWrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  margin-bottom: var(--space-3xl);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+}
+
+.table th {
+  text-align: left;
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-gray-100);
+  color: var(--color-gray-400);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table td {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-gray-100);
+  color: var(--color-black);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+    overflow-x: hidden;
+  }
+
+  .productMain {
+    flex-direction: column;
+  }
+  
+  .imageStack {
+    width: 100%;
+  }
+
+  .imageBlock {
+    width: 100vw;
+    height: auto;
+    margin-left: calc(-1 * var(--content-padding));
+  }
+
+  .info {
+    width: 100%;
+    position: static;
+    height: auto;
+    padding: var(--space-2xl) 0;
+  }
+
+  .sizeChartSection {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-2xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: calc(var(--header-height) + var(--space-md)) var(--space-lg) var(--space-3xl);
+    overflow-x: hidden;
+  }
+
+  .backNav {
+    margin-bottom: var(--space-lg);
+  }
+
+  .productMain {
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .price {
+    font-size: var(--text-lg);
+  }
+
+  .description {
+    font-size: var(--text-sm);
+  }
+
+  .thumbnail {
+    width: 80px;
+  }
+
+  .sizeBtn {
+    min-width: 50px;
+    height: 40px;
+    font-size: var(--text-xs);
+  }
+
+  .actionButtons {
+    gap: var(--space-sm);
+  }
+
+  .addToCart,
+  .buyNow {
+    height: 50px;
+    font-size: var(--text-xs);
+  }
+
+  .sizeChartTitle {
+    font-size: var(--text-xl);
+  }
+
+  .tableWrapper {
+    margin-left: 0;
+    margin-right: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    font-size: var(--text-xs);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .table th,
+  .table td {
+    padding: var(--space-sm);
+    white-space: nowrap;
+  }
+}
+
+.sizeBtn:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 4px;
+}
+
+.addToCart:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 4px;
+}
+
+.buyNow:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 4px;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ProductDetail\ProductDetail.tsx =====
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import styles from './ProductDetail.module.css';
+
+interface ProductDetailProps {
+  handle: string;
+}
+
+const PRODUCT_DATA: Record<string, any> = {
+  'crown-monogram-tee': {
+    name: 'The Crown Monogram Tee',
+    price: '€100.00',
+    description: 'A definitive essential for the modern wardrobe. Crafted from premium heavy-weight cotton, this tee features our signature KSM script logo and the hallmark crown emblem — a quiet declaration of status and taste. The relaxed yet structured fit makes it a versatile piece for high-end lounging or refined daily wear.',
+    images: [
+      '/images/Product/product%20image%201.png',
+      '/images/Product/product%20image%202.png',
+      '/images/Product/KSMshirt4.JPG',
+      '/images/Product/madeinitaly.JPG',
+      '/images/Product/packaging.png',
+    ],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+  },
+};
+
+export default function ProductDetail({ handle }: ProductDetailProps) {
+  const product = PRODUCT_DATA[handle] || PRODUCT_DATA['crown-monogram-tee'];
+  const [selectedSize, setSelectedSize] = useState('M');
+
+  const handleAddToCart = () => {
+    const cart = document.getElementById('main-cart') as any;
+    if (cart && typeof cart.addItem === 'function') {
+      const variantId = "gid://shopify/ProductVariant/123456789"; 
+      cart.addItem(variantId, 1);
+      cart.showModal();
+    } else {
+      console.warn("Shopify cart is still initializing. Please try again in a moment.");
+    }
+  };
+
+  const handleBuyNow = () => {
+    const cart = document.getElementById('main-cart') as any;
+    if (cart && typeof cart.addItem === 'function') {
+      const variantId = "gid://shopify/ProductVariant/123456789";
+      cart.addItem(variantId, 1);
+      setTimeout(() => {
+        const checkoutBtn = cart.querySelector('[slot="checkout-button"]');
+        if (checkoutBtn) (checkoutBtn as HTMLElement).click();
+      }, 500);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      {/* Back Link */}
+      <nav className={styles.backNav}>
+        <Link href="/products" className={styles.backLink}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Back to collection
+        </Link>
+      </nav>
+
+      <div className={styles.productMain}>
+        {/* Left: Image Stack */}
+        <div className={styles.imageStack}>
+          {product.images.map((img: string, idx: number) => (
+            <div key={idx} className={styles.imageBlock}>
+              <img 
+                src={img} 
+                alt="The Crown Monogram Tee" 
+                role="presentation" 
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Right: Info */}
+        <div className={styles.info}>
+          <header className={styles.header}>
+            <h1 className={styles.title}>{product.name}</h1>
+            <span className={styles.price}>{product.price}</span>
+          </header>
+
+          <p className={styles.description}>
+            {product.description}
+          </p>
+
+          <div className={styles.options}>
+            <div>
+              <p className={styles.optionLabel}>Select Size</p>
+              <div className={styles.sizeList}>
+                {product.sizes.map((size: string) => (
+                  <button 
+                    key={size}
+                    className={`${styles.sizeBtn} ${selectedSize === size ? styles.sizeBtnActive : ''}`}
+                    onClick={() => setSelectedSize(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.actionButtons}>
+              <button className={styles.addToCart} onClick={handleAddToCart}>
+                Add to Bag
+              </button>
+              <button className={styles.buyNow} onClick={handleBuyNow}>
+                Buy Now
+              </button>
+            </div>
+
+            <div className={styles.featuresRow}>
+              <div className={styles.featureItem}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-black)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3c-2 0-3.5 1.5-3.5 3.5 0 .5.1.9.3 1.3-1.8.6-3.1 2.3-3.1 4.2 0 2.5 2 4.5 4.5 4.5h3.6c2.5 0 4.5-2 4.5-4.5 0-1.9-1.3-3.6-3.1-4.2.2-.4.3-.8.3-1.3C18.5 4.5 17 3 15 3c-1.2 0-2.3.6-3 1.5-.7-.9-1.8-1.5-3-1.5z" />
+                  <path d="M12 16.5V21" />
+                </svg>
+                <span className={styles.featureLabel}>100% Cotton</span>
+              </div>
+              <div className={styles.featureItem}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-black)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2h12v20l-6-4-6 4z" />
+                </svg>
+                <span className={styles.featureLabel}>Made in Italy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Size Chart Section */}
+      <section className={styles.sizeChartSection}>
+        <h2 className={styles.sizeChartTitle}>The Measurement Guide</h2>
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Chest (Inches)</th>
+                <th>Waist (Inches)</th>
+                <th>Sleeve (Inches)</th>
+                <th>International</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Small</td>
+                <td>36 - 38</td>
+                <td>30 - 32</td>
+                <td>32.5</td>
+                <td>S</td>
+              </tr>
+              <tr>
+                <td>Medium</td>
+                <td>39 - 41</td>
+                <td>33 - 35</td>
+                <td>33.5</td>
+                <td>M</td>
+              </tr>
+              <tr>
+                <td>Large</td>
+                <td>42 - 44</td>
+                <td>36 - 38</td>
+                <td>34.5</td>
+                <td>L</td>
+              </tr>
+              <tr>
+                <td>Extra Large</td>
+                <td>45 - 47</td>
+                <td>39 - 41</td>
+                <td>35.5</td>
+                <td>XL</td>
+              </tr>
+              <tr>
+                <td>XXL</td>
+                <td>48 - 50</td>
+                <td>42 - 44</td>
+                <td>36.5</td>
+                <td>XXL</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Shopify Integration Placeholder */}
+      <div 
+        style={{ display: 'none' }}
+        dangerouslySetInnerHTML={{
+          __html: `
+            <shopify-context type="product" handle="${handle}">
+              <template>
+                <div class="product-data-bridge">
+                  <shopify-data query="product.title" id="shopify-title"></shopify-data>
+                  <shopify-money query="product.variants.edges[0].node.price" id="shopify-price"></shopify-money>
+                  <shopify-data query="product.description" id="shopify-desc"></shopify-data>
+                  <shopify-list-context type="variant" query="product.variants">
+                    <template>
+                      <button data-variant-id="{{variant.id}}">{{variant.title}}</button>
+                    </template>
+                  </shopify-list-context>
+                </div>
+              </template>
+            </shopify-context>
+          `
+        }}
+      />
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ProductGallery\ProductGallery.module.css =====
+.container {
+  padding: var(--header-height) var(--content-padding) var(--space-5xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-4xl);
+  padding-top: var(--space-4xl);
+}
+
+.titleArea {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 400;
+  color: var(--color-black);
+  line-height: 1;
+}
+
+.count {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  margin-bottom: 8px;
+}
+
+/* Controls: Search, Filter, Sort */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-gray-100);
+  border-bottom: 1px solid var(--color-gray-100);
+  padding: var(--space-md) 0;
+  gap: var(--space-xl);
+}
+
+.searchWrapper {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+}
+
+.searchInput {
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  padding: var(--space-sm) 0;
+  color: var(--color-black);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--color-gray-300);
+}
+
+.dropdownWrapper {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--color-off-white);
+  border: 1px solid var(--color-gray-100);
+  min-width: 180px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(var(--color-black-rgb), 0.05);
+}
+
+.dropdownItem {
+  background: none;
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray-400);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.dropdownItem:hover {
+  color: var(--color-black);
+  background-color: var(--color-cream);
+}
+
+.dropdownItemActive {
+  color: var(--color-black);
+  background-color: var(--color-cream);
+}
+
+.controlBtn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.controlBtn:hover {
+  opacity: 0.6;
+}
+
+.noResults {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-5xl) 0;
+  font-family: var(--font-sans);
+  color: var(--color-gray-400);
+  font-style: normal;
+}
+
+.controlBtn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.controlBtn:hover {
+  opacity: 0.6;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+
+/* Product Card (specific to gallery) */
+.card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  background-color: transparent;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  transition: transform var(--duration-slow) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
+}
+
+.hoverImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.card:hover .primaryImage {
+  opacity: 0;
+}
+
+.card:hover .hoverImage {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.productName {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.price {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  
+  .titleArea {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+  
+  .filterSort {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ProductGallery\ProductGallery.tsx =====
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import styles from './ProductGallery.module.css';
+
+const MOCK_PRODUCTS = [
+  {
+    id: 1,
+    handle: 'crown-monogram-tee',
+    name: 'The Crown Monogram Tee',
+    price: '€100.00',
+    primaryImage: '/images/Product/product%20image%201.png',
+    hoverImage: '/images/Product/KSMshirt4.JPG',
+  },
+];
+
+export default function ProductGallery() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [sortOption, setSortOption] = useState('Featured');
+  const [showFilters, setShowFilters] = useState(false);
+  const [showSort, setShowSort] = useState(false);
+
+  const filteredProducts = MOCK_PRODUCTS
+    .filter(product => {
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = activeCategory === 'All' || product.name.includes(activeCategory);
+      return matchesSearch && matchesCategory;
+    })
+    .sort((a, b) => {
+      if (sortOption === 'Price: Low to High') {
+        return parseFloat(a.price.replace(/[€$]/g, '')) - parseFloat(b.price.replace(/[€$]/g, ''));
+      }
+      if (sortOption === 'Price: High to Low') {
+        return parseFloat(b.price.replace(/[€$]/g, '')) - parseFloat(a.price.replace(/[€$]/g, ''));
+      }
+      return 0; // Featured/Default
+    });
+
+  return (
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <div className={styles.titleArea}>
+          <h1 className={styles.title}>{activeCategory === 'All' ? 'Shop All' : activeCategory}</h1>
+          <span className={styles.count}>{filteredProducts.length} Products</span>
+        </div>
+
+        <div className={styles.controls}>
+          <div className={styles.searchWrapper}>
+            <input 
+              type="text" 
+              placeholder="Search our collection..." 
+              className={styles.searchInput}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.filterSort}>
+            <div className={styles.dropdownWrapper}>
+              <button 
+                className={styles.controlBtn}
+                onClick={() => { setShowFilters(!showFilters); setShowSort(false); }}
+              >
+                Filter: {activeCategory}
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeLinecap="round"/>
+                </svg>
+              </button>
+              {showFilters && (
+                <div className={styles.dropdown}>
+                  {['All', 'Polo', 'Shirt', 'Trousers'].map(cat => (
+                    <button 
+                      key={cat}
+                      className={`${styles.dropdownItem} ${activeCategory === cat ? styles.dropdownItemActive : ''}`}
+                      onClick={() => { setActiveCategory(cat); setShowFilters(false); }}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className={styles.dropdownWrapper}>
+              <button 
+                className={styles.controlBtn}
+                onClick={() => { setShowSort(!showSort); setShowFilters(false); }}
+              >
+                Sort: {sortOption}
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeLinecap="round"/>
+                </svg>
+              </button>
+              {showSort && (
+                <div className={styles.dropdown}>
+                  {['Featured', 'Price: Low to High', 'Price: High to Low'].map(option => (
+                    <button 
+                      key={option}
+                      className={`${styles.dropdownItem} ${sortOption === option ? styles.dropdownItemActive : ''}`}
+                      onClick={() => { setSortOption(option); setShowSort(false); }}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className={styles.grid}>
+        {filteredProducts.map((product) => (
+          <Link 
+            key={product.id} 
+            href={`/products/${product.handle}`}
+            className={styles.card}
+          >
+            <div className={styles.imageWrap}>
+              <img 
+                src={product.primaryImage} 
+                alt={product.name} 
+                className={styles.primaryImage}
+              />
+              <img 
+                src={product.hoverImage} 
+                alt={`${product.name} Detail`} 
+                className={styles.hoverImage}
+              />
+            </div>
+            <div className={styles.info}>
+              <h3 className={styles.productName}>{product.name}</h3>
+              <span className={styles.price}>{product.price}</span>
+            </div>
+          </Link>
+        ))}
+        {filteredProducts.length === 0 && (
+          <p className={styles.noResults}>No pieces found matching your criteria.</p>
+        )}
+      </div>
+
+      {/* Shopify Integration Placeholder */}
+      <div 
+        style={{ display: 'none' }}
+        dangerouslySetInnerHTML={{
+          __html: `
+            <shopify-context type="collection" handle="all">
+              <template>
+                <shopify-list-context type="product" query="collection.products">
+                  <template>
+                    <div class="product-card">
+                      <a href="/products/{{product.handle}}">
+                        <shopify-media width="400" height="533" query="product.selectedOrFirstAvailableVariant.image" class="primary-image"></shopify-media>
+                        <shopify-media width="400" height="533" query="product.images[1]" class="hover-image"></shopify-media>
+                        <shopify-data query="product.title"></shopify-data>
+                        <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                      </a>
+                    </div>
+                  </template>
+                </shopify-list-context>
+              </template>
+            </shopify-context>
+          `
+        }}
+      />
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ProductModal\ProductModal.module.css =====
+.modal {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Product Modal Inner Styles (global for dangerouslySetInnerHTML) */
+:global(.product-modal__container) {
+  padding: var(--space-xl);
+}
+
+:global(.product-modal__close-row) {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-md);
+}
+
+:global(.product-modal__close-btn) {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--color-cream);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-black);
+  transition: background-color var(--duration-fast) ease;
+}
+
+:global(.product-modal__close-btn:hover) {
+  background-color: var(--color-gray-200);
+}
+
+:global(.product-modal__content) {
+  width: 100%;
+}
+
+:global(.product-modal__layout) {
+  display: flex;
+  gap: var(--space-2xl);
+}
+
+@media (max-width: 768px) {
+  :global(.product-modal__layout) {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+}
+
+:global(.product-modal__media) {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--color-cream);
+}
+
+:global(.product-modal__media) img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+:global(.product-modal__details) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+:global(.product-modal__header) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+:global(.product-modal__vendor) {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+}
+
+:global(.product-modal__title) {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  color: var(--color-black);
+  line-height: 1.2;
+  margin: 0;
+}
+
+:global(.product-modal__price-row) {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--color-black);
+  margin-top: var(--space-xs);
+}
+
+:global(.product-modal__btn-group) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+:global(.product-modal__add-to-cart) {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: 2px solid var(--color-black);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background-color var(--duration-normal) ease,
+              color var(--duration-normal) ease;
+}
+
+:global(.product-modal__add-to-cart:hover) {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+:global(.product-modal__add-to-cart:disabled) {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+:global(.product-modal__buy-now) {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: opacity var(--duration-normal) ease;
+}
+
+:global(.product-modal__buy-now:hover) {
+  opacity: 0.6;
+}
+
+:global(.product-modal__buy-now:disabled) {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+:global(.product-modal__description) {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-gray-400);
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+:global(.product-modal__description p) {
+  margin: 0;
+}
+
+:global(.product-modal__loading) {
+  padding: var(--space-2xl);
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ProductModal\ProductModal.tsx =====
+import styles from './ProductModal.module.css';
+
+export default function ProductModal() {
+  return (
+    <dialog id="product-modal" className={styles.modal}>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+            <shopify-context id="product-modal-context" type="product" wait-for-update>
+              <template>
+                <div class="product-modal__container">
+                  <div class="product-modal__close-row">
+                    <button class="product-modal__close-btn" onclick="getElementById('product-modal').close();" aria-label="Close product details">
+                      &#10005;
+                    </button>
+                  </div>
+                  <div class="product-modal__content">
+                    <div class="product-modal__layout">
+                      <div class="product-modal__media">
+                        <shopify-media
+                          width="420"
+                          height="520"
+                          query="product.selectedOrFirstAvailableVariant.image"
+                        ></shopify-media>
+                      </div>
+                      <div class="product-modal__details">
+                        <div class="product-modal__header">
+                          <span class="product-modal__vendor">
+                            <shopify-data query="product.vendor"></shopify-data>
+                          </span>
+                          <h1 class="product-modal__title">
+                            <shopify-data query="product.title"></shopify-data>
+                          </h1>
+                          <div class="product-modal__price-row">
+                            <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                          </div>
+                        </div>
+
+                        <shopify-variant-selector></shopify-variant-selector>
+
+                        <div class="product-modal__btn-group">
+                          <button
+                            class="product-modal__add-to-cart"
+                            onclick="getElementById('main-cart').addLine(event).showModal();"
+                            shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                          >
+                            Add to cart
+                          </button>
+                          <button
+                            class="product-modal__buy-now"
+                            onclick="document.querySelector('shopify-store').buyNow(event)"
+                            shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                          >
+                            Buy now
+                          </button>
+                        </div>
+
+                        <div class="product-modal__description">
+                          <shopify-data query="product.descriptionHtml"></shopify-data>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
+              <div shopify-loading-placeholder class="product-modal__loading">
+                <div class="skeleton" style="width: 100%; height: 400px;"></div>
+              </div>
+            </shopify-context>
+          `,
+        }}
+      />
+    </dialog>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ScrollRestorationManager\ScrollRestorationManager.tsx =====
+'use client';
+
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+
+export default function ScrollRestorationManager() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // 1. Force the browser to NOT restore scroll position on reload
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    const forceScrollToTop = () => {
+      const htmlEl = document.documentElement;
+      const originalScrollBehavior = htmlEl.style.scrollBehavior;
+      
+      // Temporarily bypass smooth scrolling
+      htmlEl.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+
+      // Temporarily bypass scroll snapping if active
+      const hasSnap = htmlEl.classList.contains('snap-active');
+      if (hasSnap) {
+        htmlEl.classList.remove('snap-active');
+      }
+
+      setTimeout(() => {
+        htmlEl.style.scrollBehavior = originalScrollBehavior;
+        if (hasSnap) {
+          htmlEl.classList.add('snap-active');
+        }
+      }, 50);
+    };
+
+    forceScrollToTop();
+  }, []);
+
+  useEffect(() => {
+    // 2. Trigger instant scroll-to-top on every path/route change
+    const forceScrollToTop = () => {
+      const htmlEl = document.documentElement;
+      const originalScrollBehavior = htmlEl.style.scrollBehavior;
+      
+      htmlEl.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+
+      const hasSnap = htmlEl.classList.contains('snap-active');
+      if (hasSnap) {
+        htmlEl.classList.remove('snap-active');
+      }
+
+      setTimeout(() => {
+        htmlEl.style.scrollBehavior = originalScrollBehavior;
+        if (hasSnap) {
+          htmlEl.classList.add('snap-active');
+        }
+      }, 50);
+    };
+
+    forceScrollToTop();
+  }, [pathname]);
+
+  return null;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\components\ShopifyProvider\ShopifyProvider.tsx =====
+'use client';
+
+import { useEffect, useRef } from 'react';
+
+export default function ShopifyProvider() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const initialized = useRef(false);
+
+  useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+
+    // Create shopify-store element
+    const store = document.createElement('shopify-store');
+    store.setAttribute('store-domain', 'runway-store-newdemo.myshopify.com');
+    store.setAttribute('country', 'US');
+    store.setAttribute('language', 'en');
+    document.body.prepend(store);
+
+    // Create shopify-cart element
+    const cart = document.createElement('shopify-cart');
+    cart.id = 'main-cart';
+
+    // Empty state slot
+    const emptySlot = document.createElement('div');
+    emptySlot.setAttribute('slot', 'empty');
+    emptySlot.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;gap:1rem;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-gray-100)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--color-gray-400);">Your cart is empty</p>
+        <p style="font-family:var(--font-body);font-size:0.8125rem;color:var(--color-gray-400);">Add items to get started</p>
+      </div>
+    `;
+
+    // Checkout button slot
+    const checkoutSlot = document.createElement('div');
+    checkoutSlot.setAttribute('slot', 'checkout-button');
+    checkoutSlot.textContent = 'Proceed to Checkout';
+
+    cart.appendChild(emptySlot);
+    cart.appendChild(checkoutSlot);
+    document.body.appendChild(cart);
+
+    // Load Shopify Web Components script last
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = 'https://cdn.shopify.com/storefront/web-components.js';
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup on unmount (shouldn't happen in production)
+      store.remove();
+      cart.remove();
+      script.remove();
+    };
+  }, []);
+
+  return <div ref={containerRef} style={{ display: 'none' }} />;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\cookies\cookies.module.css =====
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 24px 120px;
+}
+
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  font-family: var(--font-body);
+  margin-bottom: 16px;
+}
+
+.pageTitle {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 200;
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.lastUpdated {
+  font-size: 10px;
+  color: var(--color-gray-400);
+  font-family: var(--font-body);
+  letter-spacing: 0.06em;
+  margin-bottom: 64px;
+  padding-bottom: 32px;
+  border-bottom: 0.5px solid var(--color-gray-100);
+}
+
+.section {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 0.5px solid var(--color-gray-100);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.sectionBody {
+  font-size: 14px;
+  color: var(--color-gray-400);
+  font-family: var(--font-body);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+.sectionBody a {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.categoryLabel {
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  font-family: var(--font-body);
+  margin-bottom: 12px;
+}
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 40px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.table th {
+  text-align: left;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  padding: 10px 12px;
+  border-bottom: 0.5px solid var(--color-gray-100);
+  font-weight: 500;
+}
+
+.table td {
+  padding: 12px;
+  color: var(--color-gray-400);
+  border-bottom: 0.5px solid var(--color-gray-100);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.essentialBadge {
+  display: inline-block;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  border: 0.5px solid var(--color-gray-100);
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.manageBtn {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  background: transparent;
+  border: 0.5px solid var(--color-black);
+  padding: 10px 20px;
+  cursor: crosshair;
+  font-family: var(--font-body);
+  border-radius: 2px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.manageBtn:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.manageBtn:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 4px;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\cookies\ManageButton.tsx =====
+"use client";
+
+import styles from './cookies.module.css';
+
+export default function ManageButton() {
+  return (
+    <button
+      className={styles.manageBtn}
+      onClick={() => {
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('ksm-cookie-consent');
+          window.location.reload();
+        }
+      }}
+    >
+      Update Cookie Preferences
+    </button>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\cookies\page.tsx =====
+import styles from './cookies.module.css';
+import ManageButton from './ManageButton';
+
+export const metadata = {
+  title: 'Cookie Policy — KSM Atelier',
+  description: 'A full list of cookies used by KSM Atelier and how to manage them.',
+};
+
+export default function CookiePolicyPage() {
+  return (
+    <div className={styles.page}>
+      {/* Page header */}
+      <header>
+        <p className={styles.eyebrow}>Legal</p>
+        <h1 className={styles.pageTitle}>Cookie Policy</h1>
+        <p className={styles.lastUpdated}>Last updated: May 18, 2026</p>
+        <p className={styles.sectionBody} style={{ marginBottom: '40px' }}>
+          This Cookie Policy explains what cookies are and how KSM Atelier uses them on our website. 
+          We use cookies to ensure our site functions properly, to understand how you interact with our content, 
+          and to deliver relevant advertising.
+        </p>
+      </header>
+
+      {/* CATEGORY 1 — ESSENTIAL COOKIES */}
+      <section className={styles.section}>
+        <h2 className={styles.categoryLabel}>Category 1</h2>
+        <h3 className={styles.sectionTitle}>
+          Essential Cookies
+          <span className={styles.essentialBadge}>Required</span>
+        </h3>
+        <p className={styles.sectionBody} style={{ marginBottom: '24px' }}>
+          These are required for the site to function. Cannot be disabled.
+        </p>
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Provider</th>
+                <th>Purpose</th>
+                <th>Expiry</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>_shopify_y</td>
+                <td>Shopify</td>
+                <td>Analytics and reporting</td>
+                <td>1 year</td>
+              </tr>
+              <tr>
+                <td>_shopify_s</td>
+                <td>Shopify</td>
+                <td>Session tracking</td>
+                <td>30 mins</td>
+              </tr>
+              <tr>
+                <td>_shopify_tm</td>
+                <td>Shopify</td>
+                <td>Traffic source tracking</td>
+                <td>30 mins</td>
+              </tr>
+              <tr>
+                <td>cart</td>
+                <td>Shopify</td>
+                <td>Stores shopping cart contents</td>
+                <td>Session</td>
+              </tr>
+              <tr>
+                <td>secure_customer</td>
+                <td>Shopify</td>
+                <td>Customer login session</td>
+                <td>Session</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* CATEGORY 2 — ANALYTICS COOKIES */}
+      <section className={styles.section}>
+        <h2 className={styles.categoryLabel}>Category 2</h2>
+        <h3 className={styles.sectionTitle}>Analytics Cookies</h3>
+        <p className={styles.sectionBody} style={{ marginBottom: '24px' }}>
+          These help us understand how visitors use the site. Only set with your consent.
+        </p>
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Provider</th>
+                <th>Purpose</th>
+                <th>Expiry</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>_ga</td>
+                <td>Google Analytics</td>
+                <td>Distinguishes unique users</td>
+                <td>2 years</td>
+              </tr>
+              <tr>
+                <td>_gid</td>
+                <td>Google Analytics</td>
+                <td>Distinguishes users (24hr)</td>
+                <td>24 hrs</td>
+              </tr>
+              <tr>
+                <td>_gat</td>
+                <td>Google Analytics</td>
+                <td>Throttles request rate</td>
+                <td>1 min</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* CATEGORY 3 — MARKETING COOKIES */}
+      <section className={styles.section}>
+        <h2 className={styles.categoryLabel}>Category 3</h2>
+        <h3 className={styles.sectionTitle}>Marketing Cookies</h3>
+        <p className={styles.sectionBody} style={{ marginBottom: '24px' }}>
+          Used to deliver relevant advertising. Only set with your consent.
+        </p>
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Provider</th>
+                <th>Purpose</th>
+                <th>Expiry</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>_fbp</td>
+                <td>Meta</td>
+                <td>Tracks visits for Facebook Ads</td>
+                <td>3 months</td>
+              </tr>
+              <tr>
+                <td>_fbc</td>
+                <td>Meta</td>
+                <td>Stores ad click information</td>
+                <td>3 months</td>
+              </tr>
+              <tr>
+                <td>IDE</td>
+                <td>Google</td>
+                <td>Used by Google DoubleClick for ads</td>
+                <td>1 year</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* MANAGE PREFERENCES SECTION */}
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Managing Your Preferences</h2>
+        <p className={styles.sectionBody}>
+          You can update your cookie preferences at any time by clicking the button below. Essential cookies cannot be disabled as they are required for the site to function.
+        </p>
+        <ManageButton />
+      </section>
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\privacy\page.tsx =====
+import type { Metadata } from 'next';
+import styles from './privacy.module.css';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy — KSM Atelier',
+  description: 'How KSM Atelier collects, uses, and protects your personal data.',
+};
+
+export default function PrivacyPolicyPage() {
+  return (
+    <div className={styles.page}>
+      {/* 1. Page header */}
+      <header>
+        <p className={styles.eyebrow}>Legal</p>
+        <h1 className={styles.pageTitle}>Privacy Policy</h1>
+        <p className={styles.lastUpdated}>Last updated: May 18, 2026</p>
+      </header>
+
+      {/* 2. Sections */}
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Who We Are</h2>
+        <p className={styles.sectionBody}>
+          KSM Atelier is a luxury fashion brand operating at [your business address]. We are the data controller for personal data collected through this website. Contact: <a href="mailto:privacy@ksmatelier.com">privacy@ksmatelier.com</a>
+        </p>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>What Data We Collect</h2>
+        <div className={styles.sectionBody}>
+          <ul style={{ paddingLeft: '1.2rem', listStyleType: 'disc' }}>
+            <li>Name, email, and shipping address when you place an order</li>
+            <li>Browsing behaviour and pages visited (analytics cookies)</li>
+            <li>Device type, browser, and IP address</li>
+            <li>Payment information (processed securely by Shopify — we never store card details)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>How We Use Your Data</h2>
+        <div className={styles.sectionBody}>
+          <ul style={{ paddingLeft: '1.2rem', listStyleType: 'disc' }}>
+            <li>To process and fulfil your orders</li>
+            <li>To send order confirmations and shipping updates</li>
+            <li>To improve our website and product offerings</li>
+            <li>To send marketing emails (only with your consent)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Cookies</h2>
+        <p className={styles.sectionBody}>
+          We use essential, analytics, and marketing cookies. You can manage your preferences at any time via our cookie consent banner. See our full Cookie Policy at <a href="/cookies">/cookies</a> for details.
+        </p>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Third Parties</h2>
+        <div className={styles.sectionBody}>
+          We share data with the following third parties:
+          <ul style={{ paddingLeft: '1.2rem', listStyleType: 'disc', marginTop: '8px', marginBottom: '8px' }}>
+            <li>Shopify (order processing and payments)</li>
+            <li>Shipping carriers (order fulfilment)</li>
+            <li>Analytics providers (with your consent only)</li>
+          </ul>
+          We never sell your personal data.
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Data Retention</h2>
+        <p className={styles.sectionBody}>
+          We retain your personal data for as long as necessary to fulfil the purposes outlined in this policy, or as required by law. Order data is retained for 7 years for accounting purposes.
+        </p>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Your Rights</h2>
+        <div className={styles.sectionBody}>
+          Under GDPR you have the right to:
+          <ul style={{ paddingLeft: '1.2rem', listStyleType: 'disc', marginTop: '8px', marginBottom: '8px' }}>
+            <li>Access your personal data</li>
+            <li>Correct inaccurate data</li>
+            <li>Request deletion of your data</li>
+            <li>Object to or restrict processing</li>
+            <li>Data portability</li>
+          </ul>
+          To exercise any of these rights, contact us at <a href="mailto:privacy@ksmatelier.com">privacy@ksmatelier.com</a>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Contact Us</h2>
+        <p className={styles.sectionBody}>
+          KSM Atelier<br />
+          [Business Address]<br />
+          <a href="mailto:privacy@ksmatelier.com">privacy@ksmatelier.com</a>
+        </p>
+      </section>
+    </div>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\privacy\privacy.module.css =====
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 24px 120px;
+}
+
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  font-family: var(--font-body);
+  margin-bottom: 16px;
+}
+
+.pageTitle {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 200;
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.lastUpdated {
+  font-size: 10px;
+  color: var(--color-gray-400);
+  font-family: var(--font-body);
+  letter-spacing: 0.06em;
+  margin-bottom: 64px;
+  padding-bottom: 32px;
+  border-bottom: 0.5px solid var(--color-gray-100);
+}
+
+.section {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 0.5px solid var(--color-gray-100);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  font-family: var(--font-body);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.sectionBody {
+  font-size: 14px;
+  color: var(--color-gray-400);
+  font-family: var(--font-body);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+.sectionBody a {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\products\[handle]\page.tsx =====
+import ProductDetail from '@/app/components/ProductDetail/ProductDetail';
+
+export default function ProductPage({ params }: { params: { handle: string } }) {
+  return (
+    <ProductDetail handle={params.handle} />
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\products\page.tsx =====
+import ProductGallery from '@/app/components/ProductGallery/ProductGallery';
+
+export default function ProductsPage() {
+  return (
+    <ProductGallery />
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\globals.css =====
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: 'Cardival';
+  src: url('/fonts/Cardival Demo.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =============================================
+   KSM STOREFRONT — DESIGN SYSTEM
+   Premium Fashion E-commerce
+   ============================================= */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap'); */
+/* Fonts: Neue Haas Grotesk Display for Headings, Helvetica World for Body */
+
+/* ---- Design Tokens ---- */
+:root {
+  /* Colors */
+  --color-black: #222222;
+  --color-black-rgb: 34, 34, 34;
+  --color-white: #F3F1ED;
+  --color-white-rgb: 243, 241, 237;
+  --color-off-white: #F3F1ED;
+  --color-cream: #E8E5DF;
+  --color-gray-100: #E0DDD6;
+  --color-gray-200: #D0CCC2;
+  --color-gray-300: #B0ACA2;
+  --color-gray-400: #8A8A8A; /* Specified grey */
+  --color-gray-400-rgb: 138, 138, 138;
+  --color-gray-500: #666666;
+  --color-gray-600: #444444;
+  --color-gray-700: #333333;
+
+  /* Typography */
+  --font-heading: 'Jost', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Jost', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Legacy aliases for component compatibility */
+  --font-serif: var(--font-heading);
+  --font-sans: var(--font-body);
+
+  /* Font Sizes */
+  --text-xs: 0.6875rem;     /* 11px */
+  --text-sm: 0.8125rem;     /* 13px */
+  --text-base: 0.9375rem;   /* 15px */
+  --text-md: 1rem;           /* 16px */
+  --text-lg: 1.125rem;       /* 18px */
+  --text-xl: 1.5rem;         /* 24px */
+  --text-2xl: 2rem;          /* 32px */
+  --text-3xl: 2.5rem;        /* 40px */
+  --text-4xl: 3.25rem;       /* 52px */
+  --text-5xl: 4rem;          /* 64px */
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* Layout */
+  --max-width: 1440px;
+  --header-height: 56px;
+  --content-padding: 2rem;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+
+  /* Z-index */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.snap-active {
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-black);
+  background-color: var(--color-off-white);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+h1 {
+  font-family: 'Cardival', var(--font-heading);
+}
+
+/* ---- Utility Classes ---- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+/* ---- Shopify Web Components Global Styles ---- */
+shopify-data,
+shopify-money {
+  display: contents;
+}
+
+shopify-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cart Styling */
+shopify-cart::part(dialog) {
+  border: none;
+  border-radius: 0;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+  max-width: 420px;
+  width: 100%;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0;
+}
+
+shopify-cart::part(primary-button) {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+shopify-cart::part(primary-button):hover {
+  opacity: 0.8;
+}
+
+shopify-cart::part(secondary-button) {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  fill: var(--color-black);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+}
+
+shopify-cart::part(line-heading) {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--text-base);
+}
+
+shopify-cart::part(line-image) {
+  border-radius: 0;
+}
+
+shopify-cart::part(line-price) {
+  font-family: var(--font-sans);
+}
+
+/* Variant Selector Styling */
+shopify-variant-selector::part(form) {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+shopify-variant-selector::part(label) {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray-500);
+}
+
+shopify-variant-selector::part(radio) {
+  border: 1px solid var(--color-gray-200);
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  padding: 0.625rem 1rem;
+  min-width: 3rem;
+  text-align: center;
+  transition: all var(--duration-fast) ease;
+}
+
+shopify-variant-selector::part(radio-selected) {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+shopify-variant-selector::part(radio-disabled) {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+shopify-variant-selector::part(color-swatch) {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gray-200);
+  transition: border-color var(--duration-fast) ease;
+}
+
+shopify-variant-selector::part(color-swatch-selected) {
+  border-color: var(--color-black);
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-black);
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Loading placeholder shimmer */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--color-gray-100) 25%,
+    var(--color-cream) 50%,
+    var(--color-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+/* Product Card Skeleton */
+.product-skeleton {
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+.product-skeleton__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(90deg,
+    var(--color-gray-100) 25%,
+    var(--color-cream) 50%,
+    var(--color-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.product-skeleton__text {
+  height: 14px;
+  width: 70%;
+  margin-top: 12px;
+  background: linear-gradient(90deg,
+    var(--color-gray-100) 25%,
+    var(--color-cream) 50%,
+    var(--color-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+.product-skeleton__price {
+  height: 12px;
+  width: 40%;
+  margin-top: 8px;
+  background: linear-gradient(90deg,
+    var(--color-gray-100) 25%,
+    var(--color-cream) 50%,
+    var(--color-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+/* Push effect for menu on desktop */
+#main-content,
+#site-header {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 769px) {
+  body.menu-open #main-content,
+  body.menu-open #site-header {
+    transform: translateX(520px); /* Width of the slidePanel */
+  }
+}
+
+/* ==========================================================================
+   PRODUCT CARDS (Global for Shopify Templates)
+   ========================================================================== */
+.featured-card,
+.best-seller-card,
+.co-order-card {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  group: product-card; /* Conceptual grouping */
+  cursor: pointer;
+}
+
+/* Specific widths for different contexts if needed */
+.best-seller-card { width: 360px; min-width: 360px; max-width: 360px; }
+.co-order-card { width: 320px; min-width: 320px; max-width: 320px; }
+
+.featured-card__image-wrap,
+.best-seller-card__image-wrap,
+.co-order-card__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+}
+
+.featured-card__image-wrap img,
+.best-seller-card__image-wrap img,
+.co-order-card__image-wrap img,
+shopify-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.featured-card:hover .featured-card__image-wrap img,
+.best-seller-card:hover .best-seller-card__image-wrap img,
+.co-order-card:hover .co-order-card__image-wrap img,
+.featured-card:hover shopify-media,
+.best-seller-card:hover shopify-media,
+.co-order-card:hover shopify-media {
+  transform: scale(1.05);
+}
+
+.featured-card__badge,
+.best-seller-card__badge,
+.co-order-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 2;
+}
+
+.featured-card__info,
+.best-seller-card__info {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.featured-card__name,
+.best-seller-card__name {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.featured-card__price,
+.best-seller-card__price {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.best-seller-card__compare-price {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* Coming Soon Fallback Message */
+.coming-soon-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 380px;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.05em;
+  grid-column: 1 / -1; /* Spans full grid width if in grid */
+}
+
+/* Hide coming soon message if a product card is rendered by Shopify */
+div:has(.featured-card) .coming-soon-message,
+div:has(.best-seller-card) .coming-soon-message,
+div:has(.co-order-card) .coming-soon-message {
+  display: none;
+}
+
+/* ---- Responsive Breakpoints ---- */
+/* Mobile: < 640px */
+/* Tablet: 640px – 1024px */
+/* Desktop: > 1024px */
+/* Wide: > 1440px */
+
+@media (max-width: 640px) {
+  :root {
+    --content-padding: 1rem;
+    --header-height: 48px;
+  }
+}
+
+/* Silent Authority — Crosshair cursor on CTAs */
+button,
+[role="button"],
+a[href] {
+  cursor: crosshair;
+}
+
+input,
+textarea,
+select {
+  cursor: auto;
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\layout.tsx =====
+import type { Metadata } from "next";
+import "./globals.css";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import ShopifyProvider from "./components/ShopifyProvider/ShopifyProvider";
+import ProductModal from "./components/ProductModal/ProductModal";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen";
+import ScrollRestorationManager from "./components/ScrollRestorationManager/ScrollRestorationManager";
+import CookieConsent from "./components/CookieConsent/CookieConsent";
+
+export const metadata: Metadata = {
+  title: "KSM — Where Timeless Elegance Meets Artistic Expression",
+  description:
+    "Discover KSM's curated collections of premium fashion. Modern tailoring, luxurious fabrics, and artful design for the discerning individual.",
+  keywords: [
+    "KSM",
+    "luxury fashion",
+    "designer clothing",
+    "premium tailoring",
+    "fashion collections",
+  ],
+  openGraph: {
+    title: "KSM — Where Timeless Elegance Meets Artistic Expression",
+    description:
+      "Discover KSM's curated collections of premium fashion. Modern tailoring, luxurious fabrics, and artful design.",
+    type: "website",
+    locale: "en_US",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        <ScrollRestorationManager />
+        <LoadingScreen />
+        <ShopifyProvider />
+        <Header />
+        <main id="main-content">{children}</main>
+        <Footer />
+        <ProductModal />
+        <CookieConsent />
+      </body>
+    </html>
+  );
+}
+
+
+===== C:\Users\athar\.gemini\antigravity\scratch\KSM\app\page.tsx =====
+'use client';
+
+import { useEffect } from "react";
+import HeroSection from "./components/HeroSection/HeroSection";
+import ActionBanner from "./components/ActionBanner/ActionBanner";
+import FeaturedCollection from "./components/FeaturedCollection/FeaturedCollection";
+import AtelierBanner from "./components/AtelierBanner/AtelierBanner";
+import DesignIdeology from "./components/DesignIdeology/DesignIdeology";
+import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
+
+import MobileStackWrapper from "./components/MobileStackWrapper/MobileStackWrapper";
+
+export default function Home() {
+  useEffect(() => {
+    // Enable scroll snapping only for the homepage
+    document.documentElement.classList.add('snap-active');
+    return () => {
+      document.documentElement.classList.remove('snap-active');
+    };
+  }, []);
+
+  return (
+    <>
+      <HeroSection />
+      <MobileStackWrapper>
+        <FeaturedCollection />
+        <AtelierBanner />
+        <DesignIdeology />
+        <PhotoGallery />
+      </MobileStackWrapper>
+    </>
+  );
+}
+

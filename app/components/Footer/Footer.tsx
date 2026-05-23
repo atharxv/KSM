@@ -60,6 +60,7 @@ export default function Footer() {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 3 * 0.08 }}
         >
+          <span className={styles.columnEyebrow}>Customer Care</span>
           <a href="#" className={styles.link}>Contact Us</a>
           <a href="#" className={styles.link}>Shipping</a>
           <a href="#" className={styles.link}>Returns</a>
@@ -76,12 +77,7 @@ export default function Footer() {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 4 * 0.08 }}
         >
-          <div className={styles.abstractIcon}>
-            <svg viewBox="0 0 100 100" className={styles.iconSvg}>
-              <path d="M0,100 L50,0 L100,100 Z" fill="none" stroke="currentColor" strokeWidth="1"/>
-              <line x1="0" y1="50" x2="100" y2="50" stroke="currentColor" strokeWidth="1"/>
-            </svg>
-          </div>
+          <span className={styles.copyrightLogo}>KSM</span>
           <p className={styles.copyrightText}>&copy; KSM 2026</p>
         </motion.div>
         <motion.div 
