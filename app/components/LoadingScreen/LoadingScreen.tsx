@@ -1,18 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import styles from './LoadingScreen.module.css';
 
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
   const [hidden, setHidden] = useState(false);
-  const [logoOpacity, setLogoOpacity] = useState(0.15);
-
-  useEffect(() => {
-    if (progress >= 100) {
-      setLogoOpacity(1);
-    }
-  }, [progress]);
 
   useEffect(() => {
     // Simulate progressive loading tied to actual resource loading
@@ -62,16 +56,35 @@ export default function LoadingScreen() {
 
       {/* Content Wrapper */}
       <div className={styles.loaderContent}>
-        {/* 1. Logo image */}
-        <div className={styles.logoWrap}>
-          <img
-            src="/images/loader-logo.png"
-            alt="KSM Atelier"
-            className={styles.logoImg}
-            style={{ opacity: logoOpacity }}
-          />
+        {/* 1. Animated Title */}
+        <div className={styles.titleContainer}>
+          <motion.h2 
+            className={styles.titleText}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+          >
+            <span className={styles.srOnly}>KSM</span>
+            {"KSM".split("").map((char, index) => (
+              <span key={index} style={{ display: "inline-block" }}>{char}</span>
+            ))}
+          </motion.h2>
+          <motion.h2 
+            className={styles.titleText}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+          >
+            <span className={styles.srOnly}>ATELIER</span>
+            {"ATELIER".split("").map((char, index) => (
+              <span key={index} style={{ display: "inline-block" }}>{char}</span>
+            ))}
+          </motion.h2>
         </div>
+      </div>
 
+      {/* Bottom Loading Stats */}
+      <div className={styles.loaderBottomStats}>
         {/* 2. Progress bar */}
         <div className={styles.progressTrack}>
           <div

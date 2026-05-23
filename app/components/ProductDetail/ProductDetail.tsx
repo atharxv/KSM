@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ProductDetail.module.css';
 
 interface ProductDetailProps {
@@ -15,9 +14,11 @@ const PRODUCT_DATA: Record<string, any> = {
     price: '€100.00',
     description: 'A definitive essential for the modern wardrobe. Crafted from premium heavy-weight cotton, this tee features our signature KSM script logo and the hallmark crown emblem — a quiet declaration of status and taste. The relaxed yet structured fit makes it a versatile piece for high-end lounging or refined daily wear.',
     images: [
-      '/images/KSMshirt4.JPG',
-      '/images/Product two.png',
-      '/images/KSMshirt3.JPG',
+      '/images/Product/product%20image%201.png',
+      '/images/Product/product%20image%202.png',
+      '/images/Product/KSMshirt4.JPG',
+      '/images/Product/madeinitaly.JPG',
+      '/images/Product/packaging.png',
     ],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
   },
@@ -25,8 +26,15 @@ const PRODUCT_DATA: Record<string, any> = {
 
 export default function ProductDetail({ handle }: ProductDetailProps) {
   const product = PRODUCT_DATA[handle] || PRODUCT_DATA['crown-monogram-tee'];
-  const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState('M');
+  const [isSizeSelectorOpen, setIsSizeSelectorOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'details' | 'size' | 'delivery'>('details');
+
+  const openDrawer = (tab: 'details' | 'size' | 'delivery') => {
+    setActiveTab(tab);
+    setDrawerOpen(true);
+  };
 
   const handleAddToCart = () => {
     const cart = document.getElementById('main-cart') as any;
@@ -52,142 +60,193 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
   };
 
   return (
-    <div className={styles.container}>
-      {/* Back Link */}
-      <nav className={styles.backNav}>
-        <Link href="/products" className={styles.backLink}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="15 18 9 12 15 6"/>
-          </svg>
-          Back to collection
-        </Link>
-      </nav>
+    <>
+      <div className={styles.container}>
+        <div className={styles.productMain}>
 
-      <div className={styles.productMain}>
-        {/* Left: Gallery */}
-        <div className={styles.gallery}>
-          <div className={styles.mainImage}>
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={selectedImage}
-                src={product.images[selectedImage]}
-                alt={product.name}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1, transition: { duration: 0.25, ease: [0.65, 0, 0.35, 1] } }}
-                transition={{
-                  opacity: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
-                  scale: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
-                }}
-              />
-            </AnimatePresence>
-          </div>
-          <div className={styles.thumbnails}>
-            {product.images.map((img: string, idx: number) => (
-              <div 
-                key={idx} 
-                className={`${styles.thumbnail} ${selectedImage === idx ? styles.thumbnailActive : ''}`}
-                onClick={() => setSelectedImage(idx)}
-              >
-                <img src={img} alt={`${product.name} thumbnail ${idx}`} />
+          {/* Left: scrolling image stack */}
+          <div className={styles.imageStack}>
+            {product.images.map((imgSrc: string, i: number) => (
+              <div key={i} className={styles.imageBlock}>
+                <img src={imgSrc} alt={`${product.name} - Image ${i + 1}`} />
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Right: Info */}
-        <div className={styles.info}>
-          <header className={styles.header}>
-            <h1 className={styles.title}>{product.name}</h1>
-            <span className={styles.price}>{product.price}</span>
-          </header>
-
-          <p className={styles.description}>
-            {product.description}
-          </p>
-
-          <div className={styles.options}>
-            <div>
-              <p className={styles.optionLabel}>Select Size</p>
-              <div className={styles.sizeList}>
-                {product.sizes.map((size: string) => (
-                  <button 
-                    key={size}
-                    className={`${styles.sizeBtn} ${selectedSize === size ? styles.sizeBtnActive : ''}`}
-                    onClick={() => setSelectedSize(size)}
-                  >
-                    {size}
+          {/* Right: info panel */}
+          <div className={styles.info}>
+            <div className={styles.infoInner}>
+              {/* Top Nav */}
+              <div className={styles.topNav}>
+                <Link href="/products" className={styles.backLink}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                  Men's Outerwear
+                </Link>
+                <div className={styles.topActions}>
+                  <button aria-label="Add to Wishlist">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                   </button>
-                ))}
+                  <button aria-label="Share">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.actionButtons}>
-              <button className={styles.addToCart} onClick={handleAddToCart}>
-                Add to Bag
-              </button>
-              <button className={styles.buyNow} onClick={handleBuyNow}>
-                Buy Now
-              </button>
+              {/* Centered Content Block */}
+              <div className={styles.infoContent}>
+                {/* Title & Price */}
+                <div className={styles.productHeader}>
+                  <span className={styles.newInLabel}>New In</span>
+                  <h1 className={styles.title}>{product.name}</h1>
+                  <span className={styles.price}>{product.price}</span>
+                </div>
+
+                {/* Options */}
+                <div className={styles.options}>
+                  <div className={styles.optionRow}>
+                    <span className={styles.optionLabel}>Colour:</span>
+                    <span className={styles.optionValue}><span className={styles.colorDot}></span> White</span>
+                  </div>
+                  <div className={styles.sizeSelectorWrapper}>
+                    <button className={styles.sizeTrigger} onClick={() => setIsSizeSelectorOpen(!isSizeSelectorOpen)}>
+                      <span className={styles.optionLabel}>Size:</span>
+                      <span className={styles.optionValue}>{selectedSize}</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: isSizeSelectorOpen ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s' }}><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                    {isSizeSelectorOpen && (
+                      <div className={styles.sizeDropdown}>
+                        {product.sizes.map((size: string) => (
+                          <button
+                            key={size}
+                            className={`${styles.sizeOption} ${selectedSize === size ? styles.sizeOptionActive : ''}`}
+                            onClick={() => {
+                              setSelectedSize(size);
+                              setIsSizeSelectorOpen(false);
+                            }}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className={styles.actionArea}>
+                  <button className={styles.addToCart} onClick={handleAddToCart}>Add to Cart</button>
+                  <p className={styles.deliveryInfo}>Complimentary delivery usually within 1-3 business days*</p>
+                </div>
+
+                {/* Bottom Links */}
+                <div className={styles.bottomLinks}>
+                  <button onClick={() => openDrawer('details')}>Product details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                  <button onClick={() => openDrawer('size')}>Size guide <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                  <button onClick={() => openDrawer('delivery')}>Delivery &amp; returns <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Size Chart Section */}
-      <section className={styles.sizeChartSection}>
-        <h2 className={styles.sizeChartTitle}>The Measurement Guide</h2>
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Size</th>
-                <th>Chest (Inches)</th>
-                <th>Waist (Inches)</th>
-                <th>Sleeve (Inches)</th>
-                <th>International</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Small</td>
-                <td>36 - 38</td>
-                <td>30 - 32</td>
-                <td>32.5</td>
-                <td>S</td>
-              </tr>
-              <tr>
-                <td>Medium</td>
-                <td>39 - 41</td>
-                <td>33 - 35</td>
-                <td>33.5</td>
-                <td>M</td>
-              </tr>
-              <tr>
-                <td>Large</td>
-                <td>42 - 44</td>
-                <td>36 - 38</td>
-                <td>34.5</td>
-                <td>L</td>
-              </tr>
-              <tr>
-                <td>Extra Large</td>
-                <td>45 - 47</td>
-                <td>39 - 41</td>
-                <td>35.5</td>
-                <td>XL</td>
-              </tr>
-              <tr>
-                <td>XXL</td>
-                <td>48 - 50</td>
-                <td>42 - 44</td>
-                <td>36.5</td>
-                <td>XXL</td>
-              </tr>
-            </tbody>
-          </table>
+      {/* Sidebar Drawer */}
+      <div
+        className={`${styles.drawerBackdrop} ${drawerOpen ? styles.drawerBackdropOpen : ''}`}
+        onClick={() => setDrawerOpen(false)}
+      />
+      <div className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ''}`}>
+        <div className={styles.drawerHeader}>
+          <span className={styles.drawerTitle}>Product Info</span>
+          <button className={styles.drawerClose} onClick={() => setDrawerOpen(false)} aria-label="Close">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
         </div>
-      </section>
+
+        <div className={styles.drawerTabs}>
+          {[
+            { key: 'details' as const, label: 'Product Details' },
+            { key: 'size' as const, label: 'Size Guide' },
+            { key: 'delivery' as const, label: 'Delivery & Returns' },
+          ].map(({ key, label }) => (
+            <button
+              key={key}
+              className={`${styles.drawerTab} ${activeTab === key ? styles.drawerTabActive : ''}`}
+              onClick={() => setActiveTab(key)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        <div className={styles.drawerBody}>
+          {activeTab === 'details' && (
+            <div className={styles.drawerContent}>
+              <h4>Composition</h4>
+              <p>100% heavyweight cotton. Crafted with precision and finished to the KSM standard.</p>
+              <h4>Details</h4>
+              <ul>
+                <li>KSM script logo embroidery</li>
+                <li>Crown monogram emblem</li>
+                <li>Relaxed structured fit</li>
+                <li>Ribbed crew neck, cuffs and hem</li>
+              </ul>
+              <h4>Care</h4>
+              <ul>
+                <li>Machine wash at 30°C</li>
+                <li>Do not tumble dry</li>
+                <li>Iron on reverse</li>
+              </ul>
+            </div>
+          )}
+          {activeTab === 'size' && (
+            <div className={styles.drawerContent}>
+              <h4>Size Chart</h4>
+              <table className={styles.drawerTable}>
+                <thead>
+                  <tr>
+                    <th>Size</th>
+                    <th>Chest (in)</th>
+                    <th>Waist (in)</th>
+                    <th>Sleeve (in)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ['S', '36–38', '30–32', '32.5'],
+                    ['M', '39–41', '33–35', '33.5'],
+                    ['L', '42–44', '36–38', '34.5'],
+                    ['XL', '45–47', '39–41', '35.5'],
+                    ['XXL', '48–50', '42–44', '36.5'],
+                  ].map(([s, c, w, sl]) => (
+                    <tr key={s}>
+                      <td>{s}</td><td>{c}</td><td>{w}</td><td>{sl}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {activeTab === 'delivery' && (
+            <div className={styles.drawerContent}>
+              <h4>Delivery</h4>
+              <p>Complimentary delivery within 1–3 business days on all orders.</p>
+              <h4>Estimated Times</h4>
+              <ul>
+                <li>Italy & EU: 1–3 business days</li>
+                <li>UK: 2–4 business days</li>
+                <li>Rest of World: 3–7 business days</li>
+              </ul>
+              <h4>Returns</h4>
+              <p>Return within 14 days of delivery. Items must be unworn and in original packaging.</p>
+              <ul>
+                <li>Free returns within the EU</li>
+                <li>International returns at customer cost</li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* Shopify Integration Placeholder */}
       <div 
@@ -211,6 +270,6 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
           `
         }}
       />
-    </div>
+    </>
   );
 }

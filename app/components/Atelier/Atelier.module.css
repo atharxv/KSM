@@ -63,7 +63,7 @@
 }
 
 .heroTitle {
-  font-family: var(--font-serif);
+  font-family: 'Cardival', var(--font-serif);
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 400;
   font-style: normal;
@@ -106,7 +106,7 @@
 }
 
 .philosophyHeadline {
-  font-family: var(--font-serif);
+  font-family: 'Cardival', var(--font-serif);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
   font-style: normal;
@@ -164,7 +164,7 @@
 }
 
 .processTitle {
-  font-family: var(--font-serif);
+  font-family: 'Cardival', var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
   font-style: normal;
@@ -272,7 +272,7 @@
 }
 
 .materialsTitle {
-  font-family: var(--font-serif);
+  font-family: 'Cardival', var(--font-serif);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
   font-style: normal;
@@ -368,7 +368,7 @@
 }
 
 .moodTitle {
-  font-family: var(--font-serif);
+  font-family: 'Cardival', var(--font-serif);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 400;
   font-style: normal;

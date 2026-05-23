@@ -33,13 +33,13 @@ export default function FeaturedCollection() {
           <Link href="/products/crown-monogram-tee" className={styles.showcaseLink}>
             <div className={styles.showcaseImageWrap}>
               <img 
-                src="/images/KSMshirt4.JPG" 
+                src="/images/Product/product%20image%201.png" 
                 alt="The Crown Monogram Tee" 
                 className={styles.showcaseImage}
               />
               <img 
-                src="/images/Product two.png" 
-                alt="The Crown Monogram Tee - Lifestyle" 
+                src="/images/Product/KSMshirt4.JPG" 
+                alt="The Crown Monogram Tee - Detail" 
                 className={styles.showcaseImageHover}
               />
             </div>

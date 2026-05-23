@@ -15,7 +15,8 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isLightTheme = pathname?.startsWith('/products') ?? false;
+  const isProductPage = pathname?.startsWith('/products') ?? false;
+  const isLightTheme = false;
 
   const [language, setLanguage] = useState<'en' | 'it'>('en');
   const [currency, setCurrency] = useState<'eur'>('eur');
@@ -85,7 +86,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''} ${isLightTheme ? styles.lightTheme : ''}`}
+        className={`${styles.header} ${(scrolled || isProductPage) ? styles.scrolled : ''} ${(hidden && !isProductPage) ? styles.hidden : ''} ${isLightTheme ? styles.lightTheme : ''}`}
         id="site-header"
       >
         {/* Left: Mobile Menu & Search */}

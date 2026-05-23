@@ -19,7 +19,7 @@
 }
 
 .title {
-  font-family: var(--font-serif);
+  font-family: 'Cardival', var(--font-serif);
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 400;
   color: var(--color-black);

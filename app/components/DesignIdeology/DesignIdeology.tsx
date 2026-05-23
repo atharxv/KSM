@@ -63,6 +63,7 @@ export default function DesignIdeology() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
           >
+            <hr className={styles.signatureRule} />
             <p>With unrivaled esteem,</p>
             <p>The House of KSM</p>
           </motion.div>
