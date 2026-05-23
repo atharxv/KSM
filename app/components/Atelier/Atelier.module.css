@@ -452,6 +452,7 @@
 
 .closingQuote {
   font-family: var(--font-serif);
+  font-variant-ligatures: none;
   font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   font-weight: 400;
   font-style: normal;

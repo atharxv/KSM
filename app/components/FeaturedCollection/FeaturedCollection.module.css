@@ -255,26 +255,70 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .section {
-    gap: var(--space-lg);
-    padding: var(--space-lg) var(--content-padding);
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+    padding: var(--space-xl) var(--content-padding);
+    gap: var(--space-xl);
   }
 
   .editorial {
-    height: 45vh;
-    max-height: 360px;
+    height: 60vw;
+    max-height: 320px;
+    width: 100%;
+  }
+
+  .eyebrowRow {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .productSide {
+    align-items: center;
+    padding: var(--space-xl) var(--content-padding);
   }
 
   .productShowcase {
-    gap: var(--space-lg);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-lg) 0;
+    gap: var(--space-xl);
   }
 
   .showcaseImageWrap {
-    width: clamp(180px, 55vw, 260px);
+    width: 80vw;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .productMeta {
+    align-items: center;
+  }
+
+  .productName {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    text-align: center;
+  }
+
+  .metaDivider {
+    margin: var(--space-xs) auto;
   }
 
   .shopPieceBtn {
+    align-self: center;
     justify-content: center;
   }
 }

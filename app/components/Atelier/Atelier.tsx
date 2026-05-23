@@ -244,9 +244,9 @@ export default function Atelier() {
           ============================ */}
       <section className={styles.closingSection}>
         <blockquote className={styles.closingQuote}>
-          &ldquo;We don&apos;t dress people. We arm them with the confidence 
+          "We don't dress people. We arm them with the confidence 
           that comes from knowing every detail was considered, every choice 
-          deliberate, every thread justified.&rdquo;
+          deliberate, every thread justified."
         </blockquote>
         <p className={styles.closingAttribution}>— The House of KSM</p>
         <a href="/products" className={styles.closingCta}>
