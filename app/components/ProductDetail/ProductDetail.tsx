@@ -17,6 +17,7 @@ const PRODUCT_DATA: Record<string, any> = {
       '/images/Product/product%20image%201.png',
       '/images/Product/product%20image%203.png',
       '/images/Product/product%20image%202.png',
+      '/images/Product/product%20image%204.png',
       '/images/Product/KSMshirt4.JPG',
       '/images/Product/madeinitaly.JPG',
       '/images/Product/packaging.png',
@@ -31,6 +32,25 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
   const [isSizeSelectorOpen, setIsSizeSelectorOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'details' | 'size' | 'delivery'>('details');
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const deltaX = touchStartX - touchEndX;
+
+    if (deltaX > 50) {
+      setActiveIndex((prev) => Math.min(prev + 1, product.images.length - 1));
+    } else if (deltaX < -50) {
+      setActiveIndex((prev) => Math.max(prev - 1, 0));
+    }
+    setTouchStartX(null);
+  };
 
   const openDrawer = (tab: 'details' | 'size' | 'delivery') => {
     setActiveTab(tab);
@@ -65,13 +85,46 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
       <div className={styles.container}>
         <div className={styles.productMain}>
 
-          {/* Left: scrolling image stack */}
+          {/* Left: Desktop scrolling image stack */}
           <div className={styles.imageStack}>
             {product.images.map((imgSrc: string, i: number) => (
               <div key={i} className={styles.imageBlock}>
                 <img src={imgSrc} alt={`${product.name} - Image ${i + 1}`} />
               </div>
             ))}
+          </div>
+
+          {/* Left: Mobile carousel */}
+          <div className={styles.carousel}>
+            <div
+              className={styles.carouselTrack}
+              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              {product.images.map((src: string, i: number) => (
+                <div className={styles.carouselSlide} key={i}>
+                  <img
+                    src={src}
+                    alt={product.name}
+                    role="presentation"
+                    className={styles.carouselImage}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Dot indicators */}
+            <div className={styles.carouselDots}>
+              {product.images.map((_: any, i: number) => (
+                <button
+                  key={i}
+                  className={`${styles.carouselDot} ${i === activeIndex ? styles.carouselDotActive : ''}`}
+                  onClick={() => setActiveIndex(i)}
+                  aria-label={`Image ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Right: info panel */}

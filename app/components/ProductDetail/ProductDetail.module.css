@@ -36,6 +36,11 @@
   min-height: 100vh;
 }
 
+/* Carousel Layout (Mobile only) */
+.carousel {
+  display: none;
+}
+
 /* Image Stack Layout */
 .imageStack {
   width: 55%;
@@ -502,11 +507,77 @@
 
 @media (max-width: 768px) {
   .container { padding: 0; }
-  .productMain { flex-direction: column; height: auto; }
-  .imageStack { width: 100%; position: relative; top: auto; }
-  .imageBlock { height: auto; }
-  .info { width: 100%; height: auto; position: static; padding: 0; }
-  .infoInner { padding: var(--space-2xl) var(--content-padding); }
+  
+  .productMain { 
+    flex-direction: column; 
+    height: auto; 
+  }
+
+  .imageStack { 
+    display: none; 
+  }
+  
+  .carousel { 
+    display: block; 
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carouselTrack {
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.4s var(--ease-out);
+    will-change: transform;
+  }
+
+  .carouselSlide {
+    min-width: 100%;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .carouselImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .carouselDots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: var(--space-md) 0;
+  }
+
+  .carouselDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-gray-200);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+
+  .carouselDotActive {
+    background: var(--color-black);
+    width: 18px;
+    border-radius: 3px;
+  }
+
+  .info { 
+    width: 100%; 
+    height: auto; 
+    position: static; 
+    padding: var(--space-xl) var(--content-padding); 
+  }
+  
+  .infoInner { padding: 0; }
   .drawer { width: 100vw; }
 }
 
