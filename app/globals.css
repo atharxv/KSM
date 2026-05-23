@@ -100,9 +100,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html.snap-active {
-  scroll-snap-type: y mandatory;
-}
+
 
 body {
   font-family: var(--font-sans);

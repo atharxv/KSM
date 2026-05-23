@@ -88,19 +88,20 @@
 /* Responsive */
 @media (max-width: 768px) {
   .section {
-    height: 100vh;
+    min-height: 70vh;
   }
   
   .title {
-    font-size: clamp(2rem, 12vw, 4rem);
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    line-height: 1.2;
   }
-  
-  .description {
-    font-size: var(--text-sm);
-    max-width: 90%;
+
+  .content {
+    padding: var(--space-3xl) var(--content-padding);
   }
   
   .cta {
-    padding: var(--space-md) var(--space-2xl);
+    padding: 1rem 2.5rem;
+    font-size: var(--text-xs);
   }
 }

@@ -15,6 +15,7 @@ const PRODUCT_DATA: Record<string, any> = {
     description: 'A definitive essential for the modern wardrobe. Crafted from premium heavy-weight cotton, this tee features our signature KSM script logo and the hallmark crown emblem — a quiet declaration of status and taste. The relaxed yet structured fit makes it a versatile piece for high-end lounging or refined daily wear.',
     images: [
       '/images/Product/product%20image%201.png',
+      '/images/Product/product%20image%203.png',
       '/images/Product/product%20image%202.png',
       '/images/Product/KSMshirt4.JPG',
       '/images/Product/madeinitaly.JPG',

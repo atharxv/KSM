@@ -121,6 +121,11 @@
   .titleContainer {
     flex-direction: column;
     gap: var(--space-sm);
+    align-items: center;
+  }
+  .titleText {
+    font-size: clamp(3.5rem, 18vw, 5rem);
+    letter-spacing: 0.03em;
   }
 }
 
