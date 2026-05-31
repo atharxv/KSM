@@ -14,6 +14,9 @@ export default function PhotoGallery() {
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
           </div>
           <div className={styles.photoItem}>
@@ -22,6 +25,9 @@ export default function PhotoGallery() {
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
           </div>
           <div className={styles.photoItem}>
@@ -30,6 +36,9 @@ export default function PhotoGallery() {
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
           </div>
           <div className={`${styles.photoItem} ${styles.photoItemWithCard}`}>
@@ -38,6 +47,9 @@ export default function PhotoGallery() {
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
             {/* Product Popover Card */}
             <div className={styles.popoverCard}>
@@ -87,6 +99,9 @@ export default function PhotoGallery() {
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
           </div>
         </div>

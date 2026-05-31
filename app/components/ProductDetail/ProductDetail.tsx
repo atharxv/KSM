@@ -85,11 +85,26 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
       <div className={styles.container}>
         <div className={styles.productMain}>
 
+          {/* Mobile Top Nav */}
+          <div className={`${styles.topNav} ${styles.mobileTopNav}`}>
+            <Link href="/products" className={styles.backLink} aria-label="Go back">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </Link>
+            <div className={styles.topActions}>
+              <button aria-label="Add to Wishlist">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+              <button aria-label="Share">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
+          </div>
+
           {/* Left: Desktop scrolling image stack */}
           <div className={styles.imageStack}>
             {product.images.map((imgSrc: string, i: number) => (
               <div key={i} className={styles.imageBlock}>
-                <img src={imgSrc} alt={`${product.name} - Image ${i + 1}`} />
+                <img src={imgSrc} alt={`${product.name} - Image ${i + 1}`} loading="lazy" decoding="async" width="800" height="1067" />
               </div>
             ))}
           </div>
@@ -109,6 +124,10 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
                     alt={product.name}
                     role="presentation"
                     className={styles.carouselImage}
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="1067"
                   />
                 </div>
               ))}
@@ -131,10 +150,9 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
           <div className={styles.info}>
             <div className={styles.infoInner}>
               {/* Top Nav */}
-              <div className={styles.topNav}>
-                <Link href="/products" className={styles.backLink}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                  Men's Outerwear
+              <div className={`${styles.topNav} ${styles.desktopTopNav}`}>
+                <Link href="/products" className={styles.backLink} aria-label="Go back">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </Link>
                 <div className={styles.topActions}>
                   <button aria-label="Add to Wishlist">

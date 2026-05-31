@@ -89,6 +89,10 @@
   width: 100%;
 }
 
+.mobileTopNav {
+  display: none;
+}
+
 .backLink {
   display: flex;
   align-items: center;
@@ -511,6 +515,7 @@
   .productMain { 
     flex-direction: column; 
     height: auto; 
+    min-height: unset;
   }
 
   .imageStack { 
@@ -522,6 +527,8 @@
     width: 100%;
     position: relative;
     overflow: hidden;
+    height: auto;
+    min-height: unset;
   }
 
   .carouselTrack {
@@ -573,12 +580,46 @@
   .info { 
     width: 100%; 
     height: auto; 
+    min-height: unset;
     position: static; 
-    padding: var(--space-xl) var(--content-padding); 
+    overflow: visible;
+    padding: var(--space-xl) var(--content-padding) var(--space-3xl); 
   }
   
   .infoInner { padding: 0; }
   .drawer { width: 100vw; }
+
+  .topNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 0 var(--space-lg) 0;
+    flex-wrap: nowrap;
+  }
+
+  .mobileTopNav {
+    display: flex;
+    padding: var(--space-md) var(--content-padding);
+  }
+
+  .desktopTopNav {
+    display: none;
+  }
+
+  .backLink {
+    font-size: var(--text-xs);
+    white-space: nowrap;
+  }
+
+  .newInLabel {
+    font-size: var(--text-xs);
+    text-align: left;
+    display: block;
+    margin-bottom: var(--space-sm);
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 640px) {

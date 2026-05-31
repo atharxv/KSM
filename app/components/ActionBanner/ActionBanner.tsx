@@ -11,6 +11,9 @@ export default function ActionBanner() {
           role="presentation"
           className={styles.backgroundImage}
           loading="lazy"
+          decoding="async"
+          width="1920"
+          height="1080"
         />
         <div className={styles.backgroundOverlay} />
       </div>

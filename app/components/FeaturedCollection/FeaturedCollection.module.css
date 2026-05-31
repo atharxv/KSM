@@ -265,9 +265,14 @@
   }
 
   .editorial {
-    height: 60vw;
-    max-height: 320px;
+    height: 55vw;
+    max-height: 380px;
     width: 100%;
+  }
+
+  .editorialImage {
+    object-position: center 15%;
+    min-height: 280px;
   }
 
   .eyebrowRow {
@@ -276,7 +281,7 @@
   }
 
   .eyebrow {
-    font-size: 9px;
+    font-size: var(--text-sm);
     letter-spacing: 0.15em;
     white-space: nowrap;
     overflow: hidden;

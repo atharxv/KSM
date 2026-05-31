@@ -171,6 +171,10 @@ export default function HeroSection() {
               role="presentation"
               className={styles.backgroundImage}
               loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              width="1920"
+              height="1080"
             />
             <div className={styles.backgroundOverlay} />
           </motion.div>
@@ -184,6 +188,10 @@ export default function HeroSection() {
                   alt=""
                   role="presentation"
                   className={styles.heroImage}
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="1067"
                 />
                 <div className={styles.videoOverlay} />
               </div>
