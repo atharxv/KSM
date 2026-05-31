@@ -88,16 +88,15 @@ export default function Atelier() {
             who refuse to blend in
           </h2>
           <p className={styles.philosophyBody}>
-            KSM was born from a singular conviction: that clothing should 
-            announce your presence before you speak a word. We don&apos;t follow 
-            trends — we architect a signature. Each piece is conceived as a 
-            declaration, meticulously constructed to project the quiet authority 
-            of those who shape the world around them.
+            Some people walk into a room and others adjust. KSM is a symbol of
+            status for a generation that moves fast and understands that status
+            is visible, a cultural reference, the name people read as ambition
+            and taste before anyone speaks.
           </p>
         </div>
         <div className={styles.philosophyImage}>
           <img
-            src="/images/paul anthony kelly.jpeg"
+            src="/images/atelier/atelier%202.png"
             alt="KSM creative process"
             loading="lazy"
           />

@@ -66,9 +66,11 @@
 .contactInfo {
   font-family: var(--font-sans);
   font-size: var(--text-xs);
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   line-height: 1.5;
-  color: rgba(var(--color-white-rgb), 0.5);
+  color: rgba(var(--color-white-rgb), 0.75);
   margin-bottom: var(--space-sm);
 }
 

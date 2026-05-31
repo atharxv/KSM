@@ -47,11 +47,7 @@ export default function Footer() {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 2 * 0.08 }}
         >
-          <p className={styles.contactInfo}>
-            Flagship Studio,<br />
-            Milan, Italy
-          </p>
-          <a href="mailto:hello@ksm.studio" className={styles.link}>hello@ksm.studio</a>
+          <p className={styles.contactInfo}>Crafted by Luxury Method</p>
         </motion.div>
 
         <motion.div 
