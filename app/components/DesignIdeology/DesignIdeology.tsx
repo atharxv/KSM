@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import styles from './DesignIdeology.module.css';
 
 export default function DesignIdeology() {
-  const letterText = "True distinction is never shouted; it is whispered in the weight of a linen fold and the precision of a hand-turned seam. This collection is not merely an assemblage of garments, but a parchment of legacy—a heritage woven for those who understand that status is an art form, not an acquisition. We invite you to carry this story forward.";
+  const letterText = "Status is not inherited. It is earned. KSM is for a generation that earns its place, refuses mediocrity, and understands that the right name carries weight in any room.";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,7 +33,7 @@ export default function DesignIdeology() {
     <section className={styles.section}>
       <div className={styles.imageBlock}>
         <img 
-          src="/images/paul anthony kelly.jpeg" 
+          src="/images/homepage/homepage%20image%202.png" 
           alt="KSM Heritage" 
           className={styles.image}
         />

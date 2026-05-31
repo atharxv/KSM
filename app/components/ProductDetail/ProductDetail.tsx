@@ -22,7 +22,7 @@ const PRODUCT_DATA: Record<string, any> = {
       '/images/Product/madeinitaly.JPG',
       '/images/Product/packaging.png',
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    sizes: ['XXS', 'XS', 'S', 'M', 'L', 'XL'],
   },
 };
 

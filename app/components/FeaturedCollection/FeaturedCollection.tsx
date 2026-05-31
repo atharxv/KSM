@@ -12,7 +12,7 @@ export default function FeaturedCollection() {
       {/* Left: Editorial Image */}
       <div className={styles.editorial}>
         <img
-          src="/images/Outfit Playa Hombre.jpeg"
+          src="/images/homepage/homepage%20image%201.png"
           alt="Legacy Collection — editorial fashion photography"
           className={styles.editorialImage}
           loading="lazy"
