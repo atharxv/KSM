@@ -11,6 +11,9 @@ export default function AtelierBanner() {
           src="/images/Atelierhome.jpeg" 
           alt="Inside the KSM Atelier" 
           loading="lazy"
+          decoding="async"
+          width="1200"
+          height="675"
         />
         <div className={styles.overlay} />
       </div>

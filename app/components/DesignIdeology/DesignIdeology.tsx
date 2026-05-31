@@ -36,6 +36,10 @@ export default function DesignIdeology() {
           src="/images/homepage/homepage%20image%202.png" 
           alt="KSM Heritage" 
           className={styles.image}
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="1067"
         />
       </div>
       <div className={styles.quoteBlock}>
@@ -61,7 +65,7 @@ export default function DesignIdeology() {
             className={styles.signature}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
           >
             <hr className={styles.signatureRule} />
             <p>With unrivaled esteem,</p>

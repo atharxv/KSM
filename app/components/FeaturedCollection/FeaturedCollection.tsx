@@ -16,6 +16,9 @@ export default function FeaturedCollection() {
           alt="Legacy Collection — editorial fashion photography"
           className={styles.editorialImage}
           loading="lazy"
+          decoding="async"
+          width="800"
+          height="1067"
         />
         <div className={styles.editorialOverlay}>
           <p className={styles.editorialCaption}>The Legacy Collection</p>
@@ -36,11 +39,19 @@ export default function FeaturedCollection() {
                 src="/images/Product/product%20image%201.png" 
                 alt="The Crown Monogram Tee" 
                 className={styles.showcaseImage}
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="1067"
               />
               <img 
                 src="/images/Product/KSMshirt4.JPG" 
                 alt="The Crown Monogram Tee - Detail" 
                 className={styles.showcaseImageHover}
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="1067"
               />
             </div>
           </Link>

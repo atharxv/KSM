@@ -87,6 +87,10 @@ export default function Footer() {
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80"
               alt=""
               className={styles.cellImage}
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="800"
             />
             <div className={styles.cellOverlay} />
           </div>

@@ -59,7 +59,10 @@ export default function Atelier() {
           <img
             src="/images/atelier.jpeg"
             alt="KSM Atelier — Behind the craft"
-            loading="eager"
+            loading="lazy"
+            decoding="async"
+            width="1920"
+            height="1080"
           />
         </div>
         <div className={styles.heroOverlay} />
@@ -99,6 +102,9 @@ export default function Atelier() {
             src="/images/atelier/atelier%202.png"
             alt="KSM creative process"
             loading="lazy"
+            decoding="async"
+            width="800"
+            height="1067"
           />
         </div>
       </section>
@@ -156,6 +162,9 @@ export default function Atelier() {
                 src="/images/cafeoldmoney.jpeg"
                 alt="Italian Linen"
                 loading="lazy"
+                decoding="async"
+                width="800"
+                height="1067"
               />
               <div className={styles.materialOverlay}>
                 <span className={styles.materialName}>Italian Linen</span>
@@ -168,6 +177,9 @@ export default function Atelier() {
                 src="/images/Old money.jpeg"
                 alt="Portuguese Cotton"
                 loading="lazy"
+                decoding="async"
+                width="800"
+                height="1067"
               />
               <div className={styles.materialOverlay}>
                 <span className={styles.materialName}>Portuguese Cotton</span>
@@ -180,6 +192,9 @@ export default function Atelier() {
                 src="/images/Outfit Playa Hombre.jpeg"
                 alt="Normandy Linen"
                 loading="lazy"
+                decoding="async"
+                width="800"
+                height="1067"
               />
               <div className={styles.materialOverlay}>
                 <span className={styles.materialName}>French Cashmere</span>
@@ -205,6 +220,9 @@ export default function Atelier() {
               src="/images/yachtplaya.jpeg"
               alt="Mediterranean yachting"
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
             <span className={styles.moodCaption}>Mediterranean Coast</span>
           </div>
@@ -214,6 +232,9 @@ export default function Atelier() {
               src="/images/Midderianwater.jpg"
               alt="Coastal heritage"
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
             <span className={styles.moodCaption}>Coastal Heritage</span>
           </div>
@@ -223,6 +244,9 @@ export default function Atelier() {
               src="/images/Man-onpolo.jpg"
               alt="Editorial fashion"
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
             <span className={styles.moodCaption}>Editorial Presence</span>
           </div>
@@ -232,6 +256,9 @@ export default function Atelier() {
               src="/images/bluehorn.jpeg"
               alt="Architectural inspiration"
               loading="lazy"
+              decoding="async"
+              width="800"
+              height="1067"
             />
             <span className={styles.moodCaption}>Architectural Precision</span>
           </div>
