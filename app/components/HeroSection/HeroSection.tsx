@@ -172,7 +172,7 @@ export default function HeroSection() {
               className={styles.backgroundImage}
               loading="eager"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
               width="1920"
               height="1080"
             />
