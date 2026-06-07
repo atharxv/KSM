@@ -217,7 +217,7 @@ export default function Atelier() {
         <div className={styles.moodGrid}>
           <div className={styles.moodItem}>
             <img
-              src="/images/yachtplaya.jpeg"
+              src="/images/atelier/atl%20page%20img%20.png"
               alt="Mediterranean yachting"
               loading="lazy"
               decoding="async"
@@ -241,7 +241,7 @@ export default function Atelier() {
 
           <div className={styles.moodItem}>
             <img
-              src="/images/Man-onpolo.jpg"
+              src="/images/atelier/ksm%202.png"
               alt="Editorial fashion"
               loading="lazy"
               decoding="async"

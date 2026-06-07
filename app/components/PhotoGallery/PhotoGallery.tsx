@@ -21,7 +21,7 @@ export default function PhotoGallery() {
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/Bottomline2.webp"
+              src="/images/footer/K.png"
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
@@ -32,7 +32,7 @@ export default function PhotoGallery() {
           </div>
           <div className={styles.photoItem}>
             <img
-              src="/images/Bottomline3.webp"
+              src="/images/footer/S.png"
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"
@@ -43,7 +43,7 @@ export default function PhotoGallery() {
           </div>
           <div className={`${styles.photoItem} ${styles.photoItemWithCard}`}>
             <img
-              src="/images/Bottomline4.webp"
+              src="/images/footer/M.png"
               alt="Fashion editorial"
               className={styles.photoImage}
               loading="lazy"

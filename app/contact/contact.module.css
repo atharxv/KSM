@@ -1,0 +1,159 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 16px 80px;
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 120px 24px 120px;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gray-400);
+  margin-bottom: 16px;
+}
+
+.pageTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  color: var(--color-black);
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-gray-400);
+  margin-bottom: 64px;
+  max-width: 600px;
+  letter-spacing: 0.02em;
+}
+
+.intro a {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+}
+
+@media (min-width: 1024px) {
+  .layoutGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+  }
+}
+
+/* Form Styles */
+.formContainer {
+  background: rgba(var(--color-black-rgb), 0.02);
+  padding: 40px;
+  border-radius: 4px;
+}
+
+.formGroup {
+  margin-bottom: 24px;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input, .textarea, .select {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-gray-200);
+  padding: 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-black);
+  transition: border-color 0.3s ease;
+  border-radius: 0;
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  outline: none;
+  border-color: var(--color-black);
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submitBtn {
+  display: inline-block;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 16px 32px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: 100%;
+}
+
+.submitBtn:hover {
+  opacity: 0.8;
+}
+
+/* Info Styles */
+.infoContainer {
+  padding-top: 40px;
+}
+
+.infoBlock {
+  margin-bottom: 48px;
+}
+
+.infoTitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.infoText {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-gray-400);
+  letter-spacing: 0.02em;
+}
+
+.infoText a {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.infoText a:hover {
+  color: var(--color-gray-400);
+}
