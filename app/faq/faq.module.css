@@ -1,0 +1,86 @@
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 16px 80px;
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 120px 24px 120px;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-gray-400);
+  margin-bottom: 16px;
+}
+
+.pageTitle {
+  font-family: 'Cardival', var(--font-heading);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  color: var(--color-black);
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-gray-400);
+  margin-bottom: 64px;
+  max-width: 600px;
+  letter-spacing: 0.02em;
+}
+
+.section {
+  margin-bottom: 64px;
+  border-top: 0.5px solid var(--color-gray-100);
+  padding-top: 40px;
+}
+
+.sectionTitle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.faqItem {
+  margin-bottom: 32px;
+}
+
+.question {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--color-black);
+}
+
+.answer {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-gray-400);
+  letter-spacing: 0.02em;
+}
+
+.answer a {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.answer a:hover {
+  color: var(--color-gray-400);
+}
