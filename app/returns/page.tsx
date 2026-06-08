@@ -85,19 +85,11 @@ export default function ReturnsPage() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>3. Shipping Costs & International Returns</h2>
+        <h2 className={styles.sectionTitle}>3. Return Shipping Costs</h2>
         
         <div className={styles.contentBlock}>
-          <h3 className={styles.subHeading}>European Union</h3>
           <p className={styles.text}>
-            We offer complimentary return shipping for all orders delivered within the EU. A prepaid DHL/FedEx return label will be provided to you by our customer care team upon requesting the return.
-          </p>
-        </div>
-
-        <div className={styles.contentBlock}>
-          <h3 className={styles.subHeading}>International Returns</h3>
-          <p className={styles.text}>
-            For international orders outside the EU, the customer is responsible for the cost of return shipping. We strongly recommend using a trackable and insured courier service, as we cannot be held liable for return packages lost in transit. Furthermore, any original customs duties and import taxes paid upon delivery are strictly non-refundable by KSM Atelier.
+            We offer complimentary return shipping for all orders delivered within Italy. A prepaid return label will be provided to you by our customer care team upon requesting the return.
           </p>
         </div>
       </section>

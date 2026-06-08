@@ -12,7 +12,7 @@ export default function ShippingPage() {
       <header>
         <h1 className={styles.pageTitle}>Shipping & Delivery</h1>
         <p className={styles.intro}>
-          KSM Atelier provides a seamless global delivery experience. We partner with the world's most trusted luxury logistics providers to ensure your garments arrive swiftly and securely.
+          KSM Atelier provides a seamless delivery experience throughout Italy. We partner with trusted luxury logistics providers to ensure your garments arrive swiftly and securely.
         </p>
       </header>
 
@@ -39,7 +39,7 @@ export default function ShippingPage() {
         
         <div className={styles.contentBlock}>
           <p className={styles.text} style={{ marginBottom: '16px' }}>
-            We ship worldwide using express courier services (DHL, FedEx). Once dispatched, estimated delivery timelines and costs are as follows:
+            We ship within Italy using express courier services. Once dispatched, estimated delivery timelines and costs are as follows:
           </p>
           
           <div className={styles.tableWrap}>
@@ -74,29 +74,9 @@ export default function ShippingPage() {
         </div>
       </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>3. Customs, Duties, & Taxes</h2>
-        
-        <div className={styles.contentBlock}>
-          <h3 className={styles.subHeading}>European Union</h3>
-          <p className={styles.text}>
-            For orders delivered within the EU, Value Added Tax (VAT) is calculated and included in the final checkout price. No additional customs duties will be charged upon delivery.
-          </p>
-        </div>
-
-        <div className={styles.contentBlock}>
-          <h3 className={styles.subHeading}>International Destinations</h3>
-          <p className={styles.text}>
-            Orders shipped outside the European Union are dispatched on a Delivery Duty Unpaid (DDU) basis. This means the final price at checkout does not include any import duties, customs taxes, or local clearance fees. 
-          </p>
-          <p className={styles.text} style={{ marginTop: '12px' }}>
-            As the recipient, you are liable for all import duties, customs, and local sales taxes levied by the destination country. Payment of these is necessary to release your order from customs upon arrival. We cannot estimate these exact charges, so we recommend contacting your local customs office for current rates before ordering.
-          </p>
-        </div>
-      </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>4. Tracking Your Order</h2>
+        <h2 className={styles.sectionTitle}>3. Tracking Your Order</h2>
         
         <div className={styles.contentBlock}>
           <p className={styles.text}>
@@ -106,7 +86,7 @@ export default function ShippingPage() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>5. Delivery Issues & Delays</h2>
+        <h2 className={styles.sectionTitle}>4. Delivery Issues & Delays</h2>
         
         <div className={styles.contentBlock}>
           <h3 className={styles.subHeading}>Unforeseen Delays</h3>
@@ -124,7 +104,7 @@ export default function ShippingPage() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>6. Contact Support</h2>
+        <h2 className={styles.sectionTitle}>5. Contact Support</h2>
         <p className={styles.text}>
           If you have any further questions regarding shipping, tracking, or delivery, our dedicated Customer Care team is ready to assist you.<br /><br />
           <strong>Email:</strong> <a href="mailto:Info@ksmatelier.com">Info@ksmatelier.com</a><br />
