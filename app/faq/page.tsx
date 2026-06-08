@@ -47,7 +47,7 @@ export default function FAQPage() {
         <div className={styles.faqItem}>
           <h3 className={styles.question}>Where do you ship?</h3>
           <p className={styles.answer}>
-            KSM Atelier provides worldwide shipping via trusted luxury courier partners (DHL, FedEx). 
+            KSM Atelier provides shipping exclusively within Italy and the Italian islands via trusted luxury courier partners. 
           </p>
         </div>
 
@@ -55,13 +55,6 @@ export default function FAQPage() {
           <h3 className={styles.question}>How long does shipping take?</h3>
           <p className={styles.answer}>
             Orders are typically processed within 1-2 business days. Express shipping throughout Italy takes 24–48 hours, while delivery to the islands may take up to 5 business days.
-          </p>
-        </div>
-
-        <div className={styles.faqItem}>
-          <h3 className={styles.question}>Will I be charged customs duties or taxes?</h3>
-          <p className={styles.answer}>
-            For orders shipped within the European Union, VAT is included in the final price. For international orders outside the EU, shipments may be subject to import duties and taxes upon arrival. These charges are the responsibility of the recipient.
           </p>
         </div>
       </section>
