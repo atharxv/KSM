@@ -24,8 +24,8 @@ export default function PrivacyPolicyPage() {
           <p style={{ marginTop: '1rem' }}>
             <strong>Data Controller:</strong><br />
             KSM Atelier<br />
-            Via Montenapoleone, Milan, Italy <em>(Note: Address assumed for GDPR compliance completion)</em><br />
-            Email: privacy@ksmatelier.com
+            Via Stefano Viale 50A, Roccasparvera 12010 (CN), Italy<br />
+            Email: Info@ksmatelier.com
           </p>
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function PrivacyPolicyPage() {
             <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time where we are relying on consent to process your data.</li>
           </ul>
           <p style={{ marginTop: '1rem' }}>
-            To exercise any of these rights, please email us at <a href="mailto:privacy@ksmatelier.com" style={{ textDecoration: 'underline' }}>privacy@ksmatelier.com</a>. We try to respond to all legitimate requests within one month.
+            To exercise any of these rights, please email us at <a href="mailto:Info@ksmatelier.com" style={{ textDecoration: 'underline' }}>Info@ksmatelier.com</a>. We try to respond to all legitimate requests within one month.
           </p>
         </div>
       </section>
@@ -136,8 +136,8 @@ export default function PrivacyPolicyPage() {
         <h2 className={styles.sectionTitle}>10. Contact Us</h2>
         <p className={styles.sectionBody}>
           If you have any questions about this Privacy Policy or our privacy practices, please contact our Data Protection Officer at:<br /><br />
-          <strong>Email:</strong> privacy@ksmatelier.com<br />
-          <strong>Postal Address:</strong> KSM Atelier, Via Montenapoleone, Milan, Italy <em>(Note: Address assumed for GDPR compliance completion)</em><br />
+          <strong>Email:</strong> Info@ksmatelier.com<br />
+          <strong>Postal Address:</strong> KSM Atelier, Via Stefano Viale 50A, Roccasparvera 12010 (CN), Italy<br />
           <br />
           You have the right to make a complaint at any time to the Garante per la protezione dei dati personali (the Italian Data Protection Authority) or your local supervisory authority. We would, however, appreciate the chance to deal with your concerns before you approach the authority.
         </p>

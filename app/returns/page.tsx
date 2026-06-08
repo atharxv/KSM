@@ -52,7 +52,7 @@ export default function ReturnsPage() {
             To be eligible for a return or exchange, your item must meet the following strict conditions:
           </p>
           <ul style={{ paddingLeft: '20px', marginTop: '12px', listStyleType: 'disc' }} className={styles.text}>
-            <li>The return must be requested and dispatched within <strong>14 days</strong> of the original delivery date.</li>
+            <li>The return must be requested and dispatched within <strong>14 days</strong> of the original delivery date, adhering to the standard Italy return policy with maximum seller protection.</li>
             <li>The garment must be unworn, unwashed, and entirely free of any signs of wear, fragrance, or makeup.</li>
             <li>All original KSM Atelier tags, care labels, and authenticity cards must remain attached to the garment.</li>
             <li>The item must be returned in its original luxury packaging to prevent damage during transit.</li>
@@ -116,7 +116,7 @@ export default function ReturnsPage() {
         <h2 className={styles.sectionTitle}>Need Assistance?</h2>
         <p className={styles.text}>
           To initiate a return or exchange, or if you have any questions regarding our policy, please reach out to our Customer Care team:<br /><br />
-          <strong>Email:</strong> <a href="mailto:support@ksmatelier.com">support@ksmatelier.com</a><br />
+          <strong>Email:</strong> <a href="mailto:Info@ksmatelier.com">Info@ksmatelier.com</a><br />
           <strong>Include:</strong> Your Order Number (#KSM-...)
         </p>
       </section>

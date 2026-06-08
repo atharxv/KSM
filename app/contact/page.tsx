@@ -69,7 +69,7 @@ export default function ContactPage() {
             <h3 className={styles.infoTitle}>Email Support</h3>
             <p className={styles.infoText}>
               For all general enquiries, please reach out to our support team at:<br />
-              <a href="mailto:support@ksmatelier.com">support@ksmatelier.com</a>
+              <a href="mailto:Info@ksmatelier.com">Info@ksmatelier.com</a>
             </p>
             <p className={styles.infoText} style={{ marginTop: '12px' }}>
               <em>Expected Response Time:</em> We aim to reply to all emails within 24 hours during standard business days. During peak collection launches, please allow up to 48 hours.
@@ -96,8 +96,8 @@ export default function ContactPage() {
             <h3 className={styles.infoTitle}>Business Headquarters</h3>
             <p className={styles.infoText}>
               KSM Atelier<br />
-              Via Montenapoleone<br />
-              Milan, Italy
+              Via Stefano Viale 50A<br />
+              Roccasparvera 12010 (CN), Italy
             </p>
             <p className={styles.infoText} style={{ marginTop: '8px', fontSize: '12px' }}>
               <em>*Please note: This address is our corporate headquarters. We do not accept unsolicited returns to this location. Please initiate a return via email to receive the correct fulfillment center address.</em>

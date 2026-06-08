@@ -54,28 +54,16 @@ export default function ShippingPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>Italy & European Union</td>
+                  <td>Italy</td>
                   <td>Express Courier</td>
-                  <td>1 - 3 Business Days</td>
-                  <td>Complimentary on orders over €300</td>
+                  <td>24 - 48 Hours</td>
+                  <td>€10.00</td>
                 </tr>
                 <tr>
-                  <td>United Kingdom</td>
-                  <td>Express International</td>
-                  <td>2 - 4 Business Days</td>
-                  <td>Calculated at checkout</td>
-                </tr>
-                <tr>
-                  <td>United States & Canada</td>
-                  <td>Express International</td>
-                  <td>3 - 5 Business Days</td>
-                  <td>Calculated at checkout</td>
-                </tr>
-                <tr>
-                  <td>Rest of World</td>
-                  <td>Express International</td>
-                  <td>4 - 7 Business Days</td>
-                  <td>Calculated at checkout</td>
+                  <td>Italian Islands</td>
+                  <td>Express Courier</td>
+                  <td>Up to 5 Business Days</td>
+                  <td>€15.00</td>
                 </tr>
               </tbody>
             </table>
@@ -139,7 +127,7 @@ export default function ShippingPage() {
         <h2 className={styles.sectionTitle}>6. Contact Support</h2>
         <p className={styles.text}>
           If you have any further questions regarding shipping, tracking, or delivery, our dedicated Customer Care team is ready to assist you.<br /><br />
-          <strong>Email:</strong> <a href="mailto:support@ksmatelier.com">support@ksmatelier.com</a><br />
+          <strong>Email:</strong> <a href="mailto:Info@ksmatelier.com">Info@ksmatelier.com</a><br />
           <strong>Hours:</strong> Monday – Friday, 9:00 AM – 6:00 PM (CET)
         </p>
       </section>
