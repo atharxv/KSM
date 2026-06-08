@@ -21,7 +21,7 @@ const PRODUCT_DATA: Record<string, any> = {
       '/images/Product/KSMshirt4.JPG',
       '/images/Product/madeinitaly.JPG',
       '/images/Product/packaging.png',
-      '/images/Product/product%20card.JPG',
+      '/images/Bottomline5.webp',
     ],
     sizes: ['XXS', 'XS', 'S', 'M', 'L', 'XL'],
   },
