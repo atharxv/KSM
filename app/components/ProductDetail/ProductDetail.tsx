@@ -21,6 +21,7 @@ const PRODUCT_DATA: Record<string, any> = {
       '/images/Product/KSMshirt4.JPG',
       '/images/Product/madeinitaly.JPG',
       '/images/Product/packaging.png',
+      '/images/Product/product%20card.JPG',
     ],
     sizes: ['XXS', 'XS', 'S', 'M', 'L', 'XL'],
   },
@@ -255,7 +256,7 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
           {activeTab === 'details' && (
             <div className={styles.drawerContent}>
               <h4>Composition</h4>
-              <p>100% heavyweight cotton. Crafted with precision and finished to the KSM standard.</p>
+              <p>100% Cotton</p>
               <h4>Details</h4>
               <ul>
                 <li>KSM script logo embroidery</li>
@@ -263,12 +264,16 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
                 <li>Relaxed structured fit</li>
                 <li>Ribbed crew neck, cuffs and hem</li>
               </ul>
-              <h4>Care</h4>
+              <h4>Care Instructions</h4>
               <ul>
                 <li>Machine wash at 30°C</li>
+                <li>Do not bleach</li>
                 <li>Do not tumble dry</li>
-                <li>Iron on reverse</li>
+                <li>Iron at medium temperature</li>
+                <li>Do not dry clean</li>
+                <li>Wash with similar colours</li>
               </ul>
+              <p style={{ marginTop: '12px', fontSize: '13px', lineHeight: '1.6' }}>We recommend handling the garment with care and avoiding aggressive washing or treatment processes that could damage it.</p>
             </div>
           )}
           {activeTab === 'size' && (
@@ -278,43 +283,42 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
                 <thead>
                   <tr>
                     <th>Size</th>
-                    <th>Chest (in)</th>
-                    <th>Waist (in)</th>
-                    <th>Sleeve (in)</th>
+                    <th>Chest (C)</th>
+                    <th>Length (B)</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    ['S', '36–38', '30–32', '32.5'],
-                    ['M', '39–41', '33–35', '33.5'],
-                    ['L', '42–44', '36–38', '34.5'],
-                    ['XL', '45–47', '39–41', '35.5'],
-                    ['XXL', '48–50', '42–44', '36.5'],
-                  ].map(([s, c, w, sl]) => (
+                    ['XS', '45 cm', '67 cm'],
+                    ['S', '47 cm', '68 cm'],
+                    ['M', '49 cm', '69 cm'],
+                    ['L', '51 cm', '70 cm'],
+                    ['XL', '53 cm', '71 cm'],
+                  ].map(([s, c, l]) => (
                     <tr key={s}>
-                      <td>{s}</td><td>{c}</td><td>{w}</td><td>{sl}</td>
+                      <td>{s}</td><td>{c}</td><td>{l}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <h4 style={{ marginTop: '24px' }}>Measurement Notes</h4>
+              <ul style={{ paddingLeft: '1.2rem', listStyleType: 'disc', marginTop: '8px', marginBottom: '8px' }}>
+                <li><strong>C (Chest):</strong> Width measured from armpit to armpit.</li>
+                <li><strong>B (Length):</strong> Total length measured from the neck to the bottom hem.</li>
+              </ul>
             </div>
           )}
           {activeTab === 'delivery' && (
             <div className={styles.drawerContent}>
-              <h4>Delivery</h4>
-              <p>Complimentary delivery within 1–3 business days on all orders.</p>
-              <h4>Estimated Times</h4>
+              <h4>Shipping</h4>
+              <p>Express shipping throughout Italy in 24–48 hours. Delivery to the islands may take up to 5 business days.</p>
+              <h4>Shipping Costs</h4>
               <ul>
-                <li>Italy & EU: 1–3 business days</li>
-                <li>UK: 2–4 business days</li>
-                <li>Rest of World: 3–7 business days</li>
+                <li>€10 within Italy</li>
+                <li>€15 for the islands</li>
               </ul>
               <h4>Returns</h4>
-              <p>Return within 14 days of delivery. Items must be unworn and in original packaging.</p>
-              <ul>
-                <li>Free returns within the EU</li>
-                <li>International returns at customer cost</li>
-              </ul>
+              <p>Please use the standard Italy return policy with maximum seller protection (14 days return window).</p>
             </div>
           )}
         </div>

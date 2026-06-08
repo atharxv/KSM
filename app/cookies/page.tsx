@@ -238,8 +238,8 @@ export default function CookiePolicyPage() {
         <h2 className={styles.sectionTitle}>7. Contact Us</h2>
         <p className={styles.sectionBody}>
           If you have any questions about our use of cookies or other technologies, please email us at:<br /><br />
-          <strong>Email:</strong> privacy@ksmatelier.com<br />
-          <strong>Address:</strong> KSM Atelier, Via Montenapoleone, Milan, Italy <em>(Note: Address assumed for GDPR compliance completion)</em>
+          <strong>Email:</strong> Info@ksmatelier.com<br />
+          <strong>Address:</strong> KSM Atelier, Via Stefano Viale 50A, Roccasparvera 12010 (CN), Italy
         </p>
       </section>
     </div>
