@@ -268,13 +268,12 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
               <h4>Care Instructions</h4>
               <ul>
                 <li>Machine wash at 30°C</li>
-                <li>Do not bleach</li>
-                <li>Do not tumble dry</li>
-                <li>Iron at medium temperature</li>
+                <li>Do not bleach or tumble dry</li>
+                <li>Iron at medium heat</li>
                 <li>Do not dry clean</li>
                 <li>Wash with similar colours</li>
               </ul>
-              <p style={{ marginTop: '12px', fontSize: '13px', lineHeight: '1.6' }}>Every print is finished to a soft, fabric-like touch — never thick or plastic — built to move and wash with the garment for years. We recommend handling the garment with care and avoiding aggressive washing or treatment processes that could damage it.</p>
+              <p style={{ marginTop: '12px', fontSize: '13px', lineHeight: '1.6' }}>Finished to a soft, fabric-like touch. Not thick. Not plastic. The print moves with the garment and holds through repeated washing. Treat it well and it will look the same in three years.</p>
             </div>
           )}
           {activeTab === 'size' && (
@@ -312,14 +311,15 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
           {activeTab === 'delivery' && (
             <div className={styles.drawerContent}>
               <h4>Shipping</h4>
-              <p>Express shipping throughout Italy in 24–48 hours. Delivery to the islands may take up to 5 business days.</p>
-              <h4>Shipping Costs</h4>
+              <h5 style={{ marginTop: '12px', marginBottom: '8px', fontSize: '14px' }}>Delivery</h5>
+              <p>Express shipping across Italy. Orders arrive in 24 to 48 hours. Delivery to the islands takes up to 5 business days.</p>
+              <h5 style={{ marginTop: '16px', marginBottom: '8px', fontSize: '14px' }}>Shipping Costs</h5>
               <ul>
-                <li>€10 within Italy</li>
-                <li>€15 for the islands</li>
+                <li>Italy: €10</li>
+                <li>Islands: €15</li>
               </ul>
               <h4>Returns</h4>
-              <p>Please use the standard Italy return policy with maximum seller protection (14 days return window).</p>
+              <p>Returns accepted within 14 days of delivery. Item must be unworn and in original condition. To arrange a return, contact us at <a href="mailto:Info@ksmatelier.com" style={{ textDecoration: 'underline' }}>Info@ksmatelier.com</a>.</p>
             </div>
           )}
         </div>

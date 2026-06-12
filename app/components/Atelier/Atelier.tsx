@@ -30,22 +30,22 @@ export default function Atelier() {
     {
       number: '01',
       title: 'Conception',
-      desc: 'Every silhouette begins as a study in architecture — sketched with the discipline of a blueprint, not a doodle.'
+      desc: 'Every piece starts as a conviction. We decide what the garment needs to say before we decide what it needs to look like. Silhouette, weight, presence — resolved before a single pattern is cut.'
     },
     {
       number: '02',
       title: 'Sourcing',
-      desc: 'We travel to the mills of Como, the ateliers of Portugal, and the linen fields of Normandy to select only what meets our standard.'
+      desc: 'Cotton sourced for how it holds. Italy chosen for what it knows. Each fabric answers one question: will it still look right in three years.'
     },
     {
       number: '03',
       title: 'Construction',
-      desc: 'Cut by hand, assembled with precision. Every seam is reinforced, every button anchored, and every collar finished with an internal tape for structure that holds — built to outlast the season.'
+      desc: 'Cut and assembled in an atelier in Piedmont. Reinforced collar tape builds structure that holds its shape over time. Nothing here is accidental.'
     },
     {
       number: '04',
       title: 'Refinement',
-      desc: 'The final garment is pressed, inspected, and approved only when it carries the unmistakable weight of distinction — down to a print finish so soft it disappears into the fabric, built to outlast wear after wear.'
+      desc: 'A soft-finish print process that sits inside the fabric, not on top of it. The result doesn\'t crack. It doesn\'t peel. It reads the same on day one as it does on day three hundred.'
     }
   ];
 
@@ -85,16 +85,13 @@ export default function Atelier() {
           ============================ */}
       <section className={styles.philosophySection}>
         <div className={styles.philosophyText}>
-          <p className={styles.philosophyEyebrow}>Our Philosophy</p>
+          <p className={styles.philosophyEyebrow}>THE PHILOSOPHY</p>
           <h2 className={styles.philosophyHeadline}>
             Crafted for those<br />
             who refuse to blend in
           </h2>
           <p className={styles.philosophyBody}>
-            Some people walk into a room and others adjust. KSM is a symbol of
-            status for a generation that moves fast and understands that status
-            is visible, a cultural reference, the name people read as ambition
-            and taste before anyone speaks.
+            "Some people walk into a room and others adjust. KSM is a symbol of status for a generation that moves fast and understands that status is visible, a cultural reference, the name people read as ambition and taste before anyone speaks. KSM is for those who have already arrived."
           </p>
         </div>
         <div className={styles.philosophyImage}>
@@ -114,7 +111,7 @@ export default function Atelier() {
           ============================ */}
       <section className={styles.processSection}>
         <div className={styles.processHeader}>
-          <p className={styles.processEyebrow}>The Making</p>
+          <p className={styles.processEyebrow}>THE PROCESS</p>
           <h2 className={styles.processTitle}>From Vision to Vessel</h2>
         </div>
 
@@ -144,15 +141,14 @@ export default function Atelier() {
         <div className={styles.materialsInner}>
           <div className={styles.materialsHeader}>
             <div>
-              <p className={styles.materialsEyebrow}>Materiality</p>
+              <p className={styles.materialsEyebrow}>MATERIALS</p>
               <h2 className={styles.materialsTitle}>
                 The Fabric of<br />
                 Distinction
               </h2>
             </div>
             <p className={styles.materialsSubtitle}>
-              We source only what speaks to our standard — textiles that carry 
-              history, texture, and unmistakable presence.
+              "We use 100% cotton because it earns its place. It breathes correctly. It ages well. It does not need to announce itself.<br /><br />Produced in Italy, where the standard for how a garment should feel is not a specification. It is an expectation."
             </p>
           </div>
 
@@ -210,8 +206,11 @@ export default function Atelier() {
           ============================ */}
       <section className={styles.moodSection}>
         <div className={styles.moodHeader}>
-          <p className={styles.moodEyebrow}>Inspirations</p>
+          <p className={styles.moodEyebrow}>INSPIRATION</p>
           <h2 className={styles.moodTitle}>The World of KSM</h2>
+          <p className={styles.philosophyBody} style={{ margin: '1rem auto 0', textAlign: 'center', maxWidth: '600px' }}>
+            "KSM moves between cities. Between rooms. Between moments where the first impression is the only one that counts.<br /><br />The pieces are built for that context. Not occasion wear. Not fashion. A wardrobe for the person who is always somewhere worth being."
+          </p>
         </div>
 
         <div className={styles.moodGrid}>
