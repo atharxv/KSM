@@ -51,15 +51,14 @@
 
 .stripInner {
   display: flex;
-  gap: 4px;
-  min-width: max-content;
+  width: 100%;
 }
 
 .photoItem {
   position: relative;
-  width: 300px;
+  flex: 1;
+  min-width: 0;
   height: 420px;
-  flex-shrink: 0;
   overflow: hidden;
 }
 

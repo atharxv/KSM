@@ -15,8 +15,8 @@ export default function Home() {
       <FeaturedCollection />
       <AtelierBanner />
       <DesignIdeology />
-      <PhotoGallery />
       <Provenance />
+      <PhotoGallery />
     </>
   );
 }
