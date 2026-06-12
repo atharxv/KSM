@@ -40,12 +40,12 @@ export default function Atelier() {
     {
       number: '03',
       title: 'Construction',
-      desc: 'Cut by hand, assembled with precision. Every seam is reinforced, every button anchored — built to outlast the season.'
+      desc: 'Cut by hand, assembled with precision. Every seam is reinforced, every button anchored, and every collar finished with an internal tape for structure that holds — built to outlast the season.'
     },
     {
       number: '04',
       title: 'Refinement',
-      desc: 'The final garment is pressed, inspected, and approved only when it carries the unmistakable weight of distinction.'
+      desc: 'The final garment is pressed, inspected, and approved only when it carries the unmistakable weight of distinction — down to a print finish so soft it disappears into the fabric, built to outlast wear after wear.'
     }
   ];
 

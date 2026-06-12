@@ -263,6 +263,7 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
                 <li>Crown monogram emblem</li>
                 <li>Relaxed structured fit</li>
                 <li>Ribbed crew neck, cuffs and hem</li>
+                <li>Reinforced inner collar tape for structure and lasting shape</li>
               </ul>
               <h4>Care Instructions</h4>
               <ul>
@@ -273,7 +274,7 @@ export default function ProductDetail({ handle }: ProductDetailProps) {
                 <li>Do not dry clean</li>
                 <li>Wash with similar colours</li>
               </ul>
-              <p style={{ marginTop: '12px', fontSize: '13px', lineHeight: '1.6' }}>We recommend handling the garment with care and avoiding aggressive washing or treatment processes that could damage it.</p>
+              <p style={{ marginTop: '12px', fontSize: '13px', lineHeight: '1.6' }}>Every print is finished to a soft, fabric-like touch — never thick or plastic — built to move and wash with the garment for years. We recommend handling the garment with care and avoiding aggressive washing or treatment processes that could damage it.</p>
             </div>
           )}
           {activeTab === 'size' && (
