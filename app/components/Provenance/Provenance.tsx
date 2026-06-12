@@ -25,11 +25,7 @@ export default function Provenance() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <span className={styles.eyebrow}>The Provenance</span>
         <h2 className={styles.headline}>Crafted in Italy.<br />Worn Everywhere.</h2>
-        <p className={styles.body}>
-          Every piece begins in a small atelier in Piedmont, where pattern, cloth, and hand meet — far from mass production, close to mastery. KSM is not made for everyone. It is made for those who recognize the difference the moment they put it on.
-        </p>
       </motion.div>
     </section>
   );
