@@ -6,6 +6,7 @@ import FeaturedCollection from "./components/FeaturedCollection/FeaturedCollecti
 import AtelierBanner from "./components/AtelierBanner/AtelierBanner";
 import DesignIdeology from "./components/DesignIdeology/DesignIdeology";
 import PhotoGallery from "./components/PhotoGallery/PhotoGallery";
+import Provenance from "./components/Provenance/Provenance";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <AtelierBanner />
       <DesignIdeology />
       <PhotoGallery />
+      <Provenance />
     </>
   );
 }
