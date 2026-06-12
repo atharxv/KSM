@@ -36,12 +36,10 @@
 }
 
 .eyebrow {
-  font-family: var(--font-serif);
-  font-size: var(--text-xs);
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--color-gray-500);
+  font-family: 'Cardival', var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--color-black);
   margin-bottom: var(--space-2xl);
 }
 
