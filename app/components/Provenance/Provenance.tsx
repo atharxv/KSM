@@ -14,7 +14,7 @@ export default function Provenance() {
         ease: "easeOut",
       },
     },
-  };
+  } as const;
 
   return (
     <section className={styles.section} aria-label="The Provenance">
