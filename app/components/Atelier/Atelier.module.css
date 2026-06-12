@@ -544,7 +544,7 @@
   }
 
   .materialCard {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 5;
   }
 
   .moodGrid {
@@ -558,7 +558,7 @@
   .moodItem:nth-child(4) {
     grid-column: auto;
     grid-row: auto;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 5;
   }
 
   .closingQuote {
@@ -584,6 +584,6 @@
   .moodItem:nth-child(2),
   .moodItem:nth-child(3),
   .moodItem:nth-child(4) {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 5;
   }
 }
