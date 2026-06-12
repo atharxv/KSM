@@ -72,7 +72,7 @@
 }
 
 .signature {
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-xl);
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   font-style: italic;
